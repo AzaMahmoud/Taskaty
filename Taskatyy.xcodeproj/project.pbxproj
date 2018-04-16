@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		17CB504EDFEB336DB3B20879 /* Pods_Taskatyy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8FEEFF0849EE14EC75B1BE /* Pods_Taskatyy.framework */; };
 		3BDCB7A7F848AD6269FF4344 /* Pods_TaskatyyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6816720B0999926E78F71A53 /* Pods_TaskatyyTests.framework */; };
+		CE1752AE20846B7200B9B621 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1752AD20846B7200B9B621 /* FilterVC.swift */; };
 		CE19A2D620835DF000B686BE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D520835DF000B686BE /* API.swift */; };
 		CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D82083649B00B686BE /* String-Exensions.swift */; };
 		CE19A2DB208372FE00B686BE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2DA208372FE00B686BE /* Config.swift */; };
@@ -38,6 +39,7 @@
 		8F73BDB62057786FA72142B7 /* Pods-TaskatyyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskatyyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaskatyyTests/Pods-TaskatyyTests.release.xcconfig"; sourceTree = "<group>"; };
 		B7DFE033BF9094FEAC5F4DCD /* Pods-Taskatyy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taskatyy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taskatyy/Pods-Taskatyy.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA12F7AFA8CEBA6DC101354 /* Pods-Taskatyy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taskatyy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taskatyy/Pods-Taskatyy.release.xcconfig"; sourceTree = "<group>"; };
+		CE1752AD20846B7200B9B621 /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 		CE19A2D520835DF000B686BE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CE19A2D82083649B00B686BE /* String-Exensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Exensions.swift"; sourceTree = "<group>"; };
 		CE19A2DA208372FE00B686BE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				CE1D997D208293BC00931E0A /* LoginVC.swift */,
+				CE1752AD20846B7200B9B621 /* FilterVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1D997E208293BC00931E0A /* LoginVC.swift in Sources */,
+				CE1752AE20846B7200B9B621 /* FilterVC.swift in Sources */,
 				CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */,
 				CE19A2DB208372FE00B686BE /* Config.swift in Sources */,
 				CE19A2E120838B8000B686BE /* helper.swift in Sources */,

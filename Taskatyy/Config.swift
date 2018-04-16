@@ -11,4 +11,7 @@ import Foundation
 struct URLs {
     // POST , params : "userName", "password"
     static let Login = "http://167.114.174.82:1717/TaskatyService.svc/Login"
+    
+    //GET
+    static let Filer = "http://167.114.174.82:16016/taskatyservice.svc/filter"
 }
