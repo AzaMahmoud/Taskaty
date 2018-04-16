@@ -1,0 +1,6 @@
+framework module Pods_TaskatyyTests {
+  umbrella header "Pods-TaskatyyTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
