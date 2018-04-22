@@ -35,18 +35,42 @@ class API: NSObject {
     
     class func filter()
     {
-        let url = URLs.Filer
+        
+        let url = URLs.Filter
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON { response in
-                if response.result.isSuccess {
-                    print("Great")
+                
+                if response.result.isSuccess{
+                    print ("filer succeed")
                     
                 }
-                else{
-                    print("Error\(response.result.error)")
+                else {
+                    print ("Error\(response.result.error)")
+                    
                 }
                 print(response)
-        }
+                
+//                switch response.result
+//                {
+//                case .failure(let error):
+//                    print(error)
+//                case .success(let value):
+//                  let json = JSON(value)
+//                    let data = json["ItemPriorities"]
+//                    print(data)
+//
+//                }
+                //print(response)
+                
+//                if response.result.isSuccess {
+//                    print("Great")
+//
+//                }
+//                else{
+//                    print("Error\(response.result.error)")
+//                }
+//                print(response)
+     }
     }
     
     

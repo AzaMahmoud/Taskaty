@@ -9,17 +9,27 @@
 /* Begin PBXBuildFile section */
 		17CB504EDFEB336DB3B20879 /* Pods_Taskatyy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8FEEFF0849EE14EC75B1BE /* Pods_Taskatyy.framework */; };
 		3BDCB7A7F848AD6269FF4344 /* Pods_TaskatyyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6816720B0999926E78F71A53 /* Pods_TaskatyyTests.framework */; };
-		CE1752AE20846B7200B9B621 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1752AD20846B7200B9B621 /* FilterVC.swift */; };
+		CE163F82208CA3DA007C01A7 /* SearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE163F81208CA3DA007C01A7 /* SearchResultVC.swift */; };
 		CE19A2D620835DF000B686BE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D520835DF000B686BE /* API.swift */; };
 		CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D82083649B00B686BE /* String-Exensions.swift */; };
-		CE19A2DB208372FE00B686BE /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2DA208372FE00B686BE /* Config.swift */; };
-		CE19A2E120838B8000B686BE /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2E020838B8000B686BE /* helper.swift */; };
-		CE1D997C208293BC00931E0A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D997B208293BC00931E0A /* AppDelegate.swift */; };
-		CE1D997E208293BC00931E0A /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D997D208293BC00931E0A /* LoginVC.swift */; };
-		CE1D9981208293BC00931E0A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1D997F208293BC00931E0A /* Main.storyboard */; };
-		CE1D9983208293BC00931E0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9982208293BC00931E0A /* Assets.xcassets */; };
-		CE1D9986208293BC00931E0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE1D9984208293BC00931E0A /* LaunchScreen.storyboard */; };
 		CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D9990208293BC00931E0A /* TaskatyyTests.swift */; };
+		CE241F6B208B71A800D8C999 /* Programs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE241F6A208B71A800D8C999 /* Programs.swift */; };
+		CEED0065208561330033E663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEED0042208561330033E663 /* Assets.xcassets */; };
+		CEED0066208561330033E663 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0043208561330033E663 /* Config.swift */; };
+		CEED006E208561330033E663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEED004C208561330033E663 /* LaunchScreen.storyboard */; };
+		CEED006F208561330033E663 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEED004E208561330033E663 /* Main.storyboard */; };
+		CEED0071208561330033E663 /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0052208561330033E663 /* FilterVC.swift */; };
+		CEED0072208561330033E663 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0053208561330033E663 /* LoginVC.swift */; };
+		CEED0073208561330033E663 /* ItemPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0055208561330033E663 /* ItemPriority.swift */; };
+		CEED0074208561330033E663 /* FilterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0056208561330033E663 /* FilterResult.swift */; };
+		CEED0075208561330033E663 /* Filer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0057208561330033E663 /* Filer.swift */; };
+		CEED0076208561330033E663 /* Itemtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0058208561330033E663 /* Itemtype.swift */; };
+		CEED0077208561330033E663 /* Itemuser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0059208561330033E663 /* Itemuser.swift */; };
+		CEED0078208561330033E663 /* Statu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED005A208561330033E663 /* Statu.swift */; };
+		CEED0079208561330033E663 /* ItemProgram.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED005B208561330033E663 /* ItemProgram.swift */; };
+		CEED007B208561330033E663 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED005D208561330033E663 /* AppDelegate.swift */; };
+		CEED007C208561330033E663 /* helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED005E208561330033E663 /* helper.swift */; };
+		CEED007E208561330033E663 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEED0060208561330033E663 /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,21 +49,30 @@
 		8F73BDB62057786FA72142B7 /* Pods-TaskatyyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskatyyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaskatyyTests/Pods-TaskatyyTests.release.xcconfig"; sourceTree = "<group>"; };
 		B7DFE033BF9094FEAC5F4DCD /* Pods-Taskatyy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taskatyy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taskatyy/Pods-Taskatyy.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA12F7AFA8CEBA6DC101354 /* Pods-Taskatyy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taskatyy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taskatyy/Pods-Taskatyy.release.xcconfig"; sourceTree = "<group>"; };
-		CE1752AD20846B7200B9B621 /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
+		CE163F81208CA3DA007C01A7 /* SearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVC.swift; sourceTree = "<group>"; };
 		CE19A2D520835DF000B686BE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CE19A2D82083649B00B686BE /* String-Exensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Exensions.swift"; sourceTree = "<group>"; };
-		CE19A2DA208372FE00B686BE /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		CE19A2E020838B8000B686BE /* helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
 		CE1D9978208293BC00931E0A /* Taskatyy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taskatyy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE1D997B208293BC00931E0A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE1D997D208293BC00931E0A /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
-		CE1D9980208293BC00931E0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE1D9982208293BC00931E0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE1D9985208293BC00931E0A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CE1D9987208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskatyyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D9990208293BC00931E0A /* TaskatyyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskatyyTests.swift; sourceTree = "<group>"; };
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE241F6A208B71A800D8C999 /* Programs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Programs.swift; sourceTree = "<group>"; };
+		CEED0042208561330033E663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CEED0043208561330033E663 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		CEED004D208561330033E663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CEED004F208561330033E663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CEED0052208561330033E663 /* FilterVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
+		CEED0053208561330033E663 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		CEED0055208561330033E663 /* ItemPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemPriority.swift; sourceTree = "<group>"; };
+		CEED0056208561330033E663 /* FilterResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterResult.swift; sourceTree = "<group>"; };
+		CEED0057208561330033E663 /* Filer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filer.swift; sourceTree = "<group>"; };
+		CEED0058208561330033E663 /* Itemtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itemtype.swift; sourceTree = "<group>"; };
+		CEED0059208561330033E663 /* Itemuser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itemuser.swift; sourceTree = "<group>"; };
+		CEED005A208561330033E663 /* Statu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statu.swift; sourceTree = "<group>"; };
+		CEED005B208561330033E663 /* ItemProgram.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemProgram.swift; sourceTree = "<group>"; };
+		CEED005D208561330033E663 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CEED005E208561330033E663 /* helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = helper.swift; sourceTree = "<group>"; };
+		CEED0060208561330033E663 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,22 +115,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		CE19A2D12083590200B686BE /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				CE1D997D208293BC00931E0A /* LoginVC.swift */,
-				CE1752AD20846B7200B9B621 /* FilterVC.swift */,
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		CE19A2D22083597E00B686BE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		CE19A2D420835D1B00B686BE /* API */ = {
 			isa = PBXGroup;
 			children = (
@@ -133,7 +136,7 @@
 			children = (
 				CE19A2D72083643D00B686BE /* Exensions */,
 				CE19A2D420835D1B00B686BE /* API */,
-				CE1D997A208293BC00931E0A /* Taskatyy */,
+				CEED003E208561330033E663 /* Taskatyy */,
 				CE1D998F208293BC00931E0A /* TaskatyyTests */,
 				CE1D9979208293BC00931E0A /* Products */,
 				6CBF8A44B57C9C20CCA397DD /* Pods */,
@@ -150,22 +153,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CE1D997A208293BC00931E0A /* Taskatyy */ = {
-			isa = PBXGroup;
-			children = (
-				CE1D997B208293BC00931E0A /* AppDelegate.swift */,
-				CE1D997F208293BC00931E0A /* Main.storyboard */,
-				CE19A2E020838B8000B686BE /* helper.swift */,
-				CE19A2DA208372FE00B686BE /* Config.swift */,
-				CE19A2D12083590200B686BE /* Controller */,
-				CE19A2D22083597E00B686BE /* Supporting Files */,
-				CE1D9982208293BC00931E0A /* Assets.xcassets */,
-				CE1D9984208293BC00931E0A /* LaunchScreen.storyboard */,
-				CE1D9987208293BC00931E0A /* Info.plist */,
-			);
-			path = Taskatyy;
-			sourceTree = "<group>";
-		};
 		CE1D998F208293BC00931E0A /* TaskatyyTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +160,55 @@
 				CE1D9992208293BC00931E0A /* Info.plist */,
 			);
 			path = TaskatyyTests;
+			sourceTree = "<group>";
+		};
+		CE241F69208B712000D8C999 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CE241F6A208B71A800D8C999 /* Programs.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		CEED003E208561330033E663 /* Taskatyy */ = {
+			isa = PBXGroup;
+			children = (
+				CE241F69208B712000D8C999 /* Models */,
+				CEED0051208561330033E663 /* Controller */,
+				CEED0054208561330033E663 /* Supporting Files */,
+				CEED0042208561330033E663 /* Assets.xcassets */,
+				CEED0043208561330033E663 /* Config.swift */,
+				CEED004C208561330033E663 /* LaunchScreen.storyboard */,
+				CEED004E208561330033E663 /* Main.storyboard */,
+				CEED005D208561330033E663 /* AppDelegate.swift */,
+				CEED005E208561330033E663 /* helper.swift */,
+				CEED0060208561330033E663 /* Info.plist */,
+			);
+			path = Taskatyy;
+			sourceTree = "<group>";
+		};
+		CEED0051208561330033E663 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CEED0052208561330033E663 /* FilterVC.swift */,
+				CEED0053208561330033E663 /* LoginVC.swift */,
+				CE163F81208CA3DA007C01A7 /* SearchResultVC.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		CEED0054208561330033E663 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CEED0055208561330033E663 /* ItemPriority.swift */,
+				CEED0056208561330033E663 /* FilterResult.swift */,
+				CEED0057208561330033E663 /* Filer.swift */,
+				CEED0058208561330033E663 /* Itemtype.swift */,
+				CEED0059208561330033E663 /* Itemuser.swift */,
+				CEED005A208561330033E663 /* Statu.swift */,
+				CEED005B208561330033E663 /* ItemProgram.swift */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,9 +297,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1D9986208293BC00931E0A /* LaunchScreen.storyboard in Resources */,
-				CE1D9983208293BC00931E0A /* Assets.xcassets in Resources */,
-				CE1D9981208293BC00931E0A /* Main.storyboard in Resources */,
+				CEED0065208561330033E663 /* Assets.xcassets in Resources */,
+				CEED006F208561330033E663 /* Main.storyboard in Resources */,
+				CEED006E208561330033E663 /* LaunchScreen.storyboard in Resources */,
+				CEED007E208561330033E663 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,13 +377,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE1D997E208293BC00931E0A /* LoginVC.swift in Sources */,
-				CE1752AE20846B7200B9B621 /* FilterVC.swift in Sources */,
+				CE241F6B208B71A800D8C999 /* Programs.swift in Sources */,
+				CEED0071208561330033E663 /* FilterVC.swift in Sources */,
+				CEED0072208561330033E663 /* LoginVC.swift in Sources */,
 				CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */,
-				CE19A2DB208372FE00B686BE /* Config.swift in Sources */,
-				CE19A2E120838B8000B686BE /* helper.swift in Sources */,
+				CEED0077208561330033E663 /* Itemuser.swift in Sources */,
+				CEED0066208561330033E663 /* Config.swift in Sources */,
+				CEED0075208561330033E663 /* Filer.swift in Sources */,
+				CEED0076208561330033E663 /* Itemtype.swift in Sources */,
+				CEED0078208561330033E663 /* Statu.swift in Sources */,
+				CEED0073208561330033E663 /* ItemPriority.swift in Sources */,
+				CEED0079208561330033E663 /* ItemProgram.swift in Sources */,
+				CEED007B208561330033E663 /* AppDelegate.swift in Sources */,
+				CEED0074208561330033E663 /* FilterResult.swift in Sources */,
+				CE163F82208CA3DA007C01A7 /* SearchResultVC.swift in Sources */,
+				CEED007C208561330033E663 /* helper.swift in Sources */,
 				CE19A2D620835DF000B686BE /* API.swift in Sources */,
-				CE1D997C208293BC00931E0A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -369,20 +415,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		CE1D997F208293BC00931E0A /* Main.storyboard */ = {
+		CEED004C208561330033E663 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CE1D9980208293BC00931E0A /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CE1D9984208293BC00931E0A /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE1D9985208293BC00931E0A /* Base */,
+				CEED004D208561330033E663 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CEED004E208561330033E663 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CEED004F208561330033E663 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -500,11 +546,14 @@
 			baseConfigurationReference = B7DFE033BF9094FEAC5F4DCD /* Pods-Taskatyy.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = Taskatyy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zzz.Taskatyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -515,11 +564,14 @@
 			baseConfigurationReference = CAA12F7AFA8CEBA6DC101354 /* Pods-Taskatyy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = Taskatyy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zzz.Taskatyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -531,11 +583,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = TaskatyyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zzz.TaskatyyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taskatyy.app/Taskatyy";
@@ -548,11 +603,14 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = TaskatyyTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = zzz.TaskatyyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taskatyy.app/Taskatyy";
