@@ -29,7 +29,7 @@ class API: NSObject {
                     print ("Error\(response.result.error)")
                     
                 }
-                print(response)
+              //  print(response)
         }
     }
     
@@ -48,32 +48,14 @@ class API: NSObject {
                     print ("Error\(response.result.error)")
                     
                 }
-                print(response)
-                
-//                switch response.result
-//                {
-//                case .failure(let error):
-//                    print(error)
-//                case .success(let value):
-//                  let json = JSON(value)
-//                    let data = json["ItemPriorities"]
-//                    print(data)
-//
-//                }
-                //print(response)
-                
-//                if response.result.isSuccess {
-//                    print("Great")
-//
-//                }
-//                else{
-//                    print("Error\(response.result.error)")
-//                }
-//                print(response)
+           //     print(response)
      }
     }
     
-    
+    class func show()
+    {
+        
+    }
     
     
     

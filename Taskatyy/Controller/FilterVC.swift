@@ -13,8 +13,6 @@ import SwiftyJSON
 class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
 
-    
-    
     @IBOutlet weak var picker1: UIPickerView!
     
     @IBOutlet weak var picker2: UIPickerView!
@@ -25,6 +23,12 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     @IBOutlet weak var picker5: UIPickerView!
    
+    @IBAction func showBtnPressed(_ sender: Any) {
+        
+    }
+    var pickerviewData : [String : Any] = [:]
+    
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -67,9 +71,33 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             return result?.filterResult?.itemusers?[row].userName ?? ""
         }
         else {return ""}
+    }
     
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedData = pickerView.selectedRow(inComponent: 0)
+        if (pickerView.tag == 1)
+        {
+            print(selectedData)
+        }
+        if (pickerView.tag == 2)
+        {
+            print(selectedData)
+        }
+        if (pickerView.tag == 3)
+        {
+           print(selectedData)
+        }
+        if (pickerView.tag == 4)
+        {
+          print(selectedData)
+        }
+        if (pickerView.tag == 5)
+        {
+           print(selectedData)
+        }
     }
     var result : Filer?
+    
     
     override func viewDidLoad() {
         API.filter()
@@ -93,17 +121,13 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 case .failure(let error):
                     print(error)
                 case .success(let value):
-                    //                    let json = JSON(value)
-                    //                    let data = json["ItemPriorities"]
-                   // print(value)
+                   
                     let dic = response.result.value as! [String:Any]
                     
                     
                     self.result = Filer(fromDictionary: dic)
                     
                     self.reloadPickerViews()
-//                    let sss = dic["Statu"]
-//                    print(sss)
 
                 }}
 

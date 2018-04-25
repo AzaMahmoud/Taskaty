@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class SearchResultVC: UIViewController {
+class ShowResultVC: UIViewController {
 
+    var pickedData : [String:Any] = [:]
     override func viewDidLoad() {
         super.viewDidLoad()
-
-       
     }
 
     

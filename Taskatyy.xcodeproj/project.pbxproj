@@ -9,11 +9,10 @@
 /* Begin PBXBuildFile section */
 		17CB504EDFEB336DB3B20879 /* Pods_Taskatyy.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C8FEEFF0849EE14EC75B1BE /* Pods_Taskatyy.framework */; };
 		3BDCB7A7F848AD6269FF4344 /* Pods_TaskatyyTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6816720B0999926E78F71A53 /* Pods_TaskatyyTests.framework */; };
-		CE163F82208CA3DA007C01A7 /* SearchResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE163F81208CA3DA007C01A7 /* SearchResultVC.swift */; };
+		CE163F82208CA3DA007C01A7 /* ShowResultVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE163F81208CA3DA007C01A7 /* ShowResultVC.swift */; };
 		CE19A2D620835DF000B686BE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D520835DF000B686BE /* API.swift */; };
 		CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D82083649B00B686BE /* String-Exensions.swift */; };
 		CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D9990208293BC00931E0A /* TaskatyyTests.swift */; };
-		CE241F6B208B71A800D8C999 /* Programs.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE241F6A208B71A800D8C999 /* Programs.swift */; };
 		CEED0065208561330033E663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEED0042208561330033E663 /* Assets.xcassets */; };
 		CEED0066208561330033E663 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0043208561330033E663 /* Config.swift */; };
 		CEED006E208561330033E663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEED004C208561330033E663 /* LaunchScreen.storyboard */; };
@@ -49,14 +48,13 @@
 		8F73BDB62057786FA72142B7 /* Pods-TaskatyyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskatyyTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaskatyyTests/Pods-TaskatyyTests.release.xcconfig"; sourceTree = "<group>"; };
 		B7DFE033BF9094FEAC5F4DCD /* Pods-Taskatyy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taskatyy.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Taskatyy/Pods-Taskatyy.debug.xcconfig"; sourceTree = "<group>"; };
 		CAA12F7AFA8CEBA6DC101354 /* Pods-Taskatyy.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Taskatyy.release.xcconfig"; path = "Pods/Target Support Files/Pods-Taskatyy/Pods-Taskatyy.release.xcconfig"; sourceTree = "<group>"; };
-		CE163F81208CA3DA007C01A7 /* SearchResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVC.swift; sourceTree = "<group>"; };
+		CE163F81208CA3DA007C01A7 /* ShowResultVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowResultVC.swift; sourceTree = "<group>"; };
 		CE19A2D520835DF000B686BE /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		CE19A2D82083649B00B686BE /* String-Exensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String-Exensions.swift"; sourceTree = "<group>"; };
 		CE1D9978208293BC00931E0A /* Taskatyy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taskatyy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskatyyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D9990208293BC00931E0A /* TaskatyyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskatyyTests.swift; sourceTree = "<group>"; };
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE241F6A208B71A800D8C999 /* Programs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Programs.swift; sourceTree = "<group>"; };
 		CEED0042208561330033E663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEED0043208561330033E663 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		CEED004D208561330033E663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 		CE241F69208B712000D8C999 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				CE241F6A208B71A800D8C999 /* Programs.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -192,7 +189,7 @@
 			children = (
 				CEED0052208561330033E663 /* FilterVC.swift */,
 				CEED0053208561330033E663 /* LoginVC.swift */,
-				CE163F81208CA3DA007C01A7 /* SearchResultVC.swift */,
+				CE163F81208CA3DA007C01A7 /* ShowResultVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -377,7 +374,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE241F6B208B71A800D8C999 /* Programs.swift in Sources */,
 				CEED0071208561330033E663 /* FilterVC.swift in Sources */,
 				CEED0072208561330033E663 /* LoginVC.swift in Sources */,
 				CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */,
@@ -390,7 +386,7 @@
 				CEED0079208561330033E663 /* ItemProgram.swift in Sources */,
 				CEED007B208561330033E663 /* AppDelegate.swift in Sources */,
 				CEED0074208561330033E663 /* FilterResult.swift in Sources */,
-				CE163F82208CA3DA007C01A7 /* SearchResultVC.swift in Sources */,
+				CE163F82208CA3DA007C01A7 /* ShowResultVC.swift in Sources */,
 				CEED007C208561330033E663 /* helper.swift in Sources */,
 				CE19A2D620835DF000B686BE /* API.swift in Sources */,
 			);
