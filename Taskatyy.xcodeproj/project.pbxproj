@@ -13,6 +13,7 @@
 		CE19A2D620835DF000B686BE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D520835DF000B686BE /* API.swift */; };
 		CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D82083649B00B686BE /* String-Exensions.swift */; };
 		CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D9990208293BC00931E0A /* TaskatyyTests.swift */; };
+		CEEB945320949B7B00A0514B /* showResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEB945220949B7B00A0514B /* showResultCell.swift */; };
 		CEED0065208561330033E663 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CEED0042208561330033E663 /* Assets.xcassets */; };
 		CEED0066208561330033E663 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0043208561330033E663 /* Config.swift */; };
 		CEED006E208561330033E663 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CEED004C208561330033E663 /* LaunchScreen.storyboard */; };
@@ -21,7 +22,7 @@
 		CEED0072208561330033E663 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0053208561330033E663 /* LoginVC.swift */; };
 		CEED0073208561330033E663 /* ItemPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0055208561330033E663 /* ItemPriority.swift */; };
 		CEED0074208561330033E663 /* FilterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0056208561330033E663 /* FilterResult.swift */; };
-		CEED0075208561330033E663 /* Filer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0057208561330033E663 /* Filer.swift */; };
+		CEED0075208561330033E663 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0057208561330033E663 /* Filter.swift */; };
 		CEED0076208561330033E663 /* Itemtype.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0058208561330033E663 /* Itemtype.swift */; };
 		CEED0077208561330033E663 /* Itemuser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED0059208561330033E663 /* Itemuser.swift */; };
 		CEED0078208561330033E663 /* Statu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED005A208561330033E663 /* Statu.swift */; };
@@ -55,6 +56,7 @@
 		CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskatyyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D9990208293BC00931E0A /* TaskatyyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskatyyTests.swift; sourceTree = "<group>"; };
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CEEB945220949B7B00A0514B /* showResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showResultCell.swift; sourceTree = "<group>"; };
 		CEED0042208561330033E663 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CEED0043208561330033E663 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		CEED004D208561330033E663 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -63,7 +65,7 @@
 		CEED0053208561330033E663 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		CEED0055208561330033E663 /* ItemPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemPriority.swift; sourceTree = "<group>"; };
 		CEED0056208561330033E663 /* FilterResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterResult.swift; sourceTree = "<group>"; };
-		CEED0057208561330033E663 /* Filer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filer.swift; sourceTree = "<group>"; };
+		CEED0057208561330033E663 /* Filter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		CEED0058208561330033E663 /* Itemtype.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itemtype.swift; sourceTree = "<group>"; };
 		CEED0059208561330033E663 /* Itemuser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Itemuser.swift; sourceTree = "<group>"; };
 		CEED005A208561330033E663 /* Statu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Statu.swift; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 				CEED0052208561330033E663 /* FilterVC.swift */,
 				CEED0053208561330033E663 /* LoginVC.swift */,
 				CE163F81208CA3DA007C01A7 /* ShowResultVC.swift */,
+				CEEB945220949B7B00A0514B /* showResultCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -199,7 +202,7 @@
 			children = (
 				CEED0055208561330033E663 /* ItemPriority.swift */,
 				CEED0056208561330033E663 /* FilterResult.swift */,
-				CEED0057208561330033E663 /* Filer.swift */,
+				CEED0057208561330033E663 /* Filter.swift */,
 				CEED0058208561330033E663 /* Itemtype.swift */,
 				CEED0059208561330033E663 /* Itemuser.swift */,
 				CEED005A208561330033E663 /* Statu.swift */,
@@ -379,7 +382,7 @@
 				CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */,
 				CEED0077208561330033E663 /* Itemuser.swift in Sources */,
 				CEED0066208561330033E663 /* Config.swift in Sources */,
-				CEED0075208561330033E663 /* Filer.swift in Sources */,
+				CEED0075208561330033E663 /* Filter.swift in Sources */,
 				CEED0076208561330033E663 /* Itemtype.swift in Sources */,
 				CEED0078208561330033E663 /* Statu.swift in Sources */,
 				CEED0073208561330033E663 /* ItemPriority.swift in Sources */,
@@ -389,6 +392,7 @@
 				CE163F82208CA3DA007C01A7 /* ShowResultVC.swift in Sources */,
 				CEED007C208561330033E663 /* helper.swift in Sources */,
 				CE19A2D620835DF000B686BE /* API.swift in Sources */,
+				CEEB945320949B7B00A0514B /* showResultCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

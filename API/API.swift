@@ -41,23 +41,38 @@ class API: NSObject {
             .responseJSON { response in
                 
                 if response.result.isSuccess{
-                    print ("filer succeed")
+                    print ("filter succeed")
                     
                 }
                 else {
                     print ("Error\(response.result.error)")
                     
                 }
-           //     print(response)
      }
     }
     
-    class func show()
+    class func show(creator: String, item: String, pgIndex: String, pgsize: String, asignTo: String, status: String, periority: String, program: String, type:String, user: String, lateItem: String , completion: @escaping (_ error:Error?, _ success:Bool)
+        ->Void)
     {
+        let url = URLs.Show
+        let parameters = ["workItemCreatedBy":creator, "workItemId":item, "pageIndex":pgIndex, "pageSize":pgsize, "workItemAssignedTo":asignTo, "workItemStatusId":status, "workItemPriorityId":periority, "workItemProgramId":program, "workItemTypeId":type, "userId":user, "lateItems":lateItem]
         
+        let header = ["Content-Type" : "application/json"]
+        Alamofire.request(url, method: .post, parameters: parameters, headers: header)
+            .responseJSON { response in
+                if response.result.isSuccess{
+                    let shooo = JSON(response.result.value!)
+                    print ("shooo")
+                    completion(nil,true)
+                    
+                }
+                else {
+                    print ("Error\(response.result.error)")
+                    
+                }
+                
+        }
     }
-    
-    
     
     
     

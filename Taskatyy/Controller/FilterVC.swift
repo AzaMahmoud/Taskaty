@@ -77,26 +77,31 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         let selectedData = pickerView.selectedRow(inComponent: 0)
         if (pickerView.tag == 1)
         {
-            print(selectedData)
+            pickerviewData["program"] = selectedData
+            print(pickerviewData["program"]!)
         }
-        if (pickerView.tag == 2)
+        else if (pickerView.tag == 2)
         {
-            print(selectedData)
+            pickerviewData["type"] = selectedData
+            print(pickerviewData["type"]!)
         }
-        if (pickerView.tag == 3)
+        else if (pickerView.tag == 3)
         {
-           print(selectedData)
+            pickerviewData["periority"] = selectedData
+            print(pickerviewData["periority"]!)
         }
-        if (pickerView.tag == 4)
+        else if (pickerView.tag == 4)
         {
-          print(selectedData)
+            pickerviewData["status"] = selectedData
+            print(pickerviewData["status"]!)
         }
-        if (pickerView.tag == 5)
+        else if (pickerView.tag == 5)
         {
-           print(selectedData)
+            pickerviewData["user"] = selectedData
+            print(pickerviewData["user"]!)
         }
     }
-    var result : Filer?
+    var result : Filter?
     
     
     override func viewDidLoad() {
@@ -125,11 +130,12 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                     let dic = response.result.value as! [String:Any]
                     
                     
-                    self.result = Filer(fromDictionary: dic)
+                    self.result = Filter(fromDictionary: dic)
                     
                     self.reloadPickerViews()
 
-                }}
+                }
+        }
 
     }
     
@@ -139,6 +145,15 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         self.picker3.reloadAllComponents()
         self.picker2.reloadAllComponents()
         self.picker1.reloadAllComponents()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetails" {
+            if let vc = segue.destination as? ShowResultVC {
+                
+                vc.pickedData = pickerviewData
+            }
+        }
     }
 
 }
