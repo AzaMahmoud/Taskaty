@@ -19,15 +19,15 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     override func viewDidLoad() {
         super.viewDidLoad()
        // if  !pickedData.isEmpty   {
-            let prog = pickedData["program"] as? String
-            let typ = pickedData["type"] as? String
-            let prior = pickedData["periority"] as? String
-            let stat = pickedData["status"] as? String
-            let use = pickedData["user"] as? String
+            let prog = pickedData["program"] as? Int
+            let typ = pickedData["type"] as? Int
+            let prior = pickedData["periority"] as? Int
+            let stat = pickedData["status"] as? Int
+            let use = pickedData["user"] as? Int
             
       //  }
         
-        API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: use!, status: stat!, periority: prior!, program: prog!, type: typ!, user: "0", lateItem: "0") { (error:Error?,success:Bool) in
+        API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(use!)", status: "\(stat!)", periority: "\(prior!)", program: "\(prog!)", type: "\(typ!)", user: "0", lateItem: "0") { (error:Error?,success:Bool) in
             if success {      print("kkkk")      }
             else {return}
         }
@@ -43,7 +43,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     {
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? showResultCell
         else { return UICollectionViewCell()}
-        
+     //   cell.date.text = self.
         return cell
     }
 }
