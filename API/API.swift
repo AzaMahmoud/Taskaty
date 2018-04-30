@@ -59,10 +59,10 @@ class API: NSObject {
         
         let header = ["Content-Type" : "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters, headers: header)
-            .responseJSON { response in
+            .responseString { response in
                 if response.result.isSuccess{
-                    let shooo = JSON(response.result.value!)
-                    print ("shooo")
+               let shooo = JSON(response.result.value!)
+                    print (shooo)
                     completion(nil,true)
                     
                 }
