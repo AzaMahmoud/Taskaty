@@ -103,7 +103,6 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     }
     var result : Filter?
     
-    
     override func viewDidLoad() {
         API.filter()
         super.viewDidLoad()
@@ -120,7 +119,6 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         let url = URLs.Filter
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON { response in
-
                 switch response.result
                 {
                 case .failure(let error):
@@ -128,17 +126,11 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 case .success(let value):
                    
                     let dic = response.result.value as! [String:Any]
-                    
-                    
                     self.result = Filter(fromDictionary: dic)
-                    
                     self.reloadPickerViews()
-
-                }
+             }
         }
-
     }
-    
     func reloadPickerViews(){
         self.picker5.reloadAllComponents()
         self.picker4.reloadAllComponents()

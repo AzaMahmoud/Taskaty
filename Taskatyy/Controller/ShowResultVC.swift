@@ -29,8 +29,8 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         
         API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(use!)", status: "\(stat!)", periority: "\(prior!)", program: "\(prog!)", type: "\(typ!)", user: "0", lateItem: "0") { (error:Error?,success:Bool) in
         
-//            if success {      print("shooo")      }
-//            else {return}
+            if success {      print("shooo")      }
+            else {return}
         }
         collectionView.dataSource = self
         collectionView.delegate = self

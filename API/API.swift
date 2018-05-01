@@ -18,10 +18,12 @@ class API: NSObject {
         let url = URLs.Login
         let parameters = ["userName":user, "password":pass]
         let header = ["Content-Type" : "application/json"]
-        Alamofire.request(url, method: .post, parameters: parameters, headers: header)
-            .responseString { response in
+        Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
+            .responseJSON { response in
                 if response.result.isSuccess{
+                   // let log = JSON(response.result.value)
                     print ("Login succeeded")
+                   // print(log)
                     completion(nil,true)
                     
                 }
@@ -41,7 +43,9 @@ class API: NSObject {
             .responseJSON { response in
                 
                 if response.result.isSuccess{
-                    print ("filter succeed")
+                    let filter = JSON(response.result.value)
+                    print(filter)
+                    //print ("filter succeed")
                     
                 }
                 else {
@@ -55,11 +59,11 @@ class API: NSObject {
         ->Void)
     {
         let url = URLs.Show
-        let parameters = ["workItemCreatedBy":creator, "workItemId":item, "pageIndex":pgIndex, "pageSize":pgsize, "workItemAssignedTo":asignTo, "workItemStatusId":status, "workItemPriorityId":periority, "workItemProgramId":program, "workItemTypeId":type, "userId":user, "lateItems":lateItem]
+        let parameters = ["workItemCreatedBy":creator, "workItemId":item, "pageIndex":pgIndex, "pageSize":pgsize, "workItemAssignedTo":asignTo, "workItemStatusId":status, "workItemPriorityId":periority, "workItemProgramId":program, "workItemTypeId":type, "userId":user, "lateItems":lateItem] as [String:AnyObject]
         
         let header = ["Content-Type" : "application/json"]
-        Alamofire.request(url, method: .post, parameters: parameters, headers: header)
-            .responseString { response in
+        Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
+            .responseJSON { response in
                 if response.result.isSuccess{
                let shooo = JSON(response.result.value!)
                     print (shooo)
