@@ -44,7 +44,9 @@ class API: NSObject {
                 
                 if response.result.isSuccess{
                     let filter = JSON(response.result.value)
-                    print(filter)
+                   // print(filter)
+                    if let fff = filter["ItemPriorities"]["WorkItemPriorityId"].int
+                    {print(fff)}
                     //print ("filter succeed")
                     
                 }

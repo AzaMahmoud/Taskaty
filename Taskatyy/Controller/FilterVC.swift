@@ -55,7 +55,10 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
    {
         if (pickerView.tag == 1){
+//            let xx = result?.filterResult?.itemPrograms?[row].workItemProgramId
+//            print(xx)
             return result?.filterResult?.itemPrograms?[row].workItemProgram ?? ""
+            
         }
         else if (pickerView.tag == 2){
             return result?.filterResult?.itemtype?[row].workItemType ?? ""
@@ -78,27 +81,38 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         if (pickerView.tag == 1)
         {
             pickerviewData["program"] = selectedData
+            pickerviewData["programId"] = result?.filterResult?.itemPrograms?[row].workItemProgramId
             print(pickerviewData["program"]!)
+            print( result?.filterResult?.itemPrograms?[row].workItemProgramId!)
+            
         }
         else if (pickerView.tag == 2)
         {
             pickerviewData["type"] = selectedData
+            pickerviewData["typeId"] = result?.filterResult?.itemtype?[row].workItemTypeId!
             print(pickerviewData["type"]!)
+            print(pickerviewData["typeId"]!)
         }
         else if (pickerView.tag == 3)
         {
             pickerviewData["periority"] = selectedData
+            pickerviewData["periorityId"] = result?.filterResult?.itemPriorities?[row].workItemPriorityId
             print(pickerviewData["periority"]!)
+            print(result?.filterResult?.itemPriorities?[row].workItemPriorityId!)
         }
         else if (pickerView.tag == 4)
         {
             pickerviewData["status"] = selectedData
+            pickerviewData["statusId"] = result?.filterResult?.status?[row].workItemStatusId
             print(pickerviewData["status"]!)
+            print(result?.filterResult?.status?[row].workItemStatusId!)
         }
         else if (pickerView.tag == 5)
         {
             pickerviewData["user"] = selectedData
+            pickerviewData["userId"] = result?.filterResult?.itemusers?[row].userId
             print(pickerviewData["user"]!)
+            print(result?.filterResult?.itemusers?[row].userId!)
         }
     }
     var result : Filter?
@@ -126,12 +140,26 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 case .success(let value):
                    
                     let dic = response.result.value as! [String:Any]
+                    
+                   // print (dic[0])
                     self.result = Filter(fromDictionary: dic)
                     self.reloadPickerViews()
              }
         }
     }
     func reloadPickerViews(){
+        
+        self.picker1.selectedRow(inComponent: 0)
+        self.picker2.selectedRow(inComponent: 0)
+        self.picker3.selectedRow(inComponent: 0)
+        self.picker4.selectedRow(inComponent: 0)
+        self.picker5.selectedRow(inComponent: 0)
+        pickerviewData["programId"] = result?.filterResult?.itemPrograms?[0].workItemProgramId
+        pickerviewData["typeId"] = result?.filterResult?.itemtype?[0].workItemTypeId
+        pickerviewData["periorityId"] = result?.filterResult.itemPriorities?[0].workItemPriorityId
+        pickerviewData["statusId"] = result?.filterResult?.status?[0].workItemStatusId
+        pickerviewData["userId"] = result?.filterResult?.itemusers?[0].userId
+        
         self.picker5.reloadAllComponents()
         self.picker4.reloadAllComponents()
         self.picker3.reloadAllComponents()
