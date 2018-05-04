@@ -16,6 +16,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     @IBOutlet weak var collectionView: UICollectionView!
     var pickedData : [String:Any] = [:]
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
        // if  !pickedData.isEmpty   {
@@ -40,8 +41,8 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         collectionView.dataSource = self
         collectionView.delegate = self
         
-        
     }
+    var showw : Search?
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return pickedData.count/5
     }
@@ -49,8 +50,9 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     {
        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? showResultCell
         else { return UICollectionViewCell()}
-      //  let ss = pickedData[indexPath.row]
-       // cell.date.text = pickedData["AssignDate"] as! String
+     //   cell.date.text = showw?.searchWorkItemsResult?.
+
+        
         return cell
     }
 }
