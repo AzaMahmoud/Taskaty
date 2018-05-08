@@ -89,7 +89,7 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         else if (pickerView.tag == 2)
         {
             pickerviewData["type"] = selectedData
-            pickerviewData["typeId"] = resultt?.filterResult?.itemtype?[row].workItemTypeId!
+            pickerviewData["typeId"] = resultt?.filterResult?.itemtype?[row].workItemTypeId
             print(pickerviewData["type"]!)
             print(pickerviewData["typeId"]!)
         }
@@ -172,6 +172,7 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             if let vc = segue.destination as? ShowResultVC {
                 
                 vc.pickedData = pickerviewData
+              //  navigationController?.pushViewController(vc, animated: true)
             }
         }
     }

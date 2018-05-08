@@ -29,7 +29,7 @@ class LoginVC: UIViewController {
             if success {
                 print("ZZZZZZZZZZ")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);
-                let vc = storyboard.instantiateViewController(withIdentifier: "mainScreen") ;
+                let vc = storyboard.instantiateViewController(withIdentifier: "mainVc") ;
                 self.present(vc, animated: true, completion: nil);
             }
             else{

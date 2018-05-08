@@ -11,7 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class API: NSObject {
-
+    
     class func login(user: String, pass: String, completion: @escaping (_ error:Error?, _ success:Bool)->Void)
     {
         
@@ -21,9 +21,9 @@ class API: NSObject {
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
             .responseJSON { response in
                 if response.result.isSuccess{
-                   // let log = JSON(response.result.value)
+                    // let log = JSON(response.result.value)
                     print ("Login succeeded")
-                   // print(log)
+                    // print(log)
                     completion(nil,true)
                     
                 }
@@ -31,7 +31,7 @@ class API: NSObject {
                     print ("Error\(response.result.error)")
                     
                 }
-              //  print(response)
+                //  print(response)
         }
     }
     
@@ -44,7 +44,7 @@ class API: NSObject {
                 
                 if response.result.isSuccess{
                     let filter = JSON(response.result.value)
-                   // print(filter)
+                    // print(filter)
                     if let fff = filter["ItemPriorities"]["WorkItemPriorityId"].int
                     {print(fff)}
                     //print ("filter succeed")
@@ -54,10 +54,10 @@ class API: NSObject {
                     print ("Error\(response.result.error)")
                     
                 }
-     }
+        }
     }
     
-    class func show(creator: String, item: String, pgIndex: String, pgsize: String, asignTo: String, status: String, periority: String, program: String, type:String, user: String, lateItem: String , completion: @escaping (_ error:Error?, _ success:Bool)
+    class func show(creator: String, item: String, pgIndex: String, pgsize: String, asignTo: String, status: String, periority: String, program: String, type:String, user: String, lateItem: String , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)
         ->Void)
     {
         let url = URLs.Show
@@ -66,15 +66,24 @@ class API: NSObject {
         let header = ["Content-Type" : "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
             .responseJSON { response in
-                if response.result.isSuccess{
-               let shooo = JSON(response.result.value!)
-                    print (shooo)
-                    completion(nil,true)
+                //                if response.result.isSuccess{
+                //               let shooo = JSON(response.result.value!)
+                //                    print (shooo)
+                //                    let data = response.result
+                //                    completion(nil,true)
+                //
+                //                }
+                //                else {
+                //                    print ("Error\(response.result.error)")
+                //
+                //                }
+                
+                switch response.result {
+                case .success (let value):
+                    completion(nil,true,value as AnyObject?)
+                case .failure(let error):
                     
-                }
-                else {
-                    print ("Error\(response.result.error)")
-                    
+                    completion(error as NSError?,false,nil)
                 }
                 
         }

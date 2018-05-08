@@ -278,7 +278,6 @@
 				TargetAttributes = {
 					CE1D9977208293BC00931E0A = {
 						CreatedOnToolsVersion = 9.2;
-						ProvisioningStyle = Automatic;
 					};
 					CE1D998B208293BC00931E0A = {
 						CreatedOnToolsVersion = 9.2;
@@ -568,6 +567,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = Taskatyy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -589,6 +589,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = Taskatyy/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
