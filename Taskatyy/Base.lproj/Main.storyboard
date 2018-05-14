@@ -174,7 +174,7 @@
             </objects>
             <point key="canvasLocation" x="2818.840579710145" y="32.608695652173914"/>
         </scene>
-        <!--Show ResultVC-->
+        <!--Results-->
         <scene sceneID="Hhk-VQ-ZON">
             <objects>
                 <viewController id="6Lz-Ev-rir" customClass="ShowResultVC" customModule="Taskatyy" customModuleProvider="target" sceneMemberID="viewController">
@@ -223,6 +223,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QC-1K-oId">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <segue destination="8VN-v3-1zM" kind="show" id="bUK-Q4-K7a"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </view>
@@ -248,7 +251,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="uZb-6E-ojb"/>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="EPk-pP-cVc"/>
+                    <navigationItem key="navigationItem" title="Results" leftItemsSupplementBackButton="YES" id="EPk-pP-cVc"/>
                     <connections>
                         <outlet property="collectionView" destination="Euy-1l-LJf" id="0jV-zL-Lnj"/>
                     </connections>
@@ -256,6 +259,21 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k8r-7z-oqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4000.0000000000005" y="32.608695652173914"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="SF1-2U-IRS">
+            <objects>
+                <viewController id="8VN-v3-1zM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SLC-fq-EQs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="CVy-W2-z3E"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4N1-bq-sZa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4725" y="33"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YAJ-T3-emo">
