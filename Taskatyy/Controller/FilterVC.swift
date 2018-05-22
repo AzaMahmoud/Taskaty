@@ -35,20 +35,20 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     func pickerView(_ pickerView:UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
         if (pickerView.tag == 1){
-            return (resultt?.filterResult?.itemPrograms?.count) ?? 0
+            return (resultt?.filterIOSResult?.itemPrograms?.count) ?? 0
         }
         else if (pickerView.tag == 2){
-            return (resultt?.filterResult?.itemtype?.count) ?? 0
+            return (resultt?.filterIOSResult?.itemtype?.count) ?? 0
         }
         else if (pickerView.tag == 3){
-            return (resultt?.filterResult?.itemPriorities?.count) ?? 0
+            return (resultt?.filterIOSResult?.itemPriorities?.count) ?? 0
         }
         else if (pickerView.tag == 4){
-            return (resultt?.filterResult?.status?.count) ?? 0
+            return (resultt?.filterIOSResult?.status?.count) ?? 0
         }
         else if (pickerView.tag == 5)
         {
-            return (resultt?.filterResult?.itemusers?.count) ?? 0
+            return (resultt?.filterIOSResult?.itemusers?.count) ?? 0
         }
         else { return 0}
    }
@@ -57,21 +57,21 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         if (pickerView.tag == 1){
 //            let xx = result?.filterResult?.itemPrograms?[row].workItemProgramId
 //            print(xx)
-            return resultt?.filterResult?.itemPrograms?[row].workItemProgram ?? ""
+            return resultt?.filterIOSResult?.itemPrograms?[row].workItemProgram ?? ""
             
         }
         else if (pickerView.tag == 2){
-            return resultt?.filterResult?.itemtype?[row].workItemType ?? ""
+            return resultt?.filterIOSResult?.itemtype?[row].workItemType ?? ""
         }
         else if (pickerView.tag == 3){
-            return resultt?.filterResult?.itemPriorities?[row].workItemPriority ?? ""
+            return resultt?.filterIOSResult?.itemPriorities?[row].workItemPriority ?? ""
         }
         else if (pickerView.tag == 4){
-            return resultt?.filterResult?.status?[row].workItemStatuS ?? ""
+            return resultt?.filterIOSResult?.status?[row].workItemStatuS ?? ""
         }
         else if (pickerView.tag == 5)
         {
-            return resultt?.filterResult?.itemusers?[row].userName ?? ""
+            return resultt?.filterIOSResult?.itemusers?[row].userName ?? ""
         }
         else {return ""}
     }
@@ -81,38 +81,38 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         if (pickerView.tag == 1)
         {
             pickerviewData["program"] = selectedData
-            pickerviewData["programId"] = resultt?.filterResult?.itemPrograms?[row].workItemProgramId
+            pickerviewData["programId"] = resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId
             print(pickerviewData["program"]!)
-            print( resultt?.filterResult?.itemPrograms?[row].workItemProgramId!)
-            
+            print( resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId!)
+
         }
         else if (pickerView.tag == 2)
         {
             pickerviewData["type"] = selectedData
-            pickerviewData["typeId"] = resultt?.filterResult?.itemtype?[row].workItemTypeId
+            pickerviewData["typeId"] = resultt?.filterIOSResult?.itemtype?[row].workItemTypeId
             print(pickerviewData["type"]!)
             print(pickerviewData["typeId"]!)
         }
         else if (pickerView.tag == 3)
         {
             pickerviewData["periority"] = selectedData
-            pickerviewData["periorityId"] = resultt?.filterResult?.itemPriorities?[row].workItemPriorityId
+            pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities?[row].workItemPriorityId
             print(pickerviewData["periority"]!)
-            print(resultt?.filterResult?.itemPriorities?[row].workItemPriorityId!)
+            print(resultt?.filterIOSResult?.itemPriorities?[row].workItemPriorityId!)
         }
         else if (pickerView.tag == 4)
         {
             pickerviewData["status"] = selectedData
-            pickerviewData["statusId"] = resultt?.filterResult?.status?[row].workItemStatusId
+            pickerviewData["statusId"] = resultt?.filterIOSResult?.status?[row].workItemStatusId
             print(pickerviewData["status"]!)
-            print(resultt?.filterResult?.status?[row].workItemStatusId!)
+            print(resultt?.filterIOSResult?.status?[row].workItemStatusId!)
         }
         else if (pickerView.tag == 5)
         {
             pickerviewData["user"] = selectedData
-            pickerviewData["userId"] = resultt?.filterResult?.itemusers?[row].userId
+            pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers?[row].userId
             print(pickerviewData["user"]!)
-            print(resultt?.filterResult?.itemusers?[row].userId!)
+            print(resultt?.filterIOSResult?.itemusers?[row].userId!)
         }
     }
     var resultt : Filter?
@@ -120,6 +120,10 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     override func viewDidLoad() {
         API.filter()
         super.viewDidLoad()
+//        picker1.isHidden = true
+//        picker2.isHidden = true
+//        picker3.isHidden = true
+//        picker4.isHidden = true
         picker1.delegate = self
         picker1.dataSource = self
         picker2.delegate = self
@@ -139,7 +143,7 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                     print(error)
                 case .success(let value):
                    
-                    let dic = response.result.value as! [String:Any]
+             let dic = response.result.value as! [String:Any]
                     
                    // print (dic[0])
                     self.resultt = Filter(fromDictionary: dic)
@@ -148,18 +152,18 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         }
     }
     func reloadPickerViews(){
-        
+
         self.picker1.selectedRow(inComponent: 0)
         self.picker2.selectedRow(inComponent: 0)
         self.picker3.selectedRow(inComponent: 0)
         self.picker4.selectedRow(inComponent: 0)
         self.picker5.selectedRow(inComponent: 0)
-        pickerviewData["programId"] = resultt?.filterResult?.itemPrograms?[0].workItemProgramId
-        pickerviewData["typeId"] = resultt?.filterResult?.itemtype?[0].workItemTypeId
-        pickerviewData["periorityId"] = resultt?.filterResult?.itemPriorities?[0].workItemPriorityId
-        pickerviewData["statusId"] = resultt?.filterResult?.status?[0].workItemStatusId
-        pickerviewData["userId"] = resultt?.filterResult?.itemusers?[0].userId
-        
+        pickerviewData["programId"] = resultt?.filterIOSResult?.itemPrograms?[0].workItemProgramId
+        pickerviewData["typeId"] = resultt?.filterIOSResult?.itemtype?[0].workItemTypeId
+        pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities?[0].workItemPriorityId
+        pickerviewData["statusId"] = resultt?.filterIOSResult?.status?[0].workItemStatusId
+        pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers?[0].userId
+
         self.picker5.reloadAllComponents()
         self.picker4.reloadAllComponents()
         self.picker3.reloadAllComponents()
@@ -170,7 +174,7 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
             if let vc = segue.destination as? ShowResultVC {
-                
+
                 vc.pickedData = pickerviewData
               //  navigationController?.pushViewController(vc, animated: true)
             }

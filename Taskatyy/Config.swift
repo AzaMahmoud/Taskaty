@@ -13,7 +13,7 @@ struct URLs {
     static let Login = "http://167.114.174.82:1717/TaskatyService.svc/Login"
     
     //GET
-    static let Filter = "http://167.114.174.82:16016/taskatyservice.svc/filter"
+    static let Filter = "http://167.114.174.82:16016/taskatyservice.svc/filterIOS"
     
     // POST , params :
     //consts: "workItemCreatedBy":"0","workItemId":"0","pageIndex":"1","pageSize":"25","userId":"0","lateItems":"0"
