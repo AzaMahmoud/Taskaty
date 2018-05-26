@@ -35,27 +35,41 @@ class API: NSObject {
         }
     }
     
+    
+    
     class func filter()
     {
-        
         let url = URLs.Filter
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON { response in
                 
                 if response.result.isSuccess{
-                    let filter = JSON(response.result.value)
-                    // print(filter)
-                    if let fff = filter["ItemPriorities"]["WorkItemPriorityId"].int
-                    {print(fff)}
-                    //print ("filter succeed")
-                    
+                    _ = JSON(response.result.value!)
                 }
                 else {
-                    print ("Error\(response.result.error)")
-                    
+                    print ("Error\(String(describing: response.result.error))")
                 }
         }
     }
+    
+    
+    
+    class func filter2()
+    {
+        let url = URLs.Filter2
+        Alamofire.request(url, method: .get, headers: nil)
+            .responseJSON { response in
+                
+                if response.result.isSuccess{
+                    _ = JSON(response.result.value!)
+                }
+                else {
+                    print ("Error\(String(describing: response.result.error))")
+                }
+        }
+    }
+    
+    
     
     class func show(creator: String, item: String, pgIndex: String, pgsize: String, asignTo: String, status: String, periority: String, program: String, type:String, user: String, lateItem: String , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)
         ->Void)
@@ -66,18 +80,6 @@ class API: NSObject {
         let header = ["Content-Type" : "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
             .responseJSON { response in
-                //                if response.result.isSuccess{
-                //               let shooo = JSON(response.result.value!)
-                //                    print (shooo)
-                //                    let data = response.result
-                //                    completion(nil,true)
-                //
-                //                }
-                //                else {
-                //                    print ("Error\(response.result.error)")
-                //
-                //                }
-                
                 switch response.result {
                 case .success (let value):
                     completion(nil,true,value as AnyObject?)
@@ -91,4 +93,7 @@ class API: NSObject {
     
     
     
+    
+//    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, progrm: String, type: String, )
+//
 }

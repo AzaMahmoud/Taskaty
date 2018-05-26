@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-      return  1
+        return  1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
@@ -29,7 +29,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         else if (pickerView.tag == 4){
             return (resultt?.filterIOSResult?.itemusers.count) ?? 0
         }
-        
+            
         else { return 0}
     }
     
@@ -50,7 +50,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         }
         else {return ""}
     }
-   
+    
     @IBOutlet weak var txtBandNo: RoundTtextField!
     @IBOutlet weak var txtBandAdd: UITextField!
     
@@ -81,7 +81,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     override func viewDidLoad() {
         API.filter()
         super.viewDidLoad()
-// fill pickerViews
+        // fill pickerViews
         pickProg.dataSource = self
         pickProg.delegate = self
         pickType.dataSource = self
@@ -104,25 +104,25 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                     self.reloadPickerViews()
                 }
         }
-    // get data from previos screen
+        // get data from previos screen
         
-//        let progId = pickedData["programId"] as? Int
-//        let typId = pickedData["typeId"] as? Int
-//        let priorId = pickedData["periorityId"] as? Int
-//        let statId = pickedData["statusId"] as? Int
-//        let useId = pickedData["userId"] as? Int
-//        API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
-//            
-//            if success {
-//                let r = Search(fromDictionary: data as! [String : Any])
-//                self.searchWorkItemsResult = r.searchWorkItemsResult
-//                
-//                print("filll")
-//            }
-//            else {return}
-//        }
-       // txtBandNo.text = self.searchWorkItemsResult[""]
-        }
+        //        let progId = pickedData["programId"] as? Int
+        //        let typId = pickedData["typeId"] as? Int
+        //        let priorId = pickedData["periorityId"] as? Int
+        //        let statId = pickedData["statusId"] as? Int
+        //        let useId = pickedData["userId"] as? Int
+        //        API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
+        //
+        //            if success {
+        //                let r = Search(fromDictionary: data as! [String : Any])
+        //                self.searchWorkItemsResult = r.searchWorkItemsResult
+        //
+        //                print("filll")
+        //            }
+        //            else {return}
+        //        }
+        // txtBandNo.text = self.searchWorkItemsResult[""]
+    }
     
     func reloadPickerViews(){
         
@@ -134,7 +134,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         pickerviewData["typeId"] = resultt?.filterIOSResult?.itemtype?[0].workItemTypeId
         pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities?[0].workItemPriorityId
         pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers?[0].userId
-     
+        
         self.pickProg.reloadAllComponents()
         self.pickType.reloadAllComponents()
         self.pickPerior.reloadAllComponents()
@@ -145,7 +145,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     
-
-   
-
+    
+    
+    
 }

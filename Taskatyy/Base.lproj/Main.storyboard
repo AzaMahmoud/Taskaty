@@ -165,7 +165,7 @@
                     <navigationItem key="navigationItem" title="Search" id="vVC-8G-U97">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="menu" id="hS3-0u-vO0">
                             <connections>
-                                <segue destination="YC8-dp-s5K" kind="show" id="mJD-Bb-PQN"/>
+                                <segue destination="YC8-dp-s5K" kind="show" id="jOA-pU-r3t"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -269,6 +269,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QC-1K-oId">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal">
+                                                        <color key="titleShadowColor" red="0.18529065149999999" green="0.25054355639999998" blue="0.99700586930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    </state>
                                                     <connections>
                                                         <segue destination="Ja3-lH-eak" kind="show" id="qMc-Le-H7Y"/>
                                                     </connections>
@@ -586,20 +589,147 @@
             </objects>
             <point key="canvasLocation" x="3133" y="1165"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Item-->
         <scene sceneID="oWY-yP-Yx2">
             <objects>
-                <viewController id="WEJ-Tt-XfE" sceneMemberID="viewController">
+                <viewController id="WEJ-Tt-XfE" customClass="addItemVC" customModule="Taskatyy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XoI-1s-e1R">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ffl-gD-mh5">
+                                <rect key="frame" x="20" y="73" width="281" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <pickerView tag="2" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fUX-2a-K5q">
+                                <rect key="frame" x="20" y="180" width="281" height="66"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SdR-T2-hGZ">
+                                <rect key="frame" x="20" y="252" width="281" height="96"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" calendarEvent="YES"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="عنوان البند" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JNm-qX-XdL">
+                                <rect key="frame" x="309" y="75" width="97" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="البرنامج" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qdh-eC-bFe">
+                                <rect key="frame" x="309" y="134" width="97" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="النوع" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNY-P3-8Wl">
+                                <rect key="frame" x="309" y="196" width="97" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تفاصيل البند" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DO0-c1-3T0">
+                                <rect key="frame" x="309" y="287" width="97" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView tag="3" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mW1-Xx-sGJ">
+                                <rect key="frame" x="20" y="355" width="281" height="66"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <pickerView tag="4" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pK1-QB-4sJ">
+                                <rect key="frame" x="20" y="427" width="281" height="66"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="درجة الأهمية" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMh-6y-ccV">
+                                <rect key="frame" x="309" y="374" width="97" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="تخصيص ل" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9si-VC-bNm">
+                                <rect key="frame" x="309" y="446" width="97" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="التاريخ" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0F-OM-OlW">
+                                <rect key="frame" x="309" y="519" width="97" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" reversesTitleShadowWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IYI-Rd-wQc">
+                                <rect key="frame" x="150" y="679" width="109" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.33629155649999998" green="0.54419751810000005" blue="0.99700586930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="savBtn:" destination="WEJ-Tt-XfE" eventType="touchUpInside" id="gS5-hA-CrP"/>
+                                </connections>
+                            </button>
+                            <pickerView tag="1" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ku7-kK-FVK">
+                                <rect key="frame" x="20" y="109" width="281" height="66"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="XoI-1s-e1R" id="mlX-JD-FTn"/>
+                                    <outlet property="delegate" destination="XoI-1s-e1R" id="15M-bm-hjM"/>
+                                </connections>
+                            </pickerView>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="icM-JG-8gQ">
+                                <rect key="frame" x="20" y="499" width="281" height="66"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="549110117.02568603">
+                                    <!--2018-05-27 10:35:17 am +0000-->
+                                </date>
+                                <date key="maximumDate" timeIntervalSinceReferenceDate="1167562800">
+                                    <!--2037-12-31 11:00:00 am +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Gv-EO-8zc">
+                                <rect key="frame" x="182" y="593" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="addImage"/>
+                                <connections>
+                                    <action selector="addImgBtn:" destination="WEJ-Tt-XfE" eventType="touchUpInside" id="MA3-wq-ONN"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="y1P-xj-IQh"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Add Item" id="Ovw-yb-6Nc" colorLabel="IBBuiltInLabel-Red"/>
+                    <connections>
+                        <outlet property="bndDetTxtV" destination="SdR-T2-hGZ" id="dhr-3h-fpw"/>
+                        <outlet property="bndTitlTxt" destination="ffl-gD-mh5" id="1Ou-zf-wsC"/>
+                        <outlet property="pickDat" destination="icM-JG-8gQ" id="BPi-Lf-GdM"/>
+                        <outlet property="pickFor" destination="pK1-QB-4sJ" id="1zS-wt-tXS"/>
+                        <outlet property="pickPerior" destination="mW1-Xx-sGJ" id="77S-9P-Yeg"/>
+                        <outlet property="pickProg" destination="Ku7-kK-FVK" id="yHR-GW-frI"/>
+                        <outlet property="pickTyp" destination="fUX-2a-K5q" id="xOz-3q-dGp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5hJ-Ea-F4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4635" y="-701"/>
+            <point key="canvasLocation" x="4634.7826086956529" y="-701.08695652173924"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Ah3-PF-4sa">
@@ -659,6 +789,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addImage" width="50" height="50"/>
         <image name="addItemm" width="50" height="50"/>
         <image name="attach" width="25" height="25"/>
         <image name="change" width="25" height="25"/>
