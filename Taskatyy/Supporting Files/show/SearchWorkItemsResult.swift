@@ -33,7 +33,7 @@ class SearchWorkItemsResult : NSObject, NSCoding{
 	 */
 	init(fromDictionary dictionary: [String:Any]){
 		assignDate = dictionary["AssignDate"] as? String
-		endDate = dictionary["EndDate"] as? AnyObject
+		endDate = dictionary["EndDate"] as AnyObject
 		serial = dictionary["Serial"] as? Int
 		userAssigned = dictionary["UserAssigned"] as? String
 		userCreated = dictionary["UserCreated"] as? String
@@ -49,8 +49,8 @@ class SearchWorkItemsResult : NSObject, NSCoding{
 		workItemStatus = dictionary["WorkItemStatus"] as? String
 		workItemStatusId = dictionary["WorkItemStatusId"] as? Int
 		workItemTitle = dictionary["WorkItemTitle"] as? String
-		workItemType = dictionary["WorkItemType"] as? AnyObject
-		workItemTypeId = dictionary["WorkItemTypeId"] as? AnyObject
+		workItemType = dictionary["WorkItemType"] as AnyObject
+		workItemTypeId = dictionary["WorkItemTypeId"] as AnyObject
 	}
 
 	/**
@@ -126,7 +126,7 @@ class SearchWorkItemsResult : NSObject, NSCoding{
     @objc required init(coder aDecoder: NSCoder)
 	{
          assignDate = aDecoder.decodeObject(forKey: "AssignDate") as? String
-         endDate = aDecoder.decodeObject(forKey: "EndDate") as? AnyObject
+         endDate = aDecoder.decodeObject(forKey: "EndDate") as AnyObject
          serial = aDecoder.decodeObject(forKey: "Serial") as? Int
          userAssigned = aDecoder.decodeObject(forKey: "UserAssigned") as? String
          userCreated = aDecoder.decodeObject(forKey: "UserCreated") as? String
@@ -142,8 +142,8 @@ class SearchWorkItemsResult : NSObject, NSCoding{
          workItemStatus = aDecoder.decodeObject(forKey: "WorkItemStatus") as? String
          workItemStatusId = aDecoder.decodeObject(forKey: "WorkItemStatusId") as? Int
          workItemTitle = aDecoder.decodeObject(forKey: "WorkItemTitle") as? String
-         workItemType = aDecoder.decodeObject(forKey: "WorkItemType") as? AnyObject
-         workItemTypeId = aDecoder.decodeObject(forKey: "WorkItemTypeId") as? AnyObject
+         workItemType = aDecoder.decodeObject(forKey: "WorkItemType") as AnyObject
+         workItemTypeId = aDecoder.decodeObject(forKey: "WorkItemTypeId") as AnyObject
 
 	}
 

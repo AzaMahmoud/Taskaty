@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class addItemVC: UIViewController//, UIPickerViewDelegate, UIPickerViewDataSource
+class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     @IBOutlet weak var bndTitlTxt: UITextField!
     @IBOutlet weak var pickProg: UIPickerView!
@@ -18,40 +18,168 @@ class addItemVC: UIViewController//, UIPickerViewDelegate, UIPickerViewDataSourc
     @IBOutlet weak var bndDetTxtV: UITextView!
     @IBOutlet weak var pickPerior: UIPickerView!
     @IBOutlet weak var pickFor: UIPickerView!
-    @IBOutlet weak var pickDat: UIDatePicker!
-    
+    @IBOutlet weak var datBtn: UIButton!
+    @IBAction func datPick(_ sender: UIButton) {
+                DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+                    (date) -> Void in
+                    if let dt = date {
+                        let formatter = DateFormatter()
+                        formatter.dateFormat = "MM/dd/yyyy"
+                        let date = formatter.string(from: dt)
+                        sender.setTitle(date, for: .normal)
+                        sender.setTitleColor(UIColor.black, for: .normal)
+                    }
+                }
+    }
     var pickerviewData : [String : Any] = [:]
 
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        <#code#>
-//    }
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        <#code#>
-//    }
-    
-    var resultt : filterGen?
-    override func viewDidLoad() {
-        API.filter2()
-        super.viewDidLoad()
-//        pickProg.delegate = self
-//        pickProg.dataSource = self
-//        pickTyp.delegate = self
-//        pickTyp.dataSource = self
-//        pickPerior.delegate = self
-//        pickPerior.dataSource = self
-//        pickFor.delegate = self
-//        pickFor.dataSource = self
-
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
     }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if (pickerView.tag==1)
+        {
+            return (resultt?.filterIOSResult?.itemPrograms?.count) ?? 0
+        }
+        else if (pickerView.tag==2)
+        {
+            return (resultt?.filterIOSResult?.itemtype?.count) ?? 0
+        }
+        else if (pickerView.tag==3)
+        {
+            return (resultt?.filterIOSResult?.itemPriorities?.count) ?? 0
+        }
+        else if (pickerView.tag==4)
+        {
+            return (resultt?.filterIOSResult?.itemusers?.count) ?? 0
+        }
+        else { return 0 }
+    }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if (pickerView.tag==1){
+            return (resultt?.filterIOSResult?.itemPrograms?[row].workItemProgram ?? "")
+        }
+        else if (pickerView.tag==2){
+        return (resultt?.filterIOSResult?.itemtype?[row].workItemType ?? "")
+        }
+        else if (pickerView.tag==3){
+            return (resultt?.filterIOSResult?.itemPriorities?[row].workItemPriority ?? "")
+        }
+        else if (pickerView.tag==4){
+            return (resultt?.filterIOSResult?.itemusers?[row].userName ?? "")
+        }
+        else {return ""}
+    }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedData = pickerView.selectedRow(inComponent: 0)
+        if (pickerView.tag==1){
+            pickerviewData["program"] = selectedData
+            pickerviewData["programId"] = resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId
+            print(pickerviewData["program"]!)
+            print(resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId ?? 0)
+        }
+        if (pickerView.tag==2){
+            pickerviewData["type"] = selectedData
+            pickerviewData["typeId"] = resultt?.filterIOSResult?.itemtype?[row].workItemTypeId
+            print(pickerviewData["type"]!)
+            print(resultt?.filterIOSResult?.itemtype?[row].workItemTypeId ?? 0)
+        }
+        if (pickerView.tag==3){
+            pickerviewData["periority"] = selectedData
+            pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities[row].workItemPriorityId
+            print(pickerviewData["periority"]!)
+            print(resultt?.filterIOSResult?.itemPriorities?[row].workItemPriorityId ?? 0)
+        }
+        if (pickerView.tag==4){
+            pickerviewData["user"] = selectedData
+            pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers[row].userId
+            print(pickerviewData["user"]!)
+            print(resultt?.filterIOSResult?.itemusers?[row].userId ?? 0)
+        }
+    }
+    
+    var resultt : Filter?
+    override func viewDidLoad() {
+        API.filter()
+        super.viewDidLoad()
+        pickProg.delegate = self
+        pickProg.dataSource = self
+        pickTyp.delegate = self
+        pickTyp.dataSource = self
+        pickPerior.delegate = self
+        pickPerior.dataSource = self
+        pickFor.delegate = self
+        pickFor.dataSource = self
+        
+        let url = URLs.Filter
+        Alamofire.request(url, method: .get, headers: nil)
+            .responseJSON {
+                response in
+                switch response.result
+                {
+                case .failure(let error):
+                    print (error)
+                case .success( _):
+                    let dic = response.result.value as! [String:Any]
+                    self.resultt = Filter(fromDictionary: dic)
+                    self.reloadPickerView()
+                }
+        }
+        
+    }
+    
+    func reloadPickerView() {
+        self.pickProg.reloadAllComponents()
+        self.pickTyp.reloadAllComponents()
+        self.pickPerior.reloadAllComponents()
+        self.pickFor.reloadAllComponents()
+    }
+    var pickedImage: UIImage? {
+        didSet {
+            guard let pic = pickedImage else {return}
+            self.imagess.append(pic)
+        }
+    }
+    var imagess = [UIImage]()
     
     @IBAction func addImgBtn(_ sender: UIButton) {
+        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.allowsEditing = true
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
-    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+        
+        if let editedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
+            self.pickedImage = editedImg
+            //    submit(image: image)
+        }
+        else if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.pickedImage = originImg
+            //  submit(image: image)
+        }
+        picker.dismiss(animated: true)
+    }
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
     @IBAction func savBtn(_ sender: UIButton) {
+        let progId = pickerviewData["programId"] as? Int
+        let typId = pickerviewData["typeId"] as? Int
+        let priorId = pickerviewData["periorityId"] as? Int
+        let userId = pickerviewData["userId"] as? Int
+        guard let titl = bndTitlTxt.text, !titl.isEmpty else {return}
+        guard let detail = bndTitlTxt.text, !detail.isEmpty else {return}
+        
+        
+        
+//        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: <#T##String#>, progrm: "\(progId!)", type: "\(typId!)", photos: Data) { (error:Error?, success:Bool?, data:AnyObject?) in
+//            if sucess { print("work Added")} else {return}
+//        }
+        
     }
     
 }

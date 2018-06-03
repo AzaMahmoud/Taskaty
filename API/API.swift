@@ -28,7 +28,7 @@ class API: NSObject {
                     
                 }
                 else {
-                    print ("Error\(response.result.error)")
+                    print ("Error\(response.result.error!)")
                     
                 }
                 //  print(response)
@@ -94,6 +94,23 @@ class API: NSObject {
     
     
     
-//    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, progrm: String, type: String, )
-//
+    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, progrm: String, type: String, photos: Data , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    {
+        let url = URLs.AddBand
+        let parameters = ["WorkItemCreatedBy":creator, "WorkItemStatusId":status, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemAssignedTo":assignTo, "WorkItemPriorityId":periority, "AssignDate":date, "WorkItemProgramId":progrm, "WorkItemTypeId":type, "photos":photos] as [String:AnyObject]
+        
+        let header = ["Content-Type" : "application/json"]
+        Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
+            .responseJSON { response in
+                switch response.result {
+                case .success (let value):
+                    completion(nil,true,value as AnyObject?)
+                case .failure(let error):
+                    
+                    completion(error as NSError?,false,nil)
+                }
+                
+        }
+    }
+
 }

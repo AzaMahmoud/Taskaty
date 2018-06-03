@@ -83,7 +83,7 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             pickerviewData["program"] = selectedData
             pickerviewData["programId"] = resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId
             print(pickerviewData["program"]!)
-            print( resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId!)
+            print( resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId! ?? 0)
 
         }
         else if (pickerView.tag == 2)
@@ -98,21 +98,21 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
             pickerviewData["periority"] = selectedData
             pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities?[row].workItemPriorityId
             print(pickerviewData["periority"]!)
-            print(resultt?.filterIOSResult?.itemPriorities?[row].workItemPriorityId!)
+            print(resultt?.filterIOSResult?.itemPriorities?[row].workItemPriorityId! ?? 0)
         }
         else if (pickerView.tag == 4)
         {
             pickerviewData["status"] = selectedData
             pickerviewData["statusId"] = resultt?.filterIOSResult?.status?[row].workItemStatusId
             print(pickerviewData["status"]!)
-            print(resultt?.filterIOSResult?.status?[row].workItemStatusId!)
+            print(resultt?.filterIOSResult?.status?[row].workItemStatusId! ?? 0)
         }
         else if (pickerView.tag == 5)
         {
             pickerviewData["user"] = selectedData
             pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers?[row].userId
             print(pickerviewData["user"]!)
-            print(resultt?.filterIOSResult?.itemusers?[row].userId!)
+            print(resultt?.filterIOSResult?.itemusers?[row].userId! ?? 0)
         }
     }
     var resultt : Filter?
@@ -120,10 +120,6 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     override func viewDidLoad() {
         API.filter()
         super.viewDidLoad()
-//        picker1.isHidden = true
-//        picker2.isHidden = true
-//        picker3.isHidden = true
-//        picker4.isHidden = true
         picker1.delegate = self
         picker1.dataSource = self
         picker2.delegate = self
@@ -141,11 +137,9 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 {
                 case .failure(let error):
                     print(error)
-                case .success(let value):
+                case .success( _):
                    
              let dic = response.result.value as! [String:Any]
-                    
-                   // print (dic[0])
                     self.resultt = Filter(fromDictionary: dic)
                     self.reloadPickerViews()
              }

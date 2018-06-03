@@ -97,7 +97,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                 {
                 case .failure(let error):
                     print(error)
-                case .success(let value):
+                case .success( _):
                     
                     let dic = response.result.value as! [String:Any]
                     self.resultt = Filter(fromDictionary: dic)

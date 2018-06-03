@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Alamofire
-import SwiftyJSON
+//import Alamofire
+//import SwiftyJSON
 
 class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -33,8 +33,6 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 self.collectionView.reloadData()
                 
                 print("shooo")
-                
-                
             }
             else {return}
         }

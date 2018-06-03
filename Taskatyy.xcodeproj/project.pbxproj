@@ -23,6 +23,7 @@
 		CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D9990208293BC00931E0A /* TaskatyyTests.swift */; };
 		CE58DE2F209CDC280087BA6F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE2E209CDC280087BA6F /* Search.swift */; };
 		CE58DE31209CDC430087BA6F /* SearchWorkItemsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */; };
+		CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */; };
 		CE7D2EBA20B165E000528F1A /* editVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D2EB920B165E000528F1A /* editVC.swift */; };
 		CE7D2EBD20B178AD00528F1A /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D2EBC20B178AD00528F1A /* RoundButton.swift */; };
 		CE7D2EBF20B17BC100528F1A /* RoundTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7D2EBE20B17BC100528F1A /* RoundTextField.swift */; };
@@ -81,6 +82,7 @@
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE58DE2E209CDC280087BA6F /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWorkItemsResult.swift; sourceTree = "<group>"; };
+		CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
 		CE7D2EB920B165E000528F1A /* editVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = editVC.swift; sourceTree = "<group>"; };
 		CE7D2EBC20B178AD00528F1A /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		CE7D2EBE20B17BC100528F1A /* RoundTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundTextField.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		CE7D2EBB20B1788100528F1A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */,
 				CE7D2EBC20B178AD00528F1A /* RoundButton.swift */,
 				CE7D2EBE20B17BC100528F1A /* RoundTextField.swift */,
 			);
@@ -271,8 +274,8 @@
 				CEED0052208561330033E663 /* FilterVC.swift */,
 				CE163F81208CA3DA007C01A7 /* ShowResultVC.swift */,
 				CEEB945220949B7B00A0514B /* showResultCell.swift */,
-				CE7D2EB920B165E000528F1A /* editVC.swift */,
 				CE7D2ED620B5703300528F1A /* sideMenuVC.swift */,
+				CE7D2EB920B165E000528F1A /* editVC.swift */,
 				CE7D2ED820B5773E00528F1A /* addItemVC.swift */,
 			);
 			path = Controller;
@@ -463,6 +466,7 @@
 				CE1995B620B8412700A90B09 /* ItemPrograms.swift in Sources */,
 				CE7D2ECA20B2C6E400528F1A /* Itemtype.swift in Sources */,
 				CE7D2EC720B2C6E400528F1A /* FilterIOSResult.swift in Sources */,
+				CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */,
 				CE7D2ECD20B2C6E400528F1A /* ItemPriority.swift in Sources */,
 				CE1995B420B8412700A90B09 /* ItemPriorities.swift in Sources */,
 				CE1995BA20B8412700A90B09 /* Status.swift in Sources */,
@@ -661,7 +665,7 @@
 			baseConfigurationReference = CAA12F7AFA8CEBA6DC101354 /* Pods-Taskatyy.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = BN3UYKH9WB;
 				INFOPLIST_FILE = Taskatyy/Info.plist;
