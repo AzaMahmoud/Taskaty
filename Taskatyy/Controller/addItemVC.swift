@@ -19,6 +19,8 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     @IBOutlet weak var pickPerior: UIPickerView!
     @IBOutlet weak var pickFor: UIPickerView!
     @IBOutlet weak var datBtn: UIButton!
+    
+    @IBOutlet weak var uiImge: UIImageView!
     @IBAction func datPick(_ sender: UIButton) {
                 DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
                     (date) -> Void in
@@ -139,8 +141,9 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         didSet {
             guard let pic = pickedImage else {return}
             self.imagess.append(pic)
-        }
-    }
+            self.uiImge.image = pic
+        }}
+    
     var imagess = [UIImage]()
     
     @IBAction func addImgBtn(_ sender: UIButton) {
@@ -156,6 +159,13 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         if let editedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.pickedImage = editedImg
             //    submit(image: image)
+        let imageData = UIImagePNGRepresentation(editedImg)!
+        imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+        
+        
+        print (imageData)
+        
+        
         }
         else if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.pickedImage = originImg
@@ -173,10 +183,11 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         let userId = pickerviewData["userId"] as? Int
         guard let titl = bndTitlTxt.text, !titl.isEmpty else {return}
         guard let detail = bndTitlTxt.text, !detail.isEmpty else {return}
+       // let dat = datBtn.title(for: )
         
         
         
-//        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: <#T##String#>, progrm: "\(progId!)", type: "\(typId!)", photos: Data) { (error:Error?, success:Bool?, data:AnyObject?) in
+      //  API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: "\(dt)", progrm: "\(progId!)", type: "\(typId!)", photos: Data) { (error:Error?, success:Bool?, data:AnyObject?) in
 //            if sucess { print("work Added")} else {return}
 //        }
         

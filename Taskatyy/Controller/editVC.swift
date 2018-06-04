@@ -74,10 +74,36 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var txtDlvrDat: UITextField!
     
+    @IBAction func btnSpclDat(_ sender: UIButton) {
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            (date) -> Void in
+            if let dt = date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd/yyyy"
+                let date = formatter.string(from: dt)
+                sender.setTitle(date, for: .normal)
+                sender.setTitleColor(UIColor.black, for: .normal)
+            }
+        }
+    }
+    
+    @IBAction func btnDelDat(_ sender: UIButton) {
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            (date) -> Void in
+            if let dt = date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd/yyyy"
+                let date = formatter.string(from: dt)
+                sender.setTitle(date, for: .normal)
+                sender.setTitleColor(UIColor.black, for: .normal)
+            }
+        }
+    }
     var pickerviewData : [String : Any] = [:]
     var resultt : Filter?
     var pickedData : [String:Any] = [:]
     var searchWorkItemsResult = [SearchWorkItemsResult]()
+    
     override func viewDidLoad() {
         API.filter()
         super.viewDidLoad()
@@ -104,25 +130,28 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                     self.reloadPickerViews()
                 }
         }
-        // get data from previos screen
-        
-        //        let progId = pickedData["programId"] as? Int
-        //        let typId = pickedData["typeId"] as? Int
-        //        let priorId = pickedData["periorityId"] as? Int
-        //        let statId = pickedData["statusId"] as? Int
-        //        let useId = pickedData["userId"] as? Int
-        //        API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
-        //
-        //            if success {
-        //                let r = Search(fromDictionary: data as! [String : Any])
-        //                self.searchWorkItemsResult = r.searchWorkItemsResult
-        //
-        //                print("filll")
-        //            }
-        //            else {return}
-        //        }
-        // txtBandNo.text = self.searchWorkItemsResult[""]
     }
+    override func viewDidAppear(_ animated: Bool) {
+        // get data from previos screen
+                let progId = pickedData["programId"] as? Int
+                let typId = pickedData["typeId"] as? Int
+                let priorId = pickedData["periorityId"] as? Int
+                let statId = pickedData["statusId"] as? Int
+                let useId = pickedData["userId"] as? Int
+                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
+        
+                    if success {
+                        let r = Search(fromDictionary: data as! [String : Any])
+                        self.searchWorkItemsResult = r.searchWorkItemsResult
+        
+                        print("filll")
+                    }
+                    else {return}
+                }
+        // txtBandNo.text = self.searchWorkItemsResult[""]
+        
+    }
+    
     
     func reloadPickerViews(){
         
