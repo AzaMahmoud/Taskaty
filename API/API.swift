@@ -94,7 +94,7 @@ class API: NSObject {
     
     
     
-    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, progrm: String, type: String, photos: Data , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, progrm: String, type: String, photos: [String:Any] , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
     {
         let url = URLs.AddBand
         let parameters = ["WorkItemCreatedBy":creator, "WorkItemStatusId":status, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemAssignedTo":assignTo, "WorkItemPriorityId":periority, "AssignDate":date, "WorkItemProgramId":progrm, "WorkItemTypeId":type, "photos":photos] as [String:AnyObject]

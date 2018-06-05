@@ -145,6 +145,8 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         }}
     
     var imagess = [UIImage]()
+    var Myimage: [String: Any] = [:]
+
     
     @IBAction func addImgBtn(_ sender: UIButton) {
         guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
@@ -156,17 +158,31 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     }
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         
+        
+       
         if let editedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
             self.pickedImage = editedImg
             //    submit(image: image)
-        let imageData = UIImagePNGRepresentation(editedImg)!
-        imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-        
-        
-        print (imageData)
-        
+       // let imageData = UIImagePNGRepresentation(editedImg)!
+        //imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
+            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+            //Convert Image to Data
+            guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+            //Set Image Name
+            let imageName =
+            "\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+            // MARK: To Do - Add Iamge Name and data to Dictionary//
+            Myimage = [
+                "photoasBase64" : imageData,
+                "photoName" :imageName
+            ]
+            
+           // print(imageData)
+          //  ProfileImage.image = UIImage(data: imageName)
+        //print (imageData)
         
         }
+            
         else if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.pickedImage = originImg
             //  submit(image: image)
@@ -183,14 +199,15 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         let userId = pickerviewData["userId"] as? Int
         guard let titl = bndTitlTxt.text, !titl.isEmpty else {return}
         guard let detail = bndTitlTxt.text, !detail.isEmpty else {return}
-       // let dat = datBtn.title(for: )
+        let dat = datBtn.title(for: .normal)
         
         
         
-      //  API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: "\(dt)", progrm: "\(progId!)", type: "\(typId!)", photos: Data) { (error:Error?, success:Bool?, data:AnyObject?) in
-//            if sucess { print("work Added")} else {return}
-//        }
         
+        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: "\(dat!)", progrm: "\(progId!)", type: "\(typId!)", photos: Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
+            //if sucess { print("work Added")} else {return}
+        }
+    
     }
     
 }
