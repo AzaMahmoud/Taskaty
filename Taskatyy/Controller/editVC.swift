@@ -131,26 +131,26 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                 }
         }
     }
-    override func viewDidAppear(_ animated: Bool) {
-        // get data from previos screen
-                let progId = pickedData["programId"] as? Int
-                let typId = pickedData["typeId"] as? Int
-                let priorId = pickedData["periorityId"] as? Int
-                let statId = pickedData["statusId"] as? Int
-                let useId = pickedData["userId"] as? Int
-                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
-        
-                    if success {
-                        let r = Search(fromDictionary: data as! [String : Any])
-                        self.searchWorkItemsResult = r.searchWorkItemsResult
-        
-                        print("filll")
-                    }
-                    else {return}
-                }
-        // txtBandNo.text = self.searchWorkItemsResult[""]
-        
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        // get data from previos screen
+//                let progId = pickedData["programId"] as? Int
+//                let typId = pickedData["typeId"] as? Int
+//                let priorId = pickedData["periorityId"] as? Int
+//                let statId = pickedData["statusId"] as? Int
+//                let useId = pickedData["userId"] as? Int
+//                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
+//
+//                    if success {
+//                        let r = Search(fromDictionary: data as! [String : Any])
+//                        self.searchWorkItemsResult = r.searchWorkItemsResult
+//
+//                        print("filll")
+//                    }
+//                    else {return}
+//                }
+//        // txtBandNo.text = self.searchWorkItemsResult[""]
+//
+//    }
     
     
     func reloadPickerViews(){

@@ -172,10 +172,15 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
             let imageName =
             "\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
             // MARK: To Do - Add Iamge Name and data to Dictionary//
+            
             Myimage = [
-                "photoasBase64" : imageData,
-                "photoName" :imageName
+                "photoasBase64" : "\(imageData)",
+                "photoName" :"\(imageName)"
             ]
+//            Myimage = [
+//                "photoasBase64" : imageData,
+//                "photoName" :imageName
+//            ]
             
            // print(imageData)
           //  ProfileImage.image = UIImage(data: imageName)
@@ -201,13 +206,23 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         guard let detail = bndTitlTxt.text, !detail.isEmpty else {return}
         let dat = datBtn.title(for: .normal)
         
+        print(progId!)
+        print(typId!)
+        print(priorId!)
+        print(userId!)
+        print(titl)
+        print(detail)
+        print(dat!)
+        print(self.Myimage)
+
         
-        
-        
-        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: "\(dat!)", progrm: "\(progId!)", type: "\(typId!)", photos: Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
+        DispatchQueue.main.async {
+        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: "\(dat!)", progrm: "\(progId!)", type: "\(typId!)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
             //if sucess { print("work Added")} else {return}
+             print(error, "       " , "       " , success , "       " , data )
         }
     
+    }
     }
     
 }
