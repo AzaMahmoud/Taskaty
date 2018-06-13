@@ -53,6 +53,23 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         cell.developer.text = self.searchWorkItemsResult[indexPath.row].userAssigned
         
         return cell
+        
+        
+        guard let edit = collectionView.dequeueReusableCell(withReuseIdentifier:"Edit", for: indexPath) as? editVC
+            else { return UICollectionViewCell()}
+        
+        
+        
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "Edit" {
+//            if let vc = segue.destination as? editVC {
+//
+//                vc.pickerviewData = pickedData
+//                //  navigationController?.pushViewController(vc, animated: true)
+//            }
+//        }
+//    }
+
 }
 

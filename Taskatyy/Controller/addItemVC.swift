@@ -136,6 +136,7 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         self.pickTyp.reloadAllComponents()
         self.pickPerior.reloadAllComponents()
         self.pickFor.reloadAllComponents()
+        pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers?[0].userId
     }
     var pickedImage: UIImage? {
         didSet {
@@ -156,27 +157,29 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
     }
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+    @objc public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         
         
        
-        if let editedImg = info[UIImagePickerControllerEditedImage] as? UIImage {
-            self.pickedImage = editedImg
+        if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            self.pickedImage = originImg
             //    submit(image: image)
        // let imageData = UIImagePNGRepresentation(editedImg)!
         //imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
+//            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
             //Convert Image to Data
-            guard let imageData = UIImageJPEGRepresentation(image, 0.8) else { return }
+            //guard
+                let imageDataa = UIImageJPEGRepresentation(originImg, 0.8) //else { return }
+            let imageData = imageDataa?.base64EncodedString()
             //Set Image Name
             let imageName =
             "\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
             // MARK: To Do - Add Iamge Name and data to Dictionary//
             
             Myimage = [
-                "photoasBase64" : "\(imageData)",
+                "photoasBase64" : "\(imageData!)",
                 "photoName" :"\(imageName)"
-            ]
+                ]
 //            Myimage = [
 //                "photoasBase64" : imageData,
 //                "photoName" :imageName
@@ -188,10 +191,10 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         
         }
             
-        else if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.pickedImage = originImg
-            //  submit(image: image)
-        }
+//        else if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
+//            self.pickedImage = originImg
+//            //  submit(image: image)
+//        }
         picker.dismiss(animated: true)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -203,7 +206,7 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         let priorId = pickerviewData["periorityId"] as? Int
         let userId = pickerviewData["userId"] as? Int
         guard let titl = bndTitlTxt.text, !titl.isEmpty else {return}
-        guard let detail = bndTitlTxt.text, !detail.isEmpty else {return}
+        guard let detail = bndDetTxtV.text, !detail.isEmpty else {return}
         let dat = datBtn.title(for: .normal)
         
         print(progId!)
@@ -213,13 +216,13 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         print(titl)
         print(detail)
         print(dat!)
-        print(self.Myimage)
+       // print(self.Myimage)
 
         
         DispatchQueue.main.async {
         API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: "\(dat!)", progrm: "\(progId!)", type: "\(typId!)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
             //if sucess { print("work Added")} else {return}
-             print(error, "       " , "       " , success , "       " , data )
+            print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
         }
     
     }

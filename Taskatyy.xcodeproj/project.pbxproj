@@ -21,6 +21,11 @@
 		CE19A2D620835DF000B686BE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D520835DF000B686BE /* API.swift */; };
 		CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D82083649B00B686BE /* String-Exensions.swift */; };
 		CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D9990208293BC00931E0A /* TaskatyyTests.swift */; };
+		CE24AE1C20CFC67E005B0984 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24AE1B20CFC67E005B0984 /* AppDelegate.swift */; };
+		CE24AE1E20CFC67E005B0984 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE24AE1D20CFC67E005B0984 /* ViewController.swift */; };
+		CE24AE2120CFC67E005B0984 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE24AE1F20CFC67E005B0984 /* Main.storyboard */; };
+		CE24AE2320CFC67F005B0984 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE24AE2220CFC67F005B0984 /* Assets.xcassets */; };
+		CE24AE2620CFC67F005B0984 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE24AE2420CFC67F005B0984 /* LaunchScreen.storyboard */; };
 		CE58DE2F209CDC280087BA6F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE2E209CDC280087BA6F /* Search.swift */; };
 		CE58DE31209CDC430087BA6F /* SearchWorkItemsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */; };
 		CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */; };
@@ -80,6 +85,13 @@
 		CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskatyyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D9990208293BC00931E0A /* TaskatyyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskatyyTests.swift; sourceTree = "<group>"; };
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE24AE1920CFC67E005B0984 /* color magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "color magic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE24AE1B20CFC67E005B0984 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CE24AE1D20CFC67E005B0984 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE24AE2020CFC67E005B0984 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CE24AE2220CFC67F005B0984 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CE24AE2520CFC67F005B0984 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE24AE2720CFC67F005B0984 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE58DE2E209CDC280087BA6F /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWorkItemsResult.swift; sourceTree = "<group>"; };
 		CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
@@ -121,6 +133,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BDCB7A7F848AD6269FF4344 /* Pods_TaskatyyTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE24AE1620CFC67E005B0984 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +217,7 @@
 				CE19A2D420835D1B00B686BE /* API */,
 				CEED003E208561330033E663 /* Taskatyy */,
 				CE1D998F208293BC00931E0A /* TaskatyyTests */,
+				CE24AE1A20CFC67E005B0984 /* color magic */,
 				CE1D9979208293BC00931E0A /* Products */,
 				6CBF8A44B57C9C20CCA397DD /* Pods */,
 				83923DDB0537DBB05A6FEAED /* Frameworks */,
@@ -209,6 +229,7 @@
 			children = (
 				CE1D9978208293BC00931E0A /* Taskatyy.app */,
 				CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */,
+				CE24AE1920CFC67E005B0984 /* color magic.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -227,6 +248,19 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CE24AE1A20CFC67E005B0984 /* color magic */ = {
+			isa = PBXGroup;
+			children = (
+				CE24AE1B20CFC67E005B0984 /* AppDelegate.swift */,
+				CE24AE1D20CFC67E005B0984 /* ViewController.swift */,
+				CE24AE1F20CFC67E005B0984 /* Main.storyboard */,
+				CE24AE2220CFC67F005B0984 /* Assets.xcassets */,
+				CE24AE2420CFC67F005B0984 /* LaunchScreen.storyboard */,
+				CE24AE2720CFC67F005B0984 /* Info.plist */,
+			);
+			path = "color magic";
 			sourceTree = "<group>";
 		};
 		CE58DE25209BB8290087BA6F /* show */ = {
@@ -332,13 +366,30 @@
 			productReference = CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		CE24AE1820CFC67E005B0984 /* color magic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE24AE2820CFC67F005B0984 /* Build configuration list for PBXNativeTarget "color magic" */;
+			buildPhases = (
+				CE24AE1520CFC67E005B0984 /* Sources */,
+				CE24AE1620CFC67E005B0984 /* Frameworks */,
+				CE24AE1720CFC67E005B0984 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "color magic";
+			productName = "color magic";
+			productReference = CE24AE1920CFC67E005B0984 /* color magic.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		CE1D9970208293BC00931E0A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = zoza;
 				TargetAttributes = {
@@ -349,6 +400,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						TestTargetID = CE1D9977208293BC00931E0A;
+					};
+					CE24AE1820CFC67E005B0984 = {
+						CreatedOnToolsVersion = 9.3.1;
 					};
 				};
 			};
@@ -367,6 +421,7 @@
 			targets = (
 				CE1D9977208293BC00931E0A /* Taskatyy */,
 				CE1D998B208293BC00931E0A /* TaskatyyTests */,
+				CE24AE1820CFC67E005B0984 /* color magic */,
 			);
 		};
 /* End PBXProject section */
@@ -388,6 +443,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CE24AE1720CFC67E005B0984 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE24AE2620CFC67F005B0984 /* LaunchScreen.storyboard in Resources */,
+				CE24AE2320CFC67F005B0984 /* Assets.xcassets in Resources */,
+				CE24AE2120CFC67E005B0984 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,6 +566,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CE24AE1520CFC67E005B0984 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CE24AE1E20CFC67E005B0984 /* ViewController.swift in Sources */,
+				CE24AE1C20CFC67E005B0984 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -512,6 +586,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CE24AE1F20CFC67E005B0984 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE24AE2020CFC67E005B0984 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CE24AE2420CFC67F005B0984 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE24AE2520CFC67F005B0984 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		CEED004C208561330033E663 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -650,7 +740,10 @@
 				DEVELOPMENT_TEAM = BN3UYKH9WB;
 				INFOPLIST_FILE = Taskatyy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Orman.Taskaty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -669,7 +762,10 @@
 				DEVELOPMENT_TEAM = BN3UYKH9WB;
 				INFOPLIST_FILE = Taskatyy/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.Orman.Taskaty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -688,7 +784,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = TaskatyyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zzz.TaskatyyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -708,13 +808,61 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7KZJ9WZKUD;
 				INFOPLIST_FILE = TaskatyyTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = zzz.TaskatyyTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Taskatyy.app/Taskatyy";
+			};
+			name = Release;
+		};
+		CE24AE2920CFC67F005B0984 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BN3UYKH9WB;
+				INFOPLIST_FILE = "color magic/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Orman.color-magic";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE24AE2A20CFC67F005B0984 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = BN3UYKH9WB;
+				INFOPLIST_FILE = "color magic/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Orman.color-magic";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -744,6 +892,15 @@
 			buildConfigurations = (
 				CE1D9999208293BC00931E0A /* Debug */,
 				CE1D999A208293BC00931E0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE24AE2820CFC67F005B0984 /* Build configuration list for PBXNativeTarget "color magic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE24AE2920CFC67F005B0984 /* Debug */,
+				CE24AE2A20CFC67F005B0984 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

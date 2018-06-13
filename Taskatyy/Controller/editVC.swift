@@ -51,7 +51,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         else {return ""}
     }
     
-    @IBOutlet weak var txtBandNo: RoundTtextField!
+    @IBOutlet weak var txtBandNo: UITextField!
     @IBOutlet weak var txtBandAdd: UITextField!
     
     @IBOutlet weak var txtBandDat: UITextField!
@@ -62,7 +62,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var pickPerior: UIPickerView!
     
-    @IBOutlet weak var txtBanStatus: UITextField!
+    @IBOutlet weak var txtBandStatus: UITextField!
     
     @IBOutlet weak var txtVBandDetail: UITextView!
     
@@ -87,6 +87,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
+
     @IBAction func btnDelDat(_ sender: UIButton) {
         DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
             (date) -> Void in
@@ -116,6 +117,8 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         pickPerior.delegate = self
         pickRespons.dataSource = self
         pickRespons.delegate = self
+        
+        
         let url = URLs.Filter
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON { response in
@@ -131,7 +134,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                 }
         }
     }
-//    override func viewDidAppear(_ animated: Bool) {
+//    override func viewWillAppear(_ animated: Bool) {
 //        // get data from previos screen
 //                let progId = pickedData["programId"] as? Int
 //                let typId = pickedData["typeId"] as? Int
