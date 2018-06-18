@@ -80,7 +80,6 @@
 		CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskatyyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D9990208293BC00931E0A /* TaskatyyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskatyyTests.swift; sourceTree = "<group>"; };
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CE24AE1920CFC67E005B0984 /* color magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "color magic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE58DE2E209CDC280087BA6F /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWorkItemsResult.swift; sourceTree = "<group>"; };
 		CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
@@ -122,13 +121,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3BDCB7A7F848AD6269FF4344 /* Pods_TaskatyyTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE24AE1620CFC67E005B0984 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +209,6 @@
 			children = (
 				CE1D9978208293BC00931E0A /* Taskatyy.app */,
 				CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */,
-				CE24AE1920CFC67E005B0984 /* color magic.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -341,23 +332,6 @@
 			productReference = CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CE24AE1820CFC67E005B0984 /* color magic */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CE24AE2820CFC67F005B0984 /* Build configuration list for PBXNativeTarget "color magic" */;
-			buildPhases = (
-				CE24AE1520CFC67E005B0984 /* Sources */,
-				CE24AE1620CFC67E005B0984 /* Frameworks */,
-				CE24AE1720CFC67E005B0984 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "color magic";
-			productName = "color magic";
-			productReference = CE24AE1920CFC67E005B0984 /* color magic.app */;
-			productType = "com.apple.product-type.application";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -376,9 +350,6 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = CE1D9977208293BC00931E0A;
 					};
-					CE24AE1820CFC67E005B0984 = {
-						CreatedOnToolsVersion = 9.3.1;
-					};
 				};
 			};
 			buildConfigurationList = CE1D9973208293BC00931E0A /* Build configuration list for PBXProject "Taskatyy" */;
@@ -396,7 +367,6 @@
 			targets = (
 				CE1D9977208293BC00931E0A /* Taskatyy */,
 				CE1D998B208293BC00931E0A /* TaskatyyTests */,
-				CE24AE1820CFC67E005B0984 /* color magic */,
 			);
 		};
 /* End PBXProject section */
@@ -415,13 +385,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		CE1D998A208293BC00931E0A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE24AE1720CFC67E005B0984 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -535,13 +498,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CE24AE1520CFC67E005B0984 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,50 +732,6 @@
 			};
 			name = Release;
 		};
-		CE24AE2920CFC67F005B0984 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BN3UYKH9WB;
-				INFOPLIST_FILE = "color magic/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Orman.color-magic";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CE24AE2A20CFC67F005B0984 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BN3UYKH9WB;
-				INFOPLIST_FILE = "color magic/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Orman.color-magic";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -846,15 +758,6 @@
 			buildConfigurations = (
 				CE1D9999208293BC00931E0A /* Debug */,
 				CE1D999A208293BC00931E0A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CE24AE2820CFC67F005B0984 /* Build configuration list for PBXNativeTarget "color magic" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CE24AE2920CFC67F005B0984 /* Debug */,
-				CE24AE2A20CFC67F005B0984 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

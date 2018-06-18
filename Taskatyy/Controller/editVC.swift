@@ -11,6 +11,142 @@ import Alamofire
 import SwiftyJSON
 
 class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
+   
+    
+   
+    
+    @IBOutlet weak var txtBandNo: UITextField!
+    @IBOutlet weak var txtBandAdd: UITextField!
+    
+    @IBOutlet weak var txtBandDat: UITextField!
+    
+    @IBOutlet weak var pickProg: UIPickerView!
+    
+    @IBOutlet weak var pickType: UIPickerView!
+    
+    @IBOutlet weak var pickPerior: UIPickerView!
+    
+    @IBOutlet weak var txtBandStatus: UITextField!
+    
+    @IBOutlet weak var txtVBandDetail: UITextView!
+    
+    @IBOutlet weak var txtSender: UITextField!
+    
+    @IBOutlet weak var pickRespons: UIPickerView!
+    
+  //  @IBOutlet weak var txtAssignDat: UITextField!
+    
+  //  @IBOutlet weak var txtDlvrDat: UITextField!
+    
+    @IBAction func btnSpclDat(_ sender: UIButton) {
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            (date) -> Void in
+            if let dt = date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd/yyyy"
+                let date = formatter.string(from: dt)
+                sender.setTitle(date, for: .normal)
+                sender.setTitleColor(UIColor.black, for: .normal)
+            }
+        }
+    }
+    
+
+    @IBAction func btnDelDat(_ sender: UIButton) {
+        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
+            (date) -> Void in
+            if let dt = date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "MM/dd/yyyy"
+                let date = formatter.string(from: dt)
+                sender.setTitle(date, for: .normal)
+                sender.setTitleColor(UIColor.black, for: .normal)
+            }
+        }
+    }
+    var pickerviewData : [String : Any] = [:]
+    var resultt : Filter?
+    var pickedData : [String:Any] = ShowResultVC.pickedData
+    var searchWorkItemsResult = [SearchWorkItemsResult]()
+    
+    override func viewDidLoad() {
+        API.filter()
+        super.viewDidLoad()
+        // fill pickerViews
+        pickProg.dataSource = self
+        pickProg.delegate = self
+        pickType.dataSource = self
+        pickType.delegate = self
+        pickPerior.dataSource = self
+        pickPerior.delegate = self
+        pickRespons.dataSource = self
+        pickRespons.delegate = self
+        
+        DispatchQueue.main.async {
+        
+        let url = URLs.Filter
+        Alamofire.request(url, method: .get, headers: nil)
+            .responseJSON { response in
+                switch response.result
+                {
+                case .failure(let error):
+                    print(error)
+                case .success( _):
+                    
+                    let dic = response.result.value as! [String:Any]
+                    self.resultt = Filter(fromDictionary: dic)
+                    self.reloadPickerViews()
+                }
+        }
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        // get data from previos screen
+        DispatchQueue.main.async {
+            API.filter()
+            
+                let progId = self.pickedData["programId"] as? Int
+                let typId = self.pickedData["typeId"] as? Int
+                let priorId = self.pickedData["periorityId"] as? Int
+                let statId = self.pickedData["statusId"] as? Int
+                let useId = self.pickedData["userId"] as? Int
+                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
+
+                    if success {
+                        let r = Search(fromDictionary: data as! [String : Any])
+                        self.searchWorkItemsResult = r.searchWorkItemsResult
+                      //  txtBandNo.text = searchWorkItemsResult[IndexPath.row]
+
+                        print("filll")
+                    }
+                    else {return}
+                }
+        }
+//        // txtBandNo.text = self.searchWorkItemsResult[""]
+//
+    }
+    
+    
+    func reloadPickerViews(){
+        
+        self.pickProg.selectedRow(inComponent: 0)
+        self.pickType.selectedRow(inComponent: 0)
+        self.pickPerior.selectedRow(inComponent: 0)
+        self.pickRespons.selectedRow(inComponent: 0)
+        pickerviewData["programId"] = resultt?.filterIOSResult?.itemPrograms?[0].workItemProgramId
+        pickerviewData["typeId"] = resultt?.filterIOSResult?.itemtype?[0].workItemTypeId
+        pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities?[0].workItemPriorityId
+        pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers?[0].userId
+        
+        self.pickProg.reloadAllComponents()
+        self.pickType.reloadAllComponents()
+        self.pickPerior.reloadAllComponents()
+        self.pickRespons.reloadAllComponents()
+    }
+    
+    @IBAction func btnSav(_ sender: UIButton) {
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return  1
     }
@@ -50,133 +186,6 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         }
         else {return ""}
     }
-    
-    @IBOutlet weak var txtBandNo: UITextField!
-    @IBOutlet weak var txtBandAdd: UITextField!
-    
-    @IBOutlet weak var txtBandDat: UITextField!
-    
-    @IBOutlet weak var pickProg: UIPickerView!
-    
-    @IBOutlet weak var pickType: UIPickerView!
-    
-    @IBOutlet weak var pickPerior: UIPickerView!
-    
-    @IBOutlet weak var txtBandStatus: UITextField!
-    
-    @IBOutlet weak var txtVBandDetail: UITextView!
-    
-    @IBOutlet weak var txtSender: UITextField!
-    
-    @IBOutlet weak var pickRespons: UIPickerView!
-    
-    @IBOutlet weak var txtAssignDat: UITextField!
-    
-    @IBOutlet weak var txtDlvrDat: UITextField!
-    
-    @IBAction func btnSpclDat(_ sender: UIButton) {
-        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
-            (date) -> Void in
-            if let dt = date {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd/yyyy"
-                let date = formatter.string(from: dt)
-                sender.setTitle(date, for: .normal)
-                sender.setTitleColor(UIColor.black, for: .normal)
-            }
-        }
-    }
-    
-
-    @IBAction func btnDelDat(_ sender: UIButton) {
-        DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
-            (date) -> Void in
-            if let dt = date {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "MM/dd/yyyy"
-                let date = formatter.string(from: dt)
-                sender.setTitle(date, for: .normal)
-                sender.setTitleColor(UIColor.black, for: .normal)
-            }
-        }
-    }
-    var pickerviewData : [String : Any] = [:]
-    var resultt : Filter?
-    var pickedData : [String:Any] = [:]
-    var searchWorkItemsResult = [SearchWorkItemsResult]()
-    
-    override func viewDidLoad() {
-        API.filter()
-        super.viewDidLoad()
-        // fill pickerViews
-        pickProg.dataSource = self
-        pickProg.delegate = self
-        pickType.dataSource = self
-        pickType.delegate = self
-        pickPerior.dataSource = self
-        pickPerior.delegate = self
-        pickRespons.dataSource = self
-        pickRespons.delegate = self
-        
-        
-        let url = URLs.Filter
-        Alamofire.request(url, method: .get, headers: nil)
-            .responseJSON { response in
-                switch response.result
-                {
-                case .failure(let error):
-                    print(error)
-                case .success( _):
-                    
-                    let dic = response.result.value as! [String:Any]
-                    self.resultt = Filter(fromDictionary: dic)
-                    self.reloadPickerViews()
-                }
-        }
-    }
-//    override func viewWillAppear(_ animated: Bool) {
-//        // get data from previos screen
-//                let progId = pickedData["programId"] as? Int
-//                let typId = pickedData["typeId"] as? Int
-//                let priorId = pickedData["periorityId"] as? Int
-//                let statId = pickedData["statusId"] as? Int
-//                let useId = pickedData["userId"] as? Int
-//                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
-//
-//                    if success {
-//                        let r = Search(fromDictionary: data as! [String : Any])
-//                        self.searchWorkItemsResult = r.searchWorkItemsResult
-//
-//                        print("filll")
-//                    }
-//                    else {return}
-//                }
-//        // txtBandNo.text = self.searchWorkItemsResult[""]
-//
-//    }
-    
-    
-    func reloadPickerViews(){
-        
-        self.pickProg.selectedRow(inComponent: 0)
-        self.pickType.selectedRow(inComponent: 0)
-        self.pickPerior.selectedRow(inComponent: 0)
-        self.pickRespons.selectedRow(inComponent: 0)
-        pickerviewData["programId"] = resultt?.filterIOSResult?.itemPrograms?[0].workItemProgramId
-        pickerviewData["typeId"] = resultt?.filterIOSResult?.itemtype?[0].workItemTypeId
-        pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities?[0].workItemPriorityId
-        pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers?[0].userId
-        
-        self.pickProg.reloadAllComponents()
-        self.pickType.reloadAllComponents()
-        self.pickPerior.reloadAllComponents()
-        self.pickRespons.reloadAllComponents()
-    }
-    
-    @IBAction func btnSav(_ sender: UIButton) {
-    }
-    
-    
     
     
     

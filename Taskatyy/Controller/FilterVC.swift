@@ -167,9 +167,9 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetails" {
-            if let vc = segue.destination as? ShowResultVC {
+            if segue.destination is ShowResultVC {
 
-                vc.pickedData = pickerviewData
+                ShowResultVC.pickedData = pickerviewData
               //  navigationController?.pushViewController(vc, animated: true)
             }
         }

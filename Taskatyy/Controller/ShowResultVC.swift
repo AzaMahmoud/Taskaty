@@ -12,21 +12,25 @@ import UIKit
 
 class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    fileprivate let cellIdenttifier = "cell"
+    //fileprivate
+    let cellIdenttifier = "cell"
     @IBOutlet weak var collectionView: UICollectionView!
-    var pickedData : [String:Any] = [:]
+    static var pickedData : [String:Any] = [:]
     var searchWorkItemsResult = [SearchWorkItemsResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let progId = pickedData["programId"] as? Int
-        let typId = pickedData["typeId"] as? Int
-        let priorId = pickedData["periorityId"] as? Int
-        let statId = pickedData["statusId"] as? Int
-        let useId = pickedData["userId"] as? Int
+        let progId = ShowResultVC.pickedData["programId"] as? Int
+        let typId = ShowResultVC.pickedData["typeId"] as? Int
+        let priorId = ShowResultVC.pickedData["periorityId"] as? Int
+        let statId = ShowResultVC.pickedData["statusId"] as? Int
+        let useId = ShowResultVC.pickedData["userId"] as? Int
         
         API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
             
+            DispatchQueue.main.async
+                {
+                
             if success {
                 let r = Search(fromDictionary: data as! [String : Any])
                 self.searchWorkItemsResult = r.searchWorkItemsResult
@@ -34,7 +38,12 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 
                 print("shooo")
             }
-            else {return}
+            else {
+                print("ERROR")
+                return
+                
+                    }
+        }
         }
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -55,11 +64,14 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         return cell
         
         
-        guard let edit = collectionView.dequeueReusableCell(withReuseIdentifier:"Edit", for: indexPath) as? editVC
-            else { return UICollectionViewCell()}
+//        guard let edit = collectionView.dequeueReusableCell(withReuseIdentifier:"Edit", for: indexPath) as? editVC
+//            else { return UICollectionViewCell()}
         
         
-        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Edit", sender: nil)
     }
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "Edit" {
