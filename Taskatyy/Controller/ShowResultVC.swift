@@ -73,6 +73,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: "Edit", sender: nil)
     }
+    
 //    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 //        if segue.identifier == "Edit" {
 //            if let vc = segue.destination as? editVC {

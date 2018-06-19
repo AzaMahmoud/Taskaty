@@ -116,6 +116,9 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                         let r = Search(fromDictionary: data as! [String : Any])
                         self.searchWorkItemsResult = r.searchWorkItemsResult
                       //  txtBandNo.text = searchWorkItemsResult[IndexPath.row]
+                       // txtBandNo.text = self.searchWorkItemsResult[0].workItemId
+                        self.txtBandAdd.text = self.searchWorkItemsResult[0].workItemTitle
+                        self.txtBandDat.text = self.searchWorkItemsResult[1].workItemCreatedDate
 
                         print("filll")
                     }

@@ -266,16 +266,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2QC-1K-oId">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal">
-                                                        <color key="titleShadowColor" red="0.18529065149999999" green="0.25054355639999998" blue="0.99700586930000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="Ja3-lH-eak" kind="show" identifier="Edit" id="qMc-Le-H7Y"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                         </view>
                                         <connections>
@@ -290,6 +280,13 @@
                                     <outlet property="delegate" destination="vJv-pA-WBK" id="oy2-l1-4Bg"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-8V-tkv">
+                                <rect key="frame" x="0.0" y="64" width="414" height="124"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <segue destination="Ja3-lH-eak" kind="show" identifier="Edit" id="VJC-Fb-NBl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
