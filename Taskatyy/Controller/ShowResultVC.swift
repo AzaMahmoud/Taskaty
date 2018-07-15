@@ -58,7 +58,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? showResultCell
             else { return UICollectionViewCell()}
         cell.date.text = self.searchWorkItemsResult[indexPath.row].assignDate
-         cell.detail.text = self.searchWorkItemsResult[indexPath.row].workItemTitle
+        cell.detail.text = self.searchWorkItemsResult[indexPath.row].workItemTitle
         cell.developer.text = self.searchWorkItemsResult[indexPath.row].userAssigned
         
         return cell
@@ -66,23 +66,44 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         
 //        guard let edit = collectionView.dequeueReusableCell(withReuseIdentifier:"Edit", for: indexPath) as? editVC
 //            else { return UICollectionViewCell()}
-        
-        
     }
+    
+    static var text_Band_No = 0
+    static var text_Band_add = ""
+    static var text_Band_date = ""
+    static var text_Band_Delv_Dat = ""
+    static var text_Band_detail = ""
+    static var text_Status = ""
+    static var text_Sender = ""
+    static var pick_prog = ""
+    static var pick_typ = ""
+    static var pick_prior = ""
+    static var pick_user = ""
+    
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Edit", sender: nil)
+        performSegue(withIdentifier: "Edit", sender: indexPath.row)
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "Edit" {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "Edit" {
+            ShowResultVC.text_Band_No = self.searchWorkItemsResult[sender as! Int].workItemId ?? 0
+            ShowResultVC.text_Band_add = self.searchWorkItemsResult[sender as! Int].workItemTitle ?? ""
+            ShowResultVC.text_Band_date = self.searchWorkItemsResult[sender as! Int].workItemCreatedDate ?? "Date"
+            ShowResultVC.text_Band_Delv_Dat = self.searchWorkItemsResult[sender as! Int].assignDate ?? "Date"
+            ShowResultVC.text_Band_detail = self.searchWorkItemsResult[sender as! Int].workItemDetails ?? ""
+            ShowResultVC.text_Status = self.searchWorkItemsResult[sender as! Int].workItemStatus ?? ""
+            ShowResultVC.text_Sender = self.searchWorkItemsResult[sender as! Int].userCreated ?? ""
+            ShowResultVC.pick_prog = self.searchWorkItemsResult[sender as! Int].workItemProgram ?? ""
+            ShowResultVC.pick_typ = self.searchWorkItemsResult[sender as! Int].workItemType as! String
+            ShowResultVC.pick_prior = self.searchWorkItemsResult[sender as! Int].workItemPriority ?? ""
+            ShowResultVC.pick_user = self.searchWorkItemsResult[sender as! Int].userAssigned ?? "تخصيص"
 //            if let vc = segue.destination as? editVC {
-//
-//                vc.pickerviewData = pickedData
-//                //  navigationController?.pushViewController(vc, animated: true)
+//              vc.pickerviewData = pickedData
+//              navigationController?.pushViewController(vc, animated: true)
 //            }
-//        }
-//    }
+        }
+    }
 
 }
 

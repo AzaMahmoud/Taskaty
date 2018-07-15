@@ -34,9 +34,31 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var pickRespons: UIPickerView!
     
-  //  @IBOutlet weak var txtAssignDat: UITextField!
+    @IBOutlet weak var btnSpec: UIButton!
+    
+    @IBOutlet weak var btnDelv: UIButton!
+    @IBOutlet weak var btnProg: UIButton!
+    @IBOutlet weak var btnTyp: UIButton!
+    @IBOutlet weak var btnPrior: UIButton!
+    @IBOutlet weak var btnUser: UIButton!
+    
+    
+    
+    //  @IBOutlet weak var txtAssignDat: UITextField!
     
   //  @IBOutlet weak var txtDlvrDat: UITextField!
+    var text_Band_No = 0
+    var text_Band_add = ""
+    var text_Band_date = ""
+    var text_Band_Delv_Dat = ""
+    var text_Band_detail = ""
+    var text_Status = ""
+    var text_Sender = ""
+    var pick_prog = ""
+    var pick_typ = ""
+    var pick_prior = ""
+    var pick_user = ""
+    
     
     @IBAction func btnSpclDat(_ sender: UIButton) {
         DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
@@ -64,12 +86,33 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
     }
+    
+    @IBAction func btnProgPrsd(_ sender: UIButton) {
+        btnProg.isHidden = true
+        pickProg.isHidden = false
+    }
+    
+    @IBAction func btnTypPrsd(_ sender: UIButton) {
+        btnTyp.isHidden = true
+        pickType.isHidden = false
+    }
+    
+    @IBAction func btnPriorPrsd(_ sender: UIButton) {
+        btnPrior.isHidden = true
+        pickPerior.isHidden = false
+    }
+    
+    @IBAction func btnUsrPrsd(_ sender: UIButton) {
+        btnUser.isHidden = true
+        pickRespons.isHidden = false
+    }
+    
     var pickerviewData : [String : Any] = [:]
     var resultt : Filter?
     var pickedData : [String:Any] = ShowResultVC.pickedData
     var searchWorkItemsResult = [SearchWorkItemsResult]()
     
-    override func viewDidLoad() {
+    override func  viewDidLoad() {
         API.filter()
         super.viewDidLoad()
         // fill pickerViews
@@ -98,36 +141,91 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                     self.reloadPickerViews()
                 }
         }
-        }
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        // get data from previos screen
-        DispatchQueue.main.async {
+            self.pickProg.dataSource = self
+            self.pickProg.delegate = self
+            
+            
+            self.txtBandNo.text = "\(ShowResultVC.text_Band_No)"
+            self.txtBandAdd.text = ShowResultVC.text_Band_add
+            self.btnSpec.setTitle(ShowResultVC.text_Band_date , for: .normal)
+            self.btnDelv.setTitle(ShowResultVC.text_Band_Delv_Dat , for: .normal)
+            self.txtBandDat.text = ShowResultVC.text_Band_date
+            self.txtVBandDetail.text = ShowResultVC.text_Band_detail
+            self.txtBandStatus.text = ShowResultVC.text_Status
+            self.txtSender.text = ShowResultVC.text_Sender
+            self.btnProg.setTitle(ShowResultVC.pick_prog, for: .normal)
+            self.btnTyp.setTitle(ShowResultVC.pick_typ, for: .normal)
+            self.btnPrior.setTitle(ShowResultVC.pick_prior, for: .normal)
+            self.btnUser.setTitle(ShowResultVC.pick_user , for: .normal)
+            //  self.pickProg.selectedRow(inComponent: ShowResultVC.pick_prog)
+            
+            
+            //  self.pickProg.reloadAllComponents()
             API.filter()
             
-                let progId = self.pickedData["programId"] as? Int
-                let typId = self.pickedData["typeId"] as? Int
-                let priorId = self.pickedData["periorityId"] as? Int
-                let statId = self.pickedData["statusId"] as? Int
-                let useId = self.pickedData["userId"] as? Int
-                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
-
-                    if success {
-                        let r = Search(fromDictionary: data as! [String : Any])
-                        self.searchWorkItemsResult = r.searchWorkItemsResult
-                      //  txtBandNo.text = searchWorkItemsResult[IndexPath.row]
-                       // txtBandNo.text = self.searchWorkItemsResult[0].workItemId
-                        self.txtBandAdd.text = self.searchWorkItemsResult[0].workItemTitle
-                        self.txtBandDat.text = self.searchWorkItemsResult[1].workItemCreatedDate
-
-                        print("filll")
-                    }
-                    else {return}
+            
+            let progId = self.pickedData["programId"] as? Int
+            let typId = self.pickedData["typeId"] as? Int
+            let priorId = self.pickedData["periorityId"] as? Int
+            let statId = self.pickedData["statusId"] as? Int
+            let useId = self.pickedData["userId"] as? Int
+            API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
+                
+                if success {
+                    let r = Search(fromDictionary: data as! [String : Any])
+                    self.searchWorkItemsResult = r.searchWorkItemsResult
+                    //  txtBandNo.text = searchWorkItemsResult[IndexPath.row]
+                    // txtBandNo.text = self.searchWorkItemsResult[0].workItemId
+                    //                        self.txtBandAdd.text = self.searchWorkItemsResult[0].workItemTitle
+                    //                        self.txtBandDat.text = self.searchWorkItemsResult[1].workItemCreatedDate
+                    
+                    print("filll")
                 }
+                else {return}
+            }
         }
-//        // txtBandNo.text = self.searchWorkItemsResult[""]
-//
     }
+//    override func viewWillAppear(_ animated: Bool) {
+//        // get data from previos screen
+//        DispatchQueue.main.async {
+//            self.pickProg.dataSource = self
+//            self.pickProg.delegate = self
+//
+//            self.txtBandAdd.text = ShowResultVC.text_Band_add
+//            self.btnSpec.setTitle(ShowResultVC.text_Band_date, for: .normal)
+//            self.txtBandDat.text = ShowResultVC.text_Band_date
+//            self.txtVBandDetail.text = ShowResultVC.text_Band_detail
+//            self.txtBandStatus.text = ShowResultVC.text_Status
+//          //  self.pickProg.selectedRow(inComponent: ShowResultVC.pick_prog)
+//
+//
+//          //  self.pickProg.reloadAllComponents()
+//            API.filter()
+//
+//
+//                let progId = self.pickedData["programId"] as? Int
+//                let typId = self.pickedData["typeId"] as? Int
+//                let priorId = self.pickedData["periorityId"] as? Int
+//                let statId = self.pickedData["statusId"] as? Int
+//                let useId = self.pickedData["userId"] as? Int
+//                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
+//
+//                    if success {
+//                        let r = Search(fromDictionary: data as! [String : Any])
+//                        self.searchWorkItemsResult = r.searchWorkItemsResult
+//                      //  txtBandNo.text = searchWorkItemsResult[IndexPath.row]
+//                       // txtBandNo.text = self.searchWorkItemsResult[0].workItemId
+////                        self.txtBandAdd.text = self.searchWorkItemsResult[0].workItemTitle
+////                        self.txtBandDat.text = self.searchWorkItemsResult[1].workItemCreatedDate
+//
+//                        print("filll")
+//                    }
+//                    else {return}
+//                }
+//        }
+////        // txtBandNo.text = self.searchWorkItemsResult[""]
+////
+//    }
     
     
     func reloadPickerViews(){
@@ -153,6 +251,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return  1
     }
+    //selectedRow
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int
     {
@@ -171,11 +270,33 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
             
         else { return 0}
     }
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let selectedData = pickerView.selectedRow(inComponent: 0)
+        if (pickerView.tag == 1){
+            pickType.isHidden = true
+            pickerviewData["type"] = selectedData
+           let xx = resultt?.filterIOSResult?.itemtype[row].workItemType
+            print(xx)
+//            btnTyp.setTitle(xx, for: .normal)
+//            btnTyp.isHidden = false
+        }
+    }
+    
+    
+//    var aa = 0
+//    
+//    var ee = ""
+//    
+//    
+//    func aad() {
+//        ee = "\(  aa  )"
+//    }
+    
+    
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView.tag == 1){
             return resultt?.filterIOSResult?.itemPrograms?[row].workItemProgram ?? ""
-            
         }
         else if (pickerView.tag == 2){
             return resultt?.filterIOSResult?.itemtype?[row].workItemType ?? ""
