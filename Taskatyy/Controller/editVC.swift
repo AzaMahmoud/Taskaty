@@ -246,6 +246,27 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     @IBAction func btnSav(_ sender: UIButton) {
+        
+        let bandId = txtBandNo.text!
+        let titlee = txtBandAdd.text ?? " "
+        let detaill = txtVBandDetail.text ?? " "
+        let creator = txtSender.text ?? " "
+       // let assignTo = btnUser.title(for: .normal) ?? " "
+        let status = txtBandStatus.text ?? " "
+       // let periority = btnPrior.title(for: .normal) ?? " "
+        let endDat = btnDelv.title(for: .normal) ?? " "
+        //let program = btnProg.title(for: .normal) ?? " "
+        //let type = btnTyp.title(for: .normal) ?? " "
+        let progId = pickerviewData["programId"] as? Int
+        let typId = pickerviewData["typeId"] as? Int
+        let priorId = pickerviewData["periorityId"] as? Int
+        let userId = pickerviewData["userId"] as? Int
+        
+        
+        API.editBand(itemId: "\(bandId)", title: titlee, detail: detaill, creator: creator, assignTo: "\(userId!)", status: status, periority: "\(priorId!)", endDate: "\(endDat)", program: "\(progId!)", type: "\(typId!)")
+        { (error:Error?, success:Bool?, data:AnyObject?) in
+            print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
+        }
     }
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -273,26 +294,35 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let selectedData = pickerView.selectedRow(inComponent: 0)
         if (pickerView.tag == 1){
+            pickProg.isHidden = true
+           // pickerviewData["Prog"] = selectedData
+           let programm = resultt?.filterIOSResult?.itemPrograms[row].workItemProgram
+            print(programm!)
+            btnProg.setTitle(programm, for: .normal)
+            btnProg.isHidden = false
+        }
+        if (pickerView.tag == 2){
             pickType.isHidden = true
-            pickerviewData["type"] = selectedData
-           let xx = resultt?.filterIOSResult?.itemtype[row].workItemType
-            print(xx)
-//            btnTyp.setTitle(xx, for: .normal)
-//            btnTyp.isHidden = false
+            let typp = resultt?.filterIOSResult?.itemtype[row].workItemType
+            btnTyp.setTitle(typp, for: .normal)
+            btnTyp.isHidden = false
+        }
+        if (pickerView.tag == 3){
+            pickPerior.isHidden = true
+            let periorr = resultt?.filterIOSResult?.itemPriorities[row].workItemPriority
+            btnPrior.setTitle(periorr, for: .normal)
+            btnPrior.isHidden = false
+        }
+        if (pickerView.tag == 4){
+            pickRespons.isHidden = true
+            let responder = resultt?.filterIOSResult?.itemusers[row].userName
+            btnUser.setTitle(responder, for: .normal)
+            btnUser.isHidden = false
         }
     }
     
     
-//    var aa = 0
-//    
-//    var ee = ""
-//    
-//    
-//    func aad() {
-//        ee = "\(  aa  )"
-//    }
-    
-    
+
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if (pickerView.tag == 1){

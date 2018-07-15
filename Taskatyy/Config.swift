@@ -30,9 +30,15 @@ struct URLs {
     //var: "WorkItemTitle":"jh",WorkItemDetails":"ttttttttttttttttttttttttt","WorkItemAssignedTo":"0","WorkItemPriorityId":"2","AssignDate":"9-5-2018","WorkItemProgramId":"1","WorkItemTypeId":"1","photos":[{"photoasBase64" : "","photoName": "qq" }]
  
 
-
-
     static let AddBand = "http://167.114.174.82:16016/taskatyservice.svc/Addwork"
+
+    
+    // (EDIT BAND)
+    // POST, params:
+    // var: "workItemId":"1131","WorkItemTitle":"jh","WorkItemDetails":"ttttttttttttttttttttttttt","WorkItemCreatedBy":"2","WorkItemAssignedTo":"0","WorkItemStatusId":"1","WorkItemPriorityId":"2","EndDate":"4-8-2018","WorkItemProgramId":"1","WorkItemTypeId":"1"
+    
+    static let EditBand = "http://167.114.174.82:16016/taskatyservice.svc/updateitm"
+    
 
 
 }

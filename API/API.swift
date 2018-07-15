@@ -112,5 +112,25 @@ class API: NSObject {
                 
         }
     }
+    //"workItemId":"1131","WorkItemTitle":"jh","WorkItemDetails":"ttttttttttttttttttttttttt","WorkItemCreatedBy":"2","WorkItemAssignedTo":"0","WorkItemStatusId":"1","WorkItemPriorityId":"2","EndDate":"4-8-2018","WorkItemProgramId":"1","WorkItemTypeId":"1"
+    
+
+    
+    class func editBand(itemId: String, title: String, detail: String, creator: String, assignTo: String, status: String, periority: String, endDate: String, program: String, type: String, completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    {
+        let url = URLs.EditBand
+        let parameters = ["workItemId":itemId, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemCreatedBy":creator, "WorkItemAssignedTo":assignTo, "WorkItemStatusId":status, "WorkItemPriorityId":periority, "EndDate":endDate, "WorkItemProgramId":program, "WorkItemTypeId":type] as [String : AnyObject]
+        
+        let header = ["Content-Type" : "application/json"]
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+            .responseJSON { response in
+                switch response.result{
+                case .success(let value):
+                    completion(nil,true,value as AnyObject?)
+                case.failure(let error):
+                    completion(error as NSError?,false,nil)
+                }
+        }
+    }
 
 }
