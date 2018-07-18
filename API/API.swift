@@ -116,7 +116,7 @@ class API: NSObject {
     
 
     
-    class func editBand(itemId: String, title: String, detail: String, creator: String, assignTo: String, status: String, periority: String, endDate: String, program: String, type: String, completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    class func editBand(itemId: String, title: String, detail: String, creator: String, assignTo: String, status: String, periority: String, endDate: String, program: String,type: String, completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
     {
         let url = URLs.EditBand
         let parameters = ["workItemId":itemId, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemCreatedBy":creator, "WorkItemAssignedTo":assignTo, "WorkItemStatusId":status, "WorkItemPriorityId":periority, "EndDate":endDate, "WorkItemProgramId":program, "WorkItemTypeId":type] as [String : AnyObject]

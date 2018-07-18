@@ -201,18 +201,18 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         picker.dismiss(animated: true, completion: nil)
     }
     @IBAction func savBtn(_ sender: UIButton) {
-        let progId = pickerviewData["programId"] as? Int
-        let typId = pickerviewData["typeId"] as? Int
-        let priorId = pickerviewData["periorityId"] as? Int
-        let userId = pickerviewData["userId"] as? Int
+        let progId = pickerviewData["programId"] as? Int ?? 0
+        let typId = pickerviewData["typeId"] as? Int ?? 0
+        let priorId = pickerviewData["periorityId"] as? Int ?? 0
+        let userId = pickerviewData["userId"] as? Int ?? 0
         guard let titl = bndTitlTxt.text, !titl.isEmpty else {return}
         guard let detail = bndDetTxtV.text, !detail.isEmpty else {return}
         let dat = datBtn.title(for: .normal)
         
-        print(progId!)
-        print(typId!)
-        print(priorId!)
-        print(userId!)
+        print(progId)
+        print(typId)
+        print(priorId)
+        print(userId)
         print(titl)
         print(detail)
         print(dat!)
@@ -220,7 +220,7 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
 
         
         DispatchQueue.main.async {
-        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId!)", periority: "\(priorId!)", date: "\(dat!)", progrm: "\(progId!)", type: "\(typId!)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
+        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId)", periority: "\(priorId)", date: "\(dat!)", progrm: "\(progId)", type: "\(typId)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
             //if sucess { print("work Added")} else {return}
             print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
         }

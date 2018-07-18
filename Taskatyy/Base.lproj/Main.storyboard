@@ -427,8 +427,8 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAq-Q1-KaV">
-                                                <rect key="frame" x="24" y="322" width="265" height="30"/>
+                                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LAq-Q1-KaV">
+                                                <rect key="frame" x="141" y="378" width="265" height="30"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <nil key="textColor"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -457,7 +457,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOM-Mz-gcL">
-                                                <rect key="frame" x="34" y="214" width="265" height="35"/>
+                                                <rect key="frame" x="26" y="214" width="265" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="btnTypPrsd:" destination="fik-P8-Ezh" eventType="touchUpInside" id="f7p-Cp-Tag"/>
@@ -468,7 +468,7 @@
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             </pickerView>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OUH-sf-0YF">
-                                                <rect key="frame" x="34" y="266" width="265" height="35"/>
+                                                <rect key="frame" x="23" y="266" width="265" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="btnPriorPrsd:" destination="fik-P8-Ezh" eventType="touchUpInside" id="Xbz-AW-GiV"/>
@@ -525,10 +525,21 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kAt-8P-qf6">
-                                                <rect key="frame" x="34" y="583" width="265" height="35"/>
+                                                <rect key="frame" x="24" y="583" width="265" height="35"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <connections>
                                                     <action selector="btnUsrPrsd:" destination="fik-P8-Ezh" eventType="touchUpInside" id="7km-bq-ANu"/>
+                                                </connections>
+                                            </button>
+                                            <pickerView hidden="YES" tag="5" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SJN-Gw-SaN" userLabel="Pick Perior">
+                                                <rect key="frame" x="21" y="303" width="265" height="79"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                            </pickerView>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bd2-g2-BhL">
+                                                <rect key="frame" x="24" y="323" width="265" height="35"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="btnStusPrsd:" destination="fik-P8-Ezh" eventType="touchUpInside" id="mfd-fY-qul"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -563,11 +574,13 @@
                         <outlet property="btnPrior" destination="OUH-sf-0YF" id="BaI-GR-w7M"/>
                         <outlet property="btnProg" destination="arr-E3-eFO" id="nqT-WX-fle"/>
                         <outlet property="btnSpec" destination="ADm-Pz-F5y" id="Pg1-Fd-fyR"/>
+                        <outlet property="btnStatus" destination="bd2-g2-BhL" id="vJK-cP-MFb"/>
                         <outlet property="btnTyp" destination="DOM-Mz-gcL" id="w2b-xx-MTB"/>
                         <outlet property="btnUser" destination="kAt-8P-qf6" id="sVe-ty-ccz"/>
                         <outlet property="pickPerior" destination="PdW-lT-TeH" id="WMc-rs-Yki"/>
                         <outlet property="pickProg" destination="vjY-yd-ca7" id="CRa-MB-1Aj"/>
                         <outlet property="pickRespons" destination="LZU-bR-TR8" id="5g1-jZ-gZo"/>
+                        <outlet property="pickStatus" destination="SJN-Gw-SaN" id="dud-DC-VRJ"/>
                         <outlet property="pickType" destination="0fr-7j-NIk" id="AJx-pq-Vcg"/>
                         <outlet property="txtBandAdd" destination="rqQ-GI-qtp" id="rpL-vv-2za"/>
                         <outlet property="txtBandDat" destination="399-dl-jHe" id="n4Z-EU-3am"/>

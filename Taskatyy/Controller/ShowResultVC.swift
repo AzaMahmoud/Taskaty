@@ -75,10 +75,13 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     static var text_Band_detail = ""
     static var text_Status = ""
     static var text_Sender = ""
+    static var text_SenderId = ""
     static var pick_prog = ""
     static var pick_typ = ""
     static var pick_prior = ""
     static var pick_user = ""
+    static var pick_status = ""
+    
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -90,14 +93,16 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
             ShowResultVC.text_Band_No = self.searchWorkItemsResult[sender as! Int].workItemId ?? 0
             ShowResultVC.text_Band_add = self.searchWorkItemsResult[sender as! Int].workItemTitle ?? ""
             ShowResultVC.text_Band_date = self.searchWorkItemsResult[sender as! Int].workItemCreatedDate ?? "Date"
-            ShowResultVC.text_Band_Delv_Dat = self.searchWorkItemsResult[sender as! Int].assignDate ?? "Date"
+            ShowResultVC.text_Band_Delv_Dat = self.searchWorkItemsResult[sender as! Int].endDate as? String ?? "Date"
             ShowResultVC.text_Band_detail = self.searchWorkItemsResult[sender as! Int].workItemDetails ?? ""
             ShowResultVC.text_Status = self.searchWorkItemsResult[sender as! Int].workItemStatus ?? ""
             ShowResultVC.text_Sender = self.searchWorkItemsResult[sender as! Int].userCreated ?? ""
-            ShowResultVC.pick_prog = self.searchWorkItemsResult[sender as! Int].workItemProgram ?? ""
-            ShowResultVC.pick_typ = self.searchWorkItemsResult[sender as! Int].workItemType as! String
-            ShowResultVC.pick_prior = self.searchWorkItemsResult[sender as! Int].workItemPriority ?? ""
+            ShowResultVC.text_SenderId = "\(self.searchWorkItemsResult[sender as! Int].workItemCreatedBy ?? 0)"
+            ShowResultVC.pick_prog = self.searchWorkItemsResult[sender as! Int].workItemProgram ?? "البرنامج"
+            ShowResultVC.pick_typ = self.searchWorkItemsResult[sender as! Int].workItemType as? String ?? "النوع"
+            ShowResultVC.pick_prior = self.searchWorkItemsResult[sender as! Int].workItemPriority ?? "الاهمية"
             ShowResultVC.pick_user = self.searchWorkItemsResult[sender as! Int].userAssigned ?? "تخصيص"
+            ShowResultVC.pick_status = self.searchWorkItemsResult[sender as! Int].workItemStatus ?? ""
 //            if let vc = segue.destination as? editVC {
 //              vc.pickerviewData = pickedData
 //              navigationController?.pushViewController(vc, animated: true)
