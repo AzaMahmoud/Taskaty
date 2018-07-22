@@ -23,7 +23,7 @@ class LoginVC: UIViewController {
     @IBAction func loginPressed(_ sender: Any) {
         guard let user = userNameTF.text, !user.isEmpty else {return}
         guard let pass = passWordTF.text, !pass.isEmpty else {return}
-        API.login(user: user, pass: pass) { (error:Error?,success:Bool) in
+        API.login(user: user, pass: pass, assid: "4") { (error:Error?,success:Bool) in
             if success {
                 print("ZZZZZZZZZZ")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);

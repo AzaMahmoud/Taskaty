@@ -9,8 +9,8 @@
 import Foundation
 
 struct URLs {
-    //(LOG IN)  POST , params : "userName", "password"
-    static let Login = "http://167.114.174.82:1717/TaskatyService.svc/Login"
+    //(LOG IN)  POST , params : "userName", "password", "assid":"4"
+    static let Login = "http://167.114.174.82:16016/TaskatyService.svc/Login"
     
     //(SEARCH)     GET
     static let Filter = "http://167.114.174.82:16016/taskatyservice.svc/filterIOS"
@@ -23,7 +23,9 @@ struct URLs {
     // var: "workItemAssignedTo":"0","workItemStatusId":"0","workItemPriorityId":"0","workItemProgramId":"0","workItemTypeId":"1"
     static let Show = "http://167.114.174.82:16016/taskatyservice.svc/SearchWorkItems"
 
+    
 
+    
     //(ADD BAND)
     //POST, PARAMS :
     //constants : "WorkItemCreatedBy":"2","WorkItemStatusId":"1"

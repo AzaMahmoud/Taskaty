@@ -13,6 +13,11 @@ import SwiftyJSON
 class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
 
+    var pickerviewData : [String : Any] = [:]
+    static var hidenBnd = ""
+    static var LateBand = ""
+
+    
     @IBOutlet weak var picker1: UIPickerView!
     
     @IBOutlet weak var picker2: UIPickerView!
@@ -22,11 +27,14 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     @IBOutlet weak var picker4: UIPickerView!
     
     @IBOutlet weak var picker5: UIPickerView!
-   
+    
+    @IBOutlet weak var closBndSwtch: UISwitch!
+    
+    @IBOutlet weak var latBndSwttch: UISwitch!
+    
     @IBAction func showBtnPressed(_ sender: Any) {
         
     }
-    var pickerviewData : [String : Any] = [:]
     
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -145,6 +153,27 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
              }
         }
     }
+    
+    @IBAction func hidClosdSwtchPrsd(_ sender: Any) {
+        if closBndSwtch.isOn {
+            FilterVC.hidenBnd = "1"
+        }
+        else{
+            FilterVC.hidenBnd = "0"
+        }
+    }
+    
+    @IBAction func latBandSwtchPrsd(_ sender: Any) {
+        if latBndSwttch.isOn {
+            FilterVC.LateBand = "1"
+        }
+        else {
+            FilterVC.LateBand = "0"
+        }
+    }
+    
+    
+    
     func reloadPickerViews(){
 
         self.picker1.selectedRow(inComponent: 0)

@@ -220,7 +220,7 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
 
         
         DispatchQueue.main.async {
-        API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId)", periority: "\(priorId)", date: "\(dat!)", progrm: "\(progId)", type: "\(typId)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
+            API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId)", periority: "\(priorId)", date: "\(dat!)", catId: "4", progrm: "\(progId)", type: "\(typId)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
             //if sucess { print("work Added")} else {return}
             print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
         }

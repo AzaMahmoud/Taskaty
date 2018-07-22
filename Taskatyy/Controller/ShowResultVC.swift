@@ -25,8 +25,10 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         let priorId = ShowResultVC.pickedData["periorityId"] as? Int
         let statId = ShowResultVC.pickedData["statusId"] as? Int
         let useId = ShowResultVC.pickedData["userId"] as? Int
+        let latItm = FilterVC.LateBand
+        let hidnItem = FilterVC.hidenBnd
         
-        API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
+        API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: latItm, HideClosed: hidnItem, catid: "4") { (error:Error?,success:Bool,data:AnyObject?) in
             
             DispatchQueue.main.async
                 {
@@ -81,6 +83,11 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     static var pick_prior = ""
     static var pick_user = ""
     static var pick_status = ""
+    static var pick_progId = 0
+    static var pick_typId = 0
+    static var pick_priorId = 0
+    static var pick_userId = 0
+    static var pick_statusId = 0
     
     
     
@@ -103,6 +110,11 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
             ShowResultVC.pick_prior = self.searchWorkItemsResult[sender as! Int].workItemPriority ?? "الاهمية"
             ShowResultVC.pick_user = self.searchWorkItemsResult[sender as! Int].userAssigned ?? "تخصيص"
             ShowResultVC.pick_status = self.searchWorkItemsResult[sender as! Int].workItemStatus ?? ""
+            ShowResultVC.pick_progId = self.searchWorkItemsResult[sender as! Int].workItemProgramId ?? 0
+            ShowResultVC.pick_typId = (self.searchWorkItemsResult[sender as! Int].workItemTypeId as? Int) ?? 0
+            ShowResultVC.pick_priorId = self.searchWorkItemsResult[sender as! Int].workItemPriorityId ?? 0
+            ShowResultVC.pick_userId = self.searchWorkItemsResult[sender as! Int].workItemCreatedBy ?? 0
+            ShowResultVC.pick_statusId = self.searchWorkItemsResult[sender as! Int].workItemStatusId ?? 0
 //            if let vc = segue.destination as? editVC {
 //              vc.pickerviewData = pickedData
 //              navigationController?.pushViewController(vc, animated: true)

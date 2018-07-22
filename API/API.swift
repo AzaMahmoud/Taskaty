@@ -12,11 +12,11 @@ import SwiftyJSON
 
 class API: NSObject {
     
-    class func login(user: String, pass: String, completion: @escaping (_ error:Error?, _ success:Bool)->Void)
+    class func login(user: String, pass: String, assid: String, completion: @escaping (_ error:Error?, _ success:Bool)->Void)
     {
         
         let url = URLs.Login
-        let parameters = ["userName":user, "password":pass]
+        let parameters = ["userName":user, "password":pass, "assid":assid]
         let header = ["Content-Type" : "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
             .responseJSON { response in
@@ -69,13 +69,12 @@ class API: NSObject {
         }
     }
     
-    
-    
-    class func show(creator: String, item: String, pgIndex: String, pgsize: String, asignTo: String, status: String, periority: String, program: String, type:String, user: String, lateItem: String , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)
+
+    class func show(creator: String, item: String, pgIndex: String, pgsize: String, asignTo: String, status: String, periority: String, program: String, type:String, user: String, lateItem: String, HideClosed:String, catid:String , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)
         ->Void)
     {
         let url = URLs.Show
-        let parameters = ["workItemCreatedBy":creator, "workItemId":item, "pageIndex":pgIndex, "pageSize":pgsize, "workItemAssignedTo":asignTo, "workItemStatusId":status, "workItemPriorityId":periority, "workItemProgramId":program, "workItemTypeId":type, "userId":user, "lateItems":lateItem] as [String:AnyObject]
+        let parameters = ["workItemCreatedBy":creator, "workItemId":item, "pageIndex":pgIndex, "pageSize":pgsize, "workItemAssignedTo":asignTo, "workItemStatusId":status, "workItemPriorityId":periority, "workItemProgramId":program, "workItemTypeId":type, "userId":user, "lateItems":lateItem, "HideClosed":HideClosed, "catid":catid] as [String:AnyObject]
         
         let header = ["Content-Type" : "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
@@ -91,13 +90,13 @@ class API: NSObject {
         }
     }
     
+
     
     
-    
-    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, progrm: String, type: String, photos: [String:Any] , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, catId: String, progrm: String, type: String, photos: [String:Any] , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
     {
         let url = URLs.AddBand
-        let parameters = ["WorkItemCreatedBy":creator, "WorkItemStatusId":status, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemAssignedTo":assignTo, "WorkItemPriorityId":periority, "AssignDate":date, "WorkItemProgramId":progrm, "WorkItemTypeId":type, "photos":photos] as [String:AnyObject]
+        let parameters = ["WorkItemCreatedBy":creator, "WorkItemStatusId":status, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemAssignedTo":assignTo, "WorkItemPriorityId":periority, "AssignDate":date, "CatID":catId , "WorkItemProgramId":progrm, "WorkItemTypeId":type, "photos":photos] as [String:AnyObject]
         
         let header = ["Content-Type" : "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
@@ -114,12 +113,13 @@ class API: NSObject {
     }
     //"workItemId":"1131","WorkItemTitle":"jh","WorkItemDetails":"ttttttttttttttttttttttttt","WorkItemCreatedBy":"2","WorkItemAssignedTo":"0","WorkItemStatusId":"1","WorkItemPriorityId":"2","EndDate":"4-8-2018","WorkItemProgramId":"1","WorkItemTypeId":"1"
     
-
+   
     
-    class func editBand(itemId: String, title: String, detail: String, creator: String, assignTo: String, status: String, periority: String, endDate: String, program: String,type: String, completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    
+    class func editBand(itemId: String, title: String, detail: String, creator: String, assignTo: String, status: String, periority: String, endDate: String, program: String,type: String, catId: String, completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
     {
         let url = URLs.EditBand
-        let parameters = ["workItemId":itemId, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemCreatedBy":creator, "WorkItemAssignedTo":assignTo, "WorkItemStatusId":status, "WorkItemPriorityId":periority, "EndDate":endDate, "WorkItemProgramId":program, "WorkItemTypeId":type] as [String : AnyObject]
+        let parameters = ["workItemId":itemId, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemCreatedBy":creator, "WorkItemAssignedTo":assignTo, "WorkItemStatusId":status, "WorkItemPriorityId":periority, "EndDate":endDate, "WorkItemProgramId":program, "WorkItemTypeId":type, "catId":catId] as [String : AnyObject]
         
         let header = ["Content-Type" : "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
