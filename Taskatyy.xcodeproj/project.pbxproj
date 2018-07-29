@@ -21,6 +21,12 @@
 		CE19A2D620835DF000B686BE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D520835DF000B686BE /* API.swift */; };
 		CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D82083649B00B686BE /* String-Exensions.swift */; };
 		CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D9990208293BC00931E0A /* TaskatyyTests.swift */; };
+		CE364A7E21074E64003C60BB /* AttachVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A7D21074E64003C60BB /* AttachVC.swift */; };
+		CE364A8221075911003C60BB /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8121075911003C60BB /* HistoryVC.swift */; };
+		CE364A8421075BE8003C60BB /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8321075BE8003C60BB /* ChatVC.swift */; };
+		CE364A87210DCEEB003C60BB /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A86210DCEEB003C60BB /* history.swift */; };
+		CE364A89210DCEF8003C60BB /* IHistoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A88210DCEF8003C60BB /* IHistoryResult.swift */; };
+		CE364A8B210DD44F003C60BB /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8A210DD44F003C60BB /* HistoryCell.swift */; };
 		CE58DE2F209CDC280087BA6F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE2E209CDC280087BA6F /* Search.swift */; };
 		CE58DE31209CDC430087BA6F /* SearchWorkItemsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */; };
 		CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */; };
@@ -80,6 +86,12 @@
 		CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskatyyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D9990208293BC00931E0A /* TaskatyyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskatyyTests.swift; sourceTree = "<group>"; };
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE364A7D21074E64003C60BB /* AttachVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachVC.swift; sourceTree = "<group>"; };
+		CE364A8121075911003C60BB /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
+		CE364A8321075BE8003C60BB /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
+		CE364A86210DCEEB003C60BB /* history.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
+		CE364A88210DCEF8003C60BB /* IHistoryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IHistoryResult.swift; sourceTree = "<group>"; };
+		CE364A8A210DD44F003C60BB /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		CE58DE2E209CDC280087BA6F /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWorkItemsResult.swift; sourceTree = "<group>"; };
 		CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
@@ -229,6 +241,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CE364A85210DCE6D003C60BB /* history */ = {
+			isa = PBXGroup;
+			children = (
+				CE364A86210DCEEB003C60BB /* history.swift */,
+				CE364A88210DCEF8003C60BB /* IHistoryResult.swift */,
+			);
+			path = history;
+			sourceTree = "<group>";
+		};
 		CE58DE25209BB8290087BA6F /* show */ = {
 			isa = PBXGroup;
 			children = (
@@ -277,6 +298,10 @@
 				CE7D2ED620B5703300528F1A /* sideMenuVC.swift */,
 				CE7D2EB920B165E000528F1A /* editVC.swift */,
 				CE7D2ED820B5773E00528F1A /* addItemVC.swift */,
+				CE364A7D21074E64003C60BB /* AttachVC.swift */,
+				CE364A8121075911003C60BB /* HistoryVC.swift */,
+				CE364A8321075BE8003C60BB /* ChatVC.swift */,
+				CE364A8A210DD44F003C60BB /* HistoryCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -284,6 +309,7 @@
 		CEED0054208561330033E663 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE364A85210DCE6D003C60BB /* history */,
 				CE19958D20B83A4E00A90B09 /* filter */,
 				CE58DE25209BB8290087BA6F /* show */,
 				CE19959E20B83EDB00A90B09 /* filterGen */,
@@ -466,6 +492,7 @@
 				CE58DE2F209CDC280087BA6F /* Search.swift in Sources */,
 				CE7D2ED720B5703300528F1A /* sideMenuVC.swift in Sources */,
 				CE1995B620B8412700A90B09 /* ItemPrograms.swift in Sources */,
+				CE364A8B210DD44F003C60BB /* HistoryCell.swift in Sources */,
 				CE7D2ECA20B2C6E400528F1A /* Itemtype.swift in Sources */,
 				CE7D2EC720B2C6E400528F1A /* FilterIOSResult.swift in Sources */,
 				CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */,
@@ -474,14 +501,19 @@
 				CE1995BA20B8412700A90B09 /* Status.swift in Sources */,
 				CE7D2EBD20B178AD00528F1A /* RoundButton.swift in Sources */,
 				CE7D2ECC20B2C6E400528F1A /* ItemProgram.swift in Sources */,
+				CE364A87210DCEEB003C60BB /* history.swift in Sources */,
 				CE7D2ED920B5773E00528F1A /* addItemVC.swift in Sources */,
+				CE364A89210DCEF8003C60BB /* IHistoryResult.swift in Sources */,
 				CEED0066208561330033E663 /* Config.swift in Sources */,
 				CE7D2EC820B2C6E400528F1A /* Itemuser.swift in Sources */,
 				CE1995B520B8412700A90B09 /* FilterResultt.swift in Sources */,
+				CE364A8221075911003C60BB /* HistoryVC.swift in Sources */,
 				CE7D2EBF20B17BC100528F1A /* RoundTextField.swift in Sources */,
 				CEED007B208561330033E663 /* AppDelegate.swift in Sources */,
 				CE1995B720B8412700A90B09 /* filterGen.swift in Sources */,
 				CE163F82208CA3DA007C01A7 /* ShowResultVC.swift in Sources */,
+				CE364A8421075BE8003C60BB /* ChatVC.swift in Sources */,
+				CE364A7E21074E64003C60BB /* AttachVC.swift in Sources */,
 				CE1995B920B8412700A90B09 /* Itemusers.swift in Sources */,
 				CE7D2EC920B2C6E400528F1A /* Filter.swift in Sources */,
 				CE7D2EBA20B165E000528F1A /* editVC.swift in Sources */,

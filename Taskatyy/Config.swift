@@ -43,6 +43,14 @@ struct URLs {
     
 
 
+    
+    
+    // (ATTACH)
+    // GET
+   // static var bndNo = "\(ShowResultVC.text_Band_No)"
+
+    static var changeBand = "http://167.114.174.82:16016/taskatyservice.svc/IHistory?workItemId=\(ShowResultVC.text_Band_No)"
+
 }
 
 

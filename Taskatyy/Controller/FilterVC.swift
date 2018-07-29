@@ -138,6 +138,11 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         picker4.dataSource = self
         picker5.delegate = self
         picker5.dataSource = self
+        
+        
+        FilterVC.hidenBnd = "1"
+        FilterVC.LateBand = "1"
+        
         let url = URLs.Filter
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON { response in
@@ -146,12 +151,16 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                 case .failure(let error):
                     print(error)
                 case .success( _):
-                   
+
              let dic = response.result.value as! [String:Any]
                     self.resultt = Filter(fromDictionary: dic)
                     self.reloadPickerViews()
              }
         }
+//        API.filter()
+//      //  let dic = result.value as! [String:Any]
+//                            self.resultt = Filter(fromDictionary: )
+//                            self.reloadPickerViews()
     }
     
     @IBAction func hidClosdSwtchPrsd(_ sender: Any) {
