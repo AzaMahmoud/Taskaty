@@ -135,17 +135,28 @@ class API: NSObject {
 
     
     
-    class func changeBand(_: (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    class func changeBand(completion: @escaping(_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
     {
         let url = URLs.changeBand
-        Alamofire.request(url, method: .get,  headers: nil)
+        let header = ["Content-Type" : "application/json"]
+
+        Alamofire.request(url, method: .get,  encoding: JSONEncoding.default, headers: header)
             .responseJSON { response in
-                if response.result.isSuccess {
-                    _ = JSON(response.result.value!)
+                switch response.result{
+                case .success(let value):
+                    completion(nil,true,value as AnyObject?)
+                case.failure(let error):
+                    completion(error as NSError?,false,nil)
                 }
-                else {
-                    print ("Error\(String(describing: response.result.error))")
-                }
+
+//                if response.result.isSuccess {
+//                    let data = JSON(response.result.value!)
+//                    completion(nil,true,data as AnyObject?)
+//                    print ("\(data)")
+//                }
+//                else {
+//                    print ("Error\(String(describing: response.result.error))")
+//                }
         }
     }
     

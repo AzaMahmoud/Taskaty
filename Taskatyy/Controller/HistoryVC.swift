@@ -30,20 +30,22 @@ class HistoryVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
     }
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("wwwwwwwwww")
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+
         API.changeBand()
             { (error:Error?,success:Bool,data:AnyObject?) in
-                
+                print("sssssssssss")
                 DispatchQueue.main.async
                     {
-                        
                         if success {
                             let r = history(fromDictionary: data as! [String : Any])
                             self.historyResult = r.iHistoryResult
                             self.collectionView.reloadData()
-                            
                             print("history")
                         }
                         else {
@@ -54,13 +56,8 @@ class HistoryVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                 }
         }
         
-        
-        
-        
-        
-        collectionView.dataSource = self
-        collectionView.delegate = self
 
+        
     }
 
    

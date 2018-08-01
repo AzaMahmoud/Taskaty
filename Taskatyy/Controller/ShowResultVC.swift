@@ -117,6 +117,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
 //              vc.pickerviewData = pickedData
 //              navigationController?.pushViewController(vc, animated: true)
 //            }
+            print("ddd")
         }
     }
 
