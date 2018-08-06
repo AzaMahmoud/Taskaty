@@ -8,7 +8,9 @@ target 'Taskatyy' do
     # Pods for Taskatyy
     pod 'SwiftyJSON'
     pod 'Alamofire'
+    pod 'AlamofireImage'
     pod 'IQKeyboardManagerSwift'
+    pod 'NVActivityIndicatorView'
     
     target 'TaskatyyTests' do
         inherit! :search_paths

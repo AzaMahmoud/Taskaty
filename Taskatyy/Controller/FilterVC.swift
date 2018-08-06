@@ -139,11 +139,14 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         picker5.delegate = self
         picker5.dataSource = self
         
+        closBndSwtch.isOn = false
+        latBndSwttch.isOn = false
         
-        FilterVC.hidenBnd = "1"
-        FilterVC.LateBand = "1"
+        FilterVC.hidenBnd = "0"
+        FilterVC.LateBand = "0"
         
         let url = URLs.Filter
+        startLoading()
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON { response in
                 switch response.result
@@ -154,6 +157,7 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 
              let dic = response.result.value as! [String:Any]
                     self.resultt = Filter(fromDictionary: dic)
+                    self.stopLoading()
                     self.reloadPickerViews()
              }
         }

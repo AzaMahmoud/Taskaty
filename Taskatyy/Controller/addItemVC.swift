@@ -20,7 +20,10 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
     @IBOutlet weak var pickFor: UIPickerView!
     @IBOutlet weak var datBtn: UIButton!
     
-    @IBOutlet weak var uiImge: UIImageView!
+    @IBOutlet weak var uiCollecionImg: UICollectionView!
+    
+    var images = [UIImage]()
+    
     @IBAction func datPick(_ sender: UIButton) {
                 DatePickerDialog().show("DatePicker", doneButtonTitle: "Done", cancelButtonTitle: "Cancel", datePickerMode: .date) {
                     (date) -> Void in
@@ -113,8 +116,10 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         pickPerior.dataSource = self
         pickFor.delegate = self
         pickFor.dataSource = self
-        
+        uiCollecionImg.delegate = self
+        uiCollecionImg.dataSource = self
         let url = URLs.Filter
+        startLoading()
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON {
                 response in
@@ -125,6 +130,7 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
                 case .success( _):
                     let dic = response.result.value as! [String:Any]
                     self.resultt = Filter(fromDictionary: dic)
+                    self.stopLoading()
                     self.reloadPickerView()
                 }
         }
@@ -142,45 +148,33 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         didSet {
             guard let pic = pickedImage else {return}
             self.imagess.append(pic)
-            self.uiImge.image = pic
+           // self.uiImge.image = pic
         }}
     
     var imagess = [UIImage]()
     var Myimage: [String: Any] = [:]
 
     
-    @IBAction func addImgBtn(_ sender: UIButton) {
-        guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.allowsEditing = true
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-    }
     @objc public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         
         
        
         if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.pickedImage = originImg
-            //    submit(image: image)
-       // let imageData = UIImagePNGRepresentation(editedImg)!
-        //imageData.base64EncodedString(options: Data.Base64EncodingOptions.lineLength64Characters)
-//            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else { return }
-            //Convert Image to Data
-            //guard
+            images.append(originImg)
                 let imageDataa = UIImageJPEGRepresentation(originImg, 0.8) //else { return }
-            let imageData = imageDataa?.base64EncodedString()
+            let imageData = imageDataa?.base64EncodedString(options: .lineLength64Characters)
+            
             //Set Image Name
             let imageName =
-            "\(Int(Date.timeIntervalSinceReferenceDate * 1000)).jpg"
+            "\(Int(Date.timeIntervalSinceReferenceDate * 1000)).JPEG"
             // MARK: To Do - Add Iamge Name and data to Dictionary//
             
             Myimage = [
-                "photoasBase64" : "\(imageData!)",
+                "photoasBase64" : imageData ?? "",
                 "photoName" :"\(imageName)"
                 ]
-//            Myimage = [
+            //            Myimage = [ ###########
 //                "photoasBase64" : imageData,
 //                "photoName" :imageName
 //            ]
@@ -188,6 +182,8 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
            // print(imageData)
           //  ProfileImage.image = UIImage(data: imageName)
         //print (imageData)
+            
+            uiCollecionImg.reloadData()
         
         }
             
@@ -216,16 +212,62 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         print(titl)
         print(detail)
         print(dat!)
-       // print(self.Myimage)
-
         
+        startLoading()
         DispatchQueue.main.async {
             API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId)", periority: "\(priorId)", date: "\(dat!)", catId: "4", progrm: "\(progId)", type: "\(typId)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
-            //if sucess { print("work Added")} else {return}
-            print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
+                //if sucess { print("work Added")} else {return}
+                self.stopLoading()
+                self.showAlert("تم اضافه البند بنجاح","تم بنجاح")
+                print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
+            }
+            
         }
-    
-    }
     }
     
+    
+}
+
+extension addItemVC : UICollectionViewDelegate , UICollectionViewDataSource{
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return images.count + 1
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = uiCollecionImg.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
+        if indexPath.row == 0 {
+            cell.image.image = UIImage(named: "")
+            cell.addImage.isHidden = false
+            cell.removeImage.isHidden = true
+            cell.addImage.image = #imageLiteral(resourceName: "addImage")
+        }else{
+            cell.image.image = images[indexPath.row - 1]
+            cell.addImage.isHidden = true
+            cell.removeImage.isHidden = false
+            cell.removeImage.tag = indexPath.row
+            cell.removeImage.addTarget(self,action: #selector(removeImage), for: .touchUpInside)
+        }
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+            guard UIImagePickerController.isSourceTypeAvailable(.photoLibrary) else { return }
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.allowsEditing = true
+            imagePickerController.sourceType = .photoLibrary
+            imagePickerController.delegate = self
+            present(imagePickerController, animated: true, completion: nil)
+
+        }
+    }
+    
+    @objc func removeImage(_ sender: UIButton){
+        print(images.count)
+        print(sender.tag)
+        
+        self.images.remove(at: sender.tag - 1)
+        self.uiCollecionImg.reloadData()
+        
+    }
 }

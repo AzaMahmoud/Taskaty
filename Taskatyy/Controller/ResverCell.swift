@@ -12,12 +12,12 @@ class ResverCell: UITableViewCell {
 
     
     @IBOutlet weak var view: UIView!
-    @IBOutlet weak var messageReciver: UITextView!
+    @IBOutlet weak var messageReciver: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        view.layer.cornerRadius = view.frame.size.height/2
+        view.layer.cornerRadius = 10
         view.clipsToBounds = true
         // Initialization code
     }

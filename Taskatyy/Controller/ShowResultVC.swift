@@ -25,7 +25,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
         let useId = ShowResultVC.pickedData["userId"] as? Int
         let latItm = FilterVC.LateBand
         let hidnItem = FilterVC.hidenBnd
-        
+        startLoading()
         API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: latItm, HideClosed: hidnItem, catid: "4") { (error:Error?,success:Bool,data:AnyObject?) in
             
             DispatchQueue.main.async
@@ -34,6 +34,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
             if success {
                 let r = Search(fromDictionary: data as! [String : Any])
                 self.searchWorkItemsResult = r.searchWorkItemsResult
+                self.stopLoading()
                 self.collectionView.reloadData()
                 
                 print("shooo")

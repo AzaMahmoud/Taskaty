@@ -13,12 +13,13 @@ class sideMenuVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
 
     @IBAction func Exit(_ sender: UIButton) {
+        UserStore.removeUser()
         let storyboard = UIStoryboard(name: "Main", bundle: nil);
-        let vc = storyboard.instantiateViewController(withIdentifier: "logIn") ;
-        self.present(vc, animated: true, completion: nil);
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginVC")
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil);
     }
 }

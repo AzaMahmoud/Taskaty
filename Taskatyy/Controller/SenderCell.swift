@@ -11,10 +11,10 @@ import UIKit
 class SenderCell: UITableViewCell {
 
     @IBOutlet weak var view: UIView!
-    @IBOutlet weak var messageSender: UITextView!
+    @IBOutlet weak var messageSender: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
-        view.layer.cornerRadius = view.frame.size.height/2
+        view.layer.cornerRadius = 10
         view.clipsToBounds = true
         
         // Initialization code

@@ -17,8 +17,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
           IQKeyboardManager.shared.enable = true
-        
+        checkLogin()
         return true
+    }
+    
+    func checkLogin(){
+        
+        if UserStore.loadUser()?.id != nil {
+            let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterVC") as! FilterVC
+            let nav = UINavigationController(rootViewController: viewController)
+            window?.rootViewController = nav
+        }else{
+            let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
+            let nav = UINavigationController(rootViewController: viewController)
+            window?.rootViewController = nav
+
+        }
+        
     }
     
     

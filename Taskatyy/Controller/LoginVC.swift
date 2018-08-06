@@ -21,11 +21,20 @@ class LoginVC: UIViewController {
 
     
     @IBAction func loginPressed(_ sender: Any) {
-        guard let user = userNameTF.text, !user.isEmpty else {return}
-        guard let pass = passWordTF.text, !pass.isEmpty else {return}
+        
+        guard let user = userNameTF.text, !user.isEmpty else {
+            showAlert("برجاء اكمال البيانات", "تحذير")
+            return
+        }
+        guard let pass = passWordTF.text, !pass.isEmpty else {
+            showAlert("برجاء اكمال البيانات", "تحذير")
+                return
+        }
+        startLoading()
         API.login(user: user, pass: pass, assid: "4") { (error:Error?,success:Bool) in
             if success {
                 print("ZZZZZZZZZZ")
+                self.stopLoading()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);
                 let vc = storyboard.instantiateViewController(withIdentifier: "mainVc") ;
                 self.present(vc, animated: true, completion: nil);
@@ -34,10 +43,7 @@ class LoginVC: UIViewController {
                 return
             }
         }
-   
-             
-        
-        }
+    }
     
 }
 

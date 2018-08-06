@@ -33,7 +33,7 @@ class ChatVC: UIViewController , UITextViewDelegate{
         message.layer.cornerRadius = 5
         message.clipsToBounds = true
 
-
+        startLoading()
         API.loadChat(itemId: "10723", completion: { (error:Error?,success:Bool,data:AnyObject?) in
             DispatchQueue.main.async
                 {
@@ -45,6 +45,7 @@ class ChatVC: UIViewController , UITextViewDelegate{
                             self.chatResultemp.append(chat.chatMessage ?? "")
                             }
                         })
+                        self.stopLoading()
                         self.tableView.reloadData()
                         print("chat")
                     }

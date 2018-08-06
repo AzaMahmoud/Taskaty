@@ -21,7 +21,8 @@ class API: NSObject {
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
             .responseJSON { response in
                 if response.result.isSuccess{
-                    // let log = JSON(response.result.value)
+                    let log = JSON(response.result.value)
+                    UserStore.saveUser(User(log["LoginResult"]))
                     print ("Login succeeded")
                     // print(log)
                     completion(nil,true)
@@ -105,7 +106,6 @@ class API: NSObject {
                 case .success (let value):
                     completion(nil,true,value as AnyObject?)
                 case .failure(let error):
-                    
                     completion(error as NSError?,false,nil)
                 }
                 

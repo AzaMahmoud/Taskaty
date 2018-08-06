@@ -293,10 +293,13 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         let userId = responderId ?? ShowResultVC.pick_userId
         let statussId = statusId ?? ShowResultVC.pick_statusId
          print ("\(bandId)", titlee,detaill,creator, "\(userId)","\(statussId)","\(priorId)", "\(endDate)","\(progId)","\(typId)")
-
+        startLoading()
         API.editBand(itemId: "\(bandId)", title: titlee, detail: detaill, creator: creator, assignTo: "\(userId)", status: "\(statussId)", periority: "\(priorId)", endDate: "\(endDate)", program: "\(progId)",type: "\(typId)", catId: "4")
         
         { (error:Error?, success:Bool?, data:AnyObject?) in
+            self.stopLoading()
+            self.showAlert("تم اضافه البند بنجاح","تم بنجاح")
+
             print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
         }
     }

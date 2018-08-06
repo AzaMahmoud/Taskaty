@@ -25,6 +25,10 @@
 		CE30EFA12117141900775231 /* chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EF9F2117141900775231 /* chatting.swift */; };
 		CE30EFA3211718C400775231 /* SenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFA2211718C400775231 /* SenderCell.swift */; };
 		CE30EFA5211718D800775231 /* ResverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFA4211718D800775231 /* ResverCell.swift */; };
+		CE30EFA721183C9200775231 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFA621183C9200775231 /* User.swift */; };
+		CE30EFA921183DFB00775231 /* UserStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFA821183DFB00775231 /* UserStore.swift */; };
+		CE30EFAC211843F300775231 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFAB211843F300775231 /* UIViewController.swift */; };
+		CE30EFAE211882E300775231 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFAD211882E300775231 /* ImageCell.swift */; };
 		CE364A7E21074E64003C60BB /* AttachVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A7D21074E64003C60BB /* AttachVC.swift */; };
 		CE364A8221075911003C60BB /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8121075911003C60BB /* HistoryVC.swift */; };
 		CE364A8421075BE8003C60BB /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8321075BE8003C60BB /* ChatVC.swift */; };
@@ -94,6 +98,10 @@
 		CE30EF9F2117141900775231 /* chatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatting.swift; sourceTree = "<group>"; };
 		CE30EFA2211718C400775231 /* SenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderCell.swift; sourceTree = "<group>"; };
 		CE30EFA4211718D800775231 /* ResverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResverCell.swift; sourceTree = "<group>"; };
+		CE30EFA621183C9200775231 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		CE30EFA821183DFB00775231 /* UserStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStore.swift; sourceTree = "<group>"; };
+		CE30EFAB211843F300775231 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		CE30EFAD211882E300775231 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		CE364A7D21074E64003C60BB /* AttachVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachVC.swift; sourceTree = "<group>"; };
 		CE364A8121075911003C60BB /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		CE364A8321075BE8003C60BB /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -245,6 +253,8 @@
 		CE241F69208B712000D8C999 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				CE30EFA621183C9200775231 /* User.swift */,
+				CE30EFA821183DFB00775231 /* UserStore.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -256,6 +266,14 @@
 				CE30EF9E2117141800775231 /* GChatResult.swift */,
 			);
 			path = chatting;
+			sourceTree = "<group>";
+		};
+		CE30EFAA211843CF00775231 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				CE30EFAB211843F300775231 /* UIViewController.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		CE364A85210DCE6D003C60BB /* history */ = {
@@ -289,6 +307,7 @@
 		CEED003E208561330033E663 /* Taskatyy */ = {
 			isa = PBXGroup;
 			children = (
+				CE30EFAA211843CF00775231 /* Extension */,
 				CE241F69208B712000D8C999 /* Models */,
 				CEED0051208561330033E663 /* Controller */,
 				CE7D2EBB20B1788100528F1A /* Custom Views */,
@@ -321,6 +340,7 @@
 				CE364A8A210DD44F003C60BB /* HistoryCell.swift */,
 				CE30EFA2211718C400775231 /* SenderCell.swift */,
 				CE30EFA4211718D800775231 /* ResverCell.swift */,
+				CE30EFAD211882E300775231 /* ImageCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -519,18 +539,22 @@
 				CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */,
 				CE7D2ECD20B2C6E400528F1A /* ItemPriority.swift in Sources */,
 				CE30EFA02117141900775231 /* GChatResult.swift in Sources */,
+				CE30EFAC211843F300775231 /* UIViewController.swift in Sources */,
 				CE1995B420B8412700A90B09 /* ItemPriorities.swift in Sources */,
 				CE1995BA20B8412700A90B09 /* Status.swift in Sources */,
 				CE7D2EBD20B178AD00528F1A /* RoundButton.swift in Sources */,
 				CE7D2ECC20B2C6E400528F1A /* ItemProgram.swift in Sources */,
 				CE364A87210DCEEB003C60BB /* history.swift in Sources */,
 				CE7D2ED920B5773E00528F1A /* addItemVC.swift in Sources */,
+				CE30EFA721183C9200775231 /* User.swift in Sources */,
+				CE30EFA921183DFB00775231 /* UserStore.swift in Sources */,
 				CE364A89210DCEF8003C60BB /* IHistoryResult.swift in Sources */,
 				CEED0066208561330033E663 /* Config.swift in Sources */,
 				CE7D2EC820B2C6E400528F1A /* Itemuser.swift in Sources */,
 				CE1995B520B8412700A90B09 /* FilterResultt.swift in Sources */,
 				CE364A8221075911003C60BB /* HistoryVC.swift in Sources */,
 				CE7D2EBF20B17BC100528F1A /* RoundTextField.swift in Sources */,
+				CE30EFAE211882E300775231 /* ImageCell.swift in Sources */,
 				CEED007B208561330033E663 /* AppDelegate.swift in Sources */,
 				CE1995B720B8412700A90B09 /* filterGen.swift in Sources */,
 				CE163F82208CA3DA007C01A7 /* ShowResultVC.swift in Sources */,
