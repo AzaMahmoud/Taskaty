@@ -148,16 +148,41 @@ class API: NSObject {
                 case.failure(let error):
                     completion(error as NSError?,false,nil)
                 }
+        }
+    }
+    class func loadChat(itemId: String ,  completion: @escaping(_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    {
+        let url = URLs.chatLoad
+        let header = ["Content-Type" : "application/json"]
+        let parameters = ["workItemId": itemId] as [String : AnyObject]
 
-//                if response.result.isSuccess {
-//                    let data = JSON(response.result.value!)
-//                    completion(nil,true,data as AnyObject?)
-//                    print ("\(data)")
-//                }
-//                else {
-//                    print ("Error\(String(describing: response.result.error))")
-//                }
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+            .responseJSON { response in
+                switch response.result{
+                case .success(let value):
+                    completion(nil,true,value as AnyObject?)
+                case.failure(let error):
+                    completion(error as NSError?,false,nil)
+                }
         }
     }
     
+    class func chaPost(itemId: String , userId: Int , message: String, username: String,  completion: @escaping(_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    {
+        let url = URLs.chatPost
+        let header = ["Content-Type" : "application/json"]
+        let parameters = ["workItemId": itemId , "UserId": userId , "ChatMessage": message , "username":username ] as [String : AnyObject]
+        
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+            .responseJSON { response in
+                switch response.result{
+                case .success(let value):
+                    completion(nil,true,value as AnyObject?)
+                case.failure(let error):
+                    completion(error as NSError?,false,nil)
+                }
+        }
+    }
+
+
 }

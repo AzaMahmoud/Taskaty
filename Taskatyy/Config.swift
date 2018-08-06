@@ -49,7 +49,29 @@ struct URLs {
     // GET
    // static var bndNo = "\(ShowResultVC.text_Band_No)"
 
-    static var changeBand = "http://167.114.174.82:16016/taskatyservice.svc/IHistory?workItemId=\(ShowResultVC.text_Band_No)"
+    static let changeBand = "http://167.114.174.82:16016/taskatyservice.svc/IHistory?workItemId=\(ShowResultVC.text_Band_No)"
+    
+    
+    
+    
+   // (CHAT)
+    //1- load old chat
+    // POST
+    // var: "workItemId":""
+    
+    static let chatLoad = "http://167.114.174.82:16016/taskatyservice.svc/GChat"
+    
+    
+    //2- post message
+    //POST
+    // var: "UserId":"0","ChatMessage":"","workItemId":"","username":""
+    
+    static let chatPost = "http://167.114.174.82:16016/taskatyservice.svc/IChat"
+    
+    
+    
+    
+    
 
 }
 

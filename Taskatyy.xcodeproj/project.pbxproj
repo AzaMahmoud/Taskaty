@@ -21,6 +21,10 @@
 		CE19A2D620835DF000B686BE /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D520835DF000B686BE /* API.swift */; };
 		CE19A2D92083649B00B686BE /* String-Exensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE19A2D82083649B00B686BE /* String-Exensions.swift */; };
 		CE1D9991208293BC00931E0A /* TaskatyyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE1D9990208293BC00931E0A /* TaskatyyTests.swift */; };
+		CE30EFA02117141900775231 /* GChatResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EF9E2117141800775231 /* GChatResult.swift */; };
+		CE30EFA12117141900775231 /* chatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EF9F2117141900775231 /* chatting.swift */; };
+		CE30EFA3211718C400775231 /* SenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFA2211718C400775231 /* SenderCell.swift */; };
+		CE30EFA5211718D800775231 /* ResverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30EFA4211718D800775231 /* ResverCell.swift */; };
 		CE364A7E21074E64003C60BB /* AttachVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A7D21074E64003C60BB /* AttachVC.swift */; };
 		CE364A8221075911003C60BB /* HistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8121075911003C60BB /* HistoryVC.swift */; };
 		CE364A8421075BE8003C60BB /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8321075BE8003C60BB /* ChatVC.swift */; };
@@ -86,6 +90,10 @@
 		CE1D998C208293BC00931E0A /* TaskatyyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskatyyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE1D9990208293BC00931E0A /* TaskatyyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskatyyTests.swift; sourceTree = "<group>"; };
 		CE1D9992208293BC00931E0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE30EF9E2117141800775231 /* GChatResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GChatResult.swift; sourceTree = "<group>"; };
+		CE30EF9F2117141900775231 /* chatting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatting.swift; sourceTree = "<group>"; };
+		CE30EFA2211718C400775231 /* SenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderCell.swift; sourceTree = "<group>"; };
+		CE30EFA4211718D800775231 /* ResverCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResverCell.swift; sourceTree = "<group>"; };
 		CE364A7D21074E64003C60BB /* AttachVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachVC.swift; sourceTree = "<group>"; };
 		CE364A8121075911003C60BB /* HistoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryVC.swift; sourceTree = "<group>"; };
 		CE364A8321075BE8003C60BB /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
@@ -241,6 +249,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		CE30EF9D211713F900775231 /* chatting */ = {
+			isa = PBXGroup;
+			children = (
+				CE30EF9F2117141900775231 /* chatting.swift */,
+				CE30EF9E2117141800775231 /* GChatResult.swift */,
+			);
+			path = chatting;
+			sourceTree = "<group>";
+		};
 		CE364A85210DCE6D003C60BB /* history */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,6 +319,8 @@
 				CE364A8121075911003C60BB /* HistoryVC.swift */,
 				CE364A8321075BE8003C60BB /* ChatVC.swift */,
 				CE364A8A210DD44F003C60BB /* HistoryCell.swift */,
+				CE30EFA2211718C400775231 /* SenderCell.swift */,
+				CE30EFA4211718D800775231 /* ResverCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -309,6 +328,7 @@
 		CEED0054208561330033E663 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE30EF9D211713F900775231 /* chatting */,
 				CE364A85210DCE6D003C60BB /* history */,
 				CE19958D20B83A4E00A90B09 /* filter */,
 				CE58DE25209BB8290087BA6F /* show */,
@@ -495,8 +515,10 @@
 				CE364A8B210DD44F003C60BB /* HistoryCell.swift in Sources */,
 				CE7D2ECA20B2C6E400528F1A /* Itemtype.swift in Sources */,
 				CE7D2EC720B2C6E400528F1A /* FilterIOSResult.swift in Sources */,
+				CE30EFA5211718D800775231 /* ResverCell.swift in Sources */,
 				CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */,
 				CE7D2ECD20B2C6E400528F1A /* ItemPriority.swift in Sources */,
+				CE30EFA02117141900775231 /* GChatResult.swift in Sources */,
 				CE1995B420B8412700A90B09 /* ItemPriorities.swift in Sources */,
 				CE1995BA20B8412700A90B09 /* Status.swift in Sources */,
 				CE7D2EBD20B178AD00528F1A /* RoundButton.swift in Sources */,
@@ -516,9 +538,11 @@
 				CE364A7E21074E64003C60BB /* AttachVC.swift in Sources */,
 				CE1995B920B8412700A90B09 /* Itemusers.swift in Sources */,
 				CE7D2EC920B2C6E400528F1A /* Filter.swift in Sources */,
+				CE30EFA12117141900775231 /* chatting.swift in Sources */,
 				CE7D2EBA20B165E000528F1A /* editVC.swift in Sources */,
 				CEED007C208561330033E663 /* helper.swift in Sources */,
 				CE19A2D620835DF000B686BE /* API.swift in Sources */,
+				CE30EFA3211718C400775231 /* SenderCell.swift in Sources */,
 				CE7D2ECB20B2C6E400528F1A /* Statu.swift in Sources */,
 				CE58DE31209CDC430087BA6F /* SearchWorkItemsResult.swift in Sources */,
 				CEEB945320949B7B00A0514B /* showResultCell.swift in Sources */,
