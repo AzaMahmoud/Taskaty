@@ -10,10 +10,5 @@ import UIKit
 @IBDesignable
 
 class RoundTtextField: UITextField {
-    @IBInspectable var cornerRadius: CGFloat = 12 {
-        didSet{
-            layer.cornerRadius = cornerRadius
-        }
-    }
     var textFieldBorderStyle: UITextBorderStyle = .roundedRect
 }

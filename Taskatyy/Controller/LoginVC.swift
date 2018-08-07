@@ -10,8 +10,6 @@ import UIKit
 
 class LoginVC: UIViewController {
     
-
-    
     @IBOutlet weak var userNameTF: UITextField!
     @IBOutlet weak var passWordTF: UITextField!
     

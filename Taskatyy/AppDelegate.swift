@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         if UserStore.loadUser()?.id != nil {
             let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterVC") as! FilterVC
-            let nav = UINavigationController(rootViewController: viewController)
+            let nav = TaskayNavViewController(rootViewController: viewController)
             window?.rootViewController = nav
         }else{
             let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginVC") as! LoginVC
-            let nav = UINavigationController(rootViewController: viewController)
+            let nav = TaskayNavViewController(rootViewController: viewController)
             window?.rootViewController = nav
 
         }
