@@ -17,27 +17,16 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var txtBandNo: UITextField!
     @IBOutlet weak var txtBandAdd: UITextField!
-    
     @IBOutlet weak var txtBandDat: UITextField!
-    
     @IBOutlet weak var pickProg: UIPickerView!
-    
     @IBOutlet weak var pickType: UIPickerView!
-    
     @IBOutlet weak var pickPerior: UIPickerView!
-    
     @IBOutlet weak var pickStatus: UIPickerView!
-    
     @IBOutlet weak var txtBandStatus: UITextField!
-    
     @IBOutlet weak var txtVBandDetail: UITextView!
-    
     @IBOutlet weak var txtSender: UITextField!
-    
     @IBOutlet weak var pickRespons: UIPickerView!
-    
     @IBOutlet weak var btnSpec: UIButton!
-    
     @IBOutlet weak var btnDelv: UIButton!
     @IBOutlet weak var btnProg: UIButton!
     @IBOutlet weak var btnTyp: UIButton!
@@ -132,7 +121,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     
     var pickerviewData : [String : Any] = [:]
     var resultt : Filter?
-    var pickedData : [String:Any] = ShowResultVC.pickedData
+    var pickedData : [String:Any] = ShowResultVC.pickedDataTemp
     var searchWorkItemsResult = [SearchWorkItemsResult]()
     
     override func  viewDidLoad() {
@@ -163,7 +152,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                     
                     let dic = response.result.value as! [String:Any]
                     self.resultt = Filter(fromDictionary: dic)
-                   // self.reloadPickerViews()
+                    self.reloadPickerViews()
                 }
         }
 //            self.pickProg.dataSource = self
@@ -176,7 +165,7 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
             self.btnDelv.setTitle(ShowResultVC.text_Band_Delv_Dat , for: .normal)
             self.txtBandDat.text = ShowResultVC.text_Band_date
             self.txtVBandDetail.text = ShowResultVC.text_Band_detail
-            self.txtBandStatus.text = ShowResultVC.text_SenderId //
+           // self.txtBandStatus.text = ShowResultVC.text_SenderId //
             self.txtSender.text = ShowResultVC.text_Sender
             self.btnProg.setTitle(ShowResultVC.pick_prog, for: .normal)
             self.btnTyp.setTitle(ShowResultVC.pick_typ, for: .normal)

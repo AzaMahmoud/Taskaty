@@ -61,31 +61,36 @@ class ChatVC: UIViewController , UITextViewDelegate{
     
     
     @IBAction func sendAction(_ sender: Any) {
-        print(text)
-        API.chaPost(itemId: "10723", userId: 0, message: text, username: "yah", completion: { (error:Error?,success:Bool,data:AnyObject?) in
-            DispatchQueue.main.async
-                {
-                    if success {
-                        self.chatResultemp.append(self.text)
-                        let index = IndexPath(row: self.chatResultemp.count - 1, section: 0)
-                        self.tableView.insertRows(at: [index], with: .automatic)
-                        self.sendbutonOutlet.isEnabled = false
-                        self.sendbutonOutlet.isUserInteractionEnabled = false
-                        if self.message.text.isEmpty {
-                            self.message.text = "اكتب الرساله"
-                            self.message.textColor = UIColor.lightGray
+        if message.text != "" {
+            startLoading()
+            API.chaPost(itemId: "\(ShowResultVC.text_Band_No)" , userId: UserStore.loadUser()?.id ?? 0, message: message.text ?? "", username: "yah", completion: { (error:Error?,success:Bool,data:AnyObject?) in
+                DispatchQueue.main.async
+                    {
+                        self.stopLoading()
+                        if success {
+                            self.chatResultemp.append(self.message.text ?? "")
+                            let index = IndexPath(row: self.chatResultemp.count - 1, section: 0)
+                            self.tableView.insertRows(at: [index], with: .automatic)
+                            
+                            self.message.text = ""
+                            self.sendbutonOutlet.isEnabled = false
+                            self.sendbutonOutlet.isUserInteractionEnabled = false
+                            if self.message.text.isEmpty {
+                                self.message.text = "اكتب الرساله"
+                                self.message.textColor = UIColor.lightGray
+                            }
+                            
+                            
+                            print("chat")
                         }
-
-                        print("chat")
-                    }
-                    else {
-                        print("ERROR")
-                        return
-                        
-                    }
-            }
-        })
-        
+                        else {
+                            print("ERROR")
+                            return
+                            
+                        }
+                }
+            })
+        }
     }
     
     func textViewDidBeginEditing(_ textView: UITextView) {
@@ -110,16 +115,17 @@ class ChatVC: UIViewController , UITextViewDelegate{
     func textViewDidEndEditing(_ textView: UITextView) {
         text = textView.text ?? ""
         if text != "" {
-            
+            startLoading()
             API.chaPost(itemId: "10723", userId: 0, message: textView.text ?? "", username: "yah", completion: { (error:Error?,success:Bool,data:AnyObject?) in
                 DispatchQueue.main.async
                     {
+                        self.stopLoading()
                         if success {
                             self.chatResultemp.append(textView.text ?? "")
                             let index = IndexPath(row: self.chatResultemp.count - 1, section: 0)
                             self.tableView.insertRows(at: [index], with: .automatic)
                             
-                            textView.text = ""
+                            self.message.text = ""
                             self.sendbutonOutlet.isEnabled = false
                             self.sendbutonOutlet.isUserInteractionEnabled = false
                             if self.message.text.isEmpty {
@@ -156,13 +162,14 @@ extension ChatVC: UITableViewDelegate , UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SenderCell") as! SenderCell
-            cell.messageSender.text = chatResultemp[indexPath.row]
-            return cell
-        }else{
             
             let cell = tableView.dequeueReusableCell(withIdentifier: "ResverCell") as! ResverCell
             cell.messageReciver.text = chatResultemp[indexPath.row]
+            return cell
+
+        }else{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SenderCell") as! SenderCell
+            cell.messageSender.text = chatResultemp[indexPath.row]
             return cell
         }
     }

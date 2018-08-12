@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HistoryCell: UICollectionViewCell {
+class HistoryCell: UITableViewCell {
     
     @IBOutlet weak var userLbl: UILabel!
     @IBOutlet weak var workItemOperLbl: UILabel!

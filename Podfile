@@ -11,7 +11,8 @@ target 'Taskatyy' do
     pod 'AlamofireImage'
     pod 'IQKeyboardManagerSwift'
     pod 'NVActivityIndicatorView'
-    
+    pod 'SideMenu'
+
     target 'TaskatyyTests' do
         inherit! :search_paths
         # Pods for testing

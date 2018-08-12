@@ -11,6 +11,21 @@ import NVActivityIndicatorView
 
 extension UIViewController: NVActivityIndicatorViewable{
     
+    
+    func clearNav(){
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.navigationBar.barTintColor = .clear
+        self.navigationController?.navigationBar.tintColor = .clear
+        
+        self.navigationController?.view.backgroundColor = .clear
+        self.navigationController?.navigationBar.backgroundColor = .clear
+        
+    self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+
+    }
+    
+    
     func startLoading(){
         let size = CGSize(width: 50, height: 50)
         NVActivityIndicatorView.DEFAULT_COLOR = UIColor.blue

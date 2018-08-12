@@ -8,19 +8,21 @@
 // S@m@Elm@sry
 import UIKit
 
-class HistoryVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class HistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var historyResult = [IHistoryResult]()
     let cellIdentifier = "histCell"
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    @IBOutlet weak var tableView: UITableView!
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.historyResult.count
+
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let histCell = collectionView.dequeueReusableCell(withReuseIdentifier: "histCell", for: indexPath) as? HistoryCell
-            else { return UICollectionViewCell()}
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let histCell = tableView.dequeueReusableCell(withIdentifier: "histCell", for: indexPath) as? HistoryCell
+            else { return UITableViewCell()}
         histCell.userLbl.text = self.historyResult[indexPath.row].userName
         histCell.workItemOperLbl.text = self.historyResult[indexPath.row].workItemOperation
         histCell.operDatLbl.text = self.historyResult[indexPath.row].operationCreatedDate
@@ -30,13 +32,19 @@ class HistoryVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
 
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 120
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("wwwwwwwwww")
         
-        collectionView.dataSource = self
-        collectionView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
 
+        startLoading()
         API.changeBand()
             { (error:Error?,success:Bool,data:AnyObject?) in
                 print("sssssssssss")
@@ -45,7 +53,8 @@ class HistoryVC: UIViewController, UICollectionViewDelegate, UICollectionViewDat
                         if success {
                             let r = history(fromDictionary: data as! [String : Any])
                             self.historyResult = r.iHistoryResult
-                            self.collectionView.reloadData()
+                            self.stopLoading()
+                            self.tableView.reloadData()
                             print("history")
                         }
                         else {

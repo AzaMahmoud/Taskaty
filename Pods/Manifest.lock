@@ -6,6 +6,7 @@ PODS:
   - NVActivityIndicatorView (4.2.1):
     - NVActivityIndicatorView/Presenter (= 4.2.1)
   - NVActivityIndicatorView/Presenter (4.2.1)
+  - SideMenu (4.0.0)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - AlamofireImage
   - IQKeyboardManagerSwift
   - NVActivityIndicatorView
+  - SideMenu
   - SwiftyJSON
 
 SPEC REPOS:
@@ -21,6 +23,7 @@ SPEC REPOS:
     - AlamofireImage
     - IQKeyboardManagerSwift
     - NVActivityIndicatorView
+    - SideMenu
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -28,8 +31,9 @@ SPEC CHECKSUMS:
   AlamofireImage: 3b35b586853abaf94ca1250f4e94cff3c21a4c0d
   IQKeyboardManagerSwift: 04e8679f85e496bb2c474eeb9284052f1b3c391c
   NVActivityIndicatorView: 8068ba3ad39cb44cbaab25d89ff2546b3f092681
+  SideMenu: 70ee5657df63ec3382660ec4ef470bf1cf5db07d
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 9584ee29417239063729e8285cb63d26bb15ec2f
+PODFILE CHECKSUM: 981276d8a3e0855e52e417d2a8b78d7538b9f10f
 
 COCOAPODS: 1.5.3

@@ -2,7 +2,7 @@
 //  DatePickerDialog.swift
 //  MoneyMining
 //
-//  Created by mac on 02/06/2018.
+//  Created by zoza on 02/06/2018.
 //  Copyright © 2018 zoza. All rights reserved.
 //
 

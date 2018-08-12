@@ -8,11 +8,12 @@
 
 import UIKit
 
-class showResultCell: UICollectionViewCell {
+class showResultCell: UITableViewCell {
     
+    @IBOutlet weak var view: UIView!
     @IBOutlet weak var date: UILabel!
-    @IBOutlet weak var detail: UILabel!
     @IBOutlet weak var developer: UILabel!
     
+    @IBOutlet weak var detail: UITextView!
     
 }

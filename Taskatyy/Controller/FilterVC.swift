@@ -9,8 +9,10 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import SideMenu
 
-class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
+
+class FilterVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource
 {
 
     var pickerviewData : [String : Any] = [:]
@@ -19,15 +21,10 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
 
     
     @IBOutlet weak var picker1: UIPickerView!
-    
     @IBOutlet weak var picker2: UIPickerView!
-    
     @IBOutlet weak var picker3: UIPickerView!
-    
     @IBOutlet weak var picker4: UIPickerView!
-    
     @IBOutlet weak var picker5: UIPickerView!
-    
     @IBOutlet weak var closBndSwtch: UISwitch!
     
     @IBOutlet weak var latBndSwttch: UISwitch!
@@ -161,11 +158,23 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
                     self.reloadPickerViews()
              }
         }
-//        API.filter()
-//      //  let dic = result.value as! [String:Any]
-//                            self.resultt = Filter(fromDictionary: )
-//                            self.reloadPickerViews()
+        
+        SideMenuManager.default.menuLeftNavigationController = storyboard?.instantiateViewController(withIdentifier: "LeftMenuNavigationController") as? UISideMenuNavigationController
+        SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
+     SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        tableView.backgroundView = UIImageView(image: UIImage(named: "tableVBG"))
+        setDefults()
+
     }
+    
+    func setDefults(){
+        SideMenuManager.default.menuShadowOpacity = 0.3
+        SideMenuManager.default.menuAnimationTransformScaleFactor = 1
+        SideMenuManager.default.menuAnimationBackgroundColor = .black
+        SideMenuManager.default.menuWidth = UIScreen.main.bounds.width / 1.2
+    }
+    
+    
     
     @IBAction func hidClosdSwtchPrsd(_ sender: Any) {
         if closBndSwtch.isOn {
@@ -186,6 +195,11 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
     }
     
     
+    @IBAction func gotoPage(_ sender: Any) {
+        let viewConroller = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ShowResultVC") as! ShowResultVC
+        viewConroller.pickedData = pickerviewData
+        self.navigationController?.pushViewController(viewConroller, animated: true)
+    }
     
     func reloadPickerViews(){
 
@@ -207,14 +221,5 @@ class FilterVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource
         self.picker1.reloadAllComponents()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showDetails" {
-            if segue.destination is ShowResultVC {
-
-                ShowResultVC.pickedData = pickerviewData
-              //  navigationController?.pushViewController(vc, animated: true)
-            }
-        }
-    }
 
 }

@@ -8,21 +8,26 @@
 
 import UIKit
 
-class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ShowResultVC: UITableViewController {
     
     //fileprivate
-    let cellIdenttifier = "cell"
-    @IBOutlet weak var collectionView: UICollectionView!
-    static var pickedData : [String:Any] = [:]
+    var pickedData : [String:Any] = [:]
+    static var pickedDataTemp : [String:Any] = [:]
+
     var searchWorkItemsResult = [SearchWorkItemsResult]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let progId = ShowResultVC.pickedData["programId"] as? Int
-        let typId = ShowResultVC.pickedData["typeId"] as? Int
-        let priorId = ShowResultVC.pickedData["periorityId"] as? Int
-        let statId = ShowResultVC.pickedData["statusId"] as? Int
-        let useId = ShowResultVC.pickedData["userId"] as? Int
+
+        ShowResultVC.pickedDataTemp = pickedData
+        tableView.estimatedRowHeight = 250
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let progId = pickedData["programId"] as? Int
+        let typId = pickedData["typeId"] as? Int
+        let priorId = pickedData["periorityId"] as? Int
+        let statId = pickedData["statusId"] as? Int
+        let useId = pickedData["userId"] as? Int
         let latItm = FilterVC.LateBand
         let hidnItem = FilterVC.hidenBnd
         startLoading()
@@ -35,7 +40,7 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
                 let r = Search(fromDictionary: data as! [String : Any])
                 self.searchWorkItemsResult = r.searchWorkItemsResult
                 self.stopLoading()
-                self.collectionView.reloadData()
+                self.tableView.reloadData()
                 
                 print("shooo")
             }
@@ -46,27 +51,43 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
                     }
         }
         }
-        collectionView.dataSource = self
-        collectionView.delegate = self
         
     }
+    
+    let imageView : UIImageView = {
+        let iv = UIImageView()
+        iv.image = UIImage(named:"tableVBG")
+        iv.contentMode = .scaleAspectFill
+        return iv
+    }()
+    
     var showw : Search?
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.searchWorkItemsResult.count
+
     }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
-    {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? showResultCell
-            else { return UICollectionViewCell()}
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? showResultCell
+            else { return UITableViewCell()}
+        if self.searchWorkItemsResult[indexPath.row].workItemStatusId == 1 {
+            // Yellow Color
+            cell.view.backgroundColor = UIColor(red: 249/255, green: 204/255, blue: 85/255, alpha: 1)
+        }else if self.searchWorkItemsResult[indexPath.row].workItemStatusId == 2{
+            // Blue Color
+            cell.view.backgroundColor = UIColor(red: 57.0/255.0, green: 121.0/255.0, blue: 168.0/255.0, alpha: 1.0)
+        }else{
+            cell.view.backgroundColor = UIColor(red: 249/255, green: 204/255, blue: 85/255, alpha: 1)
+
+        }
+        
         cell.date.text = self.searchWorkItemsResult[indexPath.row].assignDate
         cell.detail.text = self.searchWorkItemsResult[indexPath.row].workItemTitle
-        cell.developer.text = self.searchWorkItemsResult[indexPath.row].userAssigned
+        cell.developer.text = "Dev: \(self.searchWorkItemsResult[indexPath.row].userAssigned ?? "")"
+        
         
         return cell
-        
-        
-//        guard let edit = collectionView.dequeueReusableCell(withReuseIdentifier:"Edit", for: indexPath) as? editVC
-//            else { return UICollectionViewCell()}
+
     }
     
     static var text_Band_No = 0
@@ -88,39 +109,35 @@ class ShowResultVC: UIViewController, UICollectionViewDelegate, UICollectionView
     static var pick_userId = 0
     static var pick_statusId = 0
     
-    
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Edit", sender: indexPath.row)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let viewController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "tabVC")
+        ShowResultVC.text_Band_No = self.searchWorkItemsResult[indexPath.row].workItemId ?? 0
+        ShowResultVC.text_Band_add = self.searchWorkItemsResult[indexPath.row].workItemTitle ?? ""
+        ShowResultVC.text_Band_date = self.searchWorkItemsResult[indexPath.row].workItemCreatedDate ?? "Date"
+        ShowResultVC.text_Band_Delv_Dat = self.searchWorkItemsResult[indexPath.row].endDate as? String ?? "Date"
+        ShowResultVC.text_Band_detail = self.searchWorkItemsResult[indexPath.row].workItemDetails ?? ""
+        ShowResultVC.text_Status = self.searchWorkItemsResult[indexPath.row].workItemStatus ?? ""
+        ShowResultVC.text_Sender = self.searchWorkItemsResult[indexPath.row].userCreated ?? ""
+        ShowResultVC.text_SenderId = "\(self.searchWorkItemsResult[indexPath.row].workItemCreatedBy ?? 0)"
+        ShowResultVC.pick_prog = self.searchWorkItemsResult[indexPath.row].workItemProgram ?? "البرنامج"
+        ShowResultVC.pick_typ = self.searchWorkItemsResult[indexPath.row].workItemType as? String ?? "النوع"
+        ShowResultVC.pick_prior = self.searchWorkItemsResult[indexPath.row].workItemPriority ?? "الاهمية"
+        ShowResultVC.pick_user = self.searchWorkItemsResult[indexPath.row].userAssigned ?? "تخصيص"
+        ShowResultVC.pick_status = self.searchWorkItemsResult[indexPath.row].workItemStatus ?? ""
+        ShowResultVC.pick_progId = self.searchWorkItemsResult[indexPath.row].workItemProgramId ?? 0
+        ShowResultVC.pick_typId = (self.searchWorkItemsResult[indexPath.row].workItemTypeId as? Int) ?? 0
+        ShowResultVC.pick_priorId = self.searchWorkItemsResult[indexPath.row].workItemPriorityId ?? 0
+        ShowResultVC.pick_userId = self.searchWorkItemsResult[indexPath.row].workItemCreatedBy ?? 0
+        ShowResultVC.pick_statusId = self.searchWorkItemsResult[indexPath.row].workItemStatusId ?? 0
+
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "Edit" {
-            ShowResultVC.text_Band_No = self.searchWorkItemsResult[sender as! Int].workItemId ?? 0
-            ShowResultVC.text_Band_add = self.searchWorkItemsResult[sender as! Int].workItemTitle ?? ""
-            ShowResultVC.text_Band_date = self.searchWorkItemsResult[sender as! Int].workItemCreatedDate ?? "Date"
-            ShowResultVC.text_Band_Delv_Dat = self.searchWorkItemsResult[sender as! Int].endDate as? String ?? "Date"
-            ShowResultVC.text_Band_detail = self.searchWorkItemsResult[sender as! Int].workItemDetails ?? ""
-            ShowResultVC.text_Status = self.searchWorkItemsResult[sender as! Int].workItemStatus ?? ""
-            ShowResultVC.text_Sender = self.searchWorkItemsResult[sender as! Int].userCreated ?? ""
-            ShowResultVC.text_SenderId = "\(self.searchWorkItemsResult[sender as! Int].workItemCreatedBy ?? 0)"
-            ShowResultVC.pick_prog = self.searchWorkItemsResult[sender as! Int].workItemProgram ?? "البرنامج"
-            ShowResultVC.pick_typ = self.searchWorkItemsResult[sender as! Int].workItemType as? String ?? "النوع"
-            ShowResultVC.pick_prior = self.searchWorkItemsResult[sender as! Int].workItemPriority ?? "الاهمية"
-            ShowResultVC.pick_user = self.searchWorkItemsResult[sender as! Int].userAssigned ?? "تخصيص"
-            ShowResultVC.pick_status = self.searchWorkItemsResult[sender as! Int].workItemStatus ?? ""
-            ShowResultVC.pick_progId = self.searchWorkItemsResult[sender as! Int].workItemProgramId ?? 0
-            ShowResultVC.pick_typId = (self.searchWorkItemsResult[sender as! Int].workItemTypeId as? Int) ?? 0
-            ShowResultVC.pick_priorId = self.searchWorkItemsResult[sender as! Int].workItemPriorityId ?? 0
-            ShowResultVC.pick_userId = self.searchWorkItemsResult[sender as! Int].workItemCreatedBy ?? 0
-            ShowResultVC.pick_statusId = self.searchWorkItemsResult[sender as! Int].workItemStatusId ?? 0
-//            if let vc = segue.destination as? editVC {
-//              vc.pickerviewData = pickedData
-//              navigationController?.pushViewController(vc, animated: true)
-//            }
-            print("ddd")
-        }
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
+    
+    
 
 }
 

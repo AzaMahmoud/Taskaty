@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate
 {
     @IBOutlet weak var bndTitlTxt: UITextField!
     @IBOutlet weak var pickProg: UIPickerView!
@@ -104,6 +104,8 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         }
     }
     
+
+    
     var resultt : Filter?
     override func viewDidLoad() {
         API.filter()
@@ -119,6 +121,8 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
         uiCollecionImg.delegate = self
         uiCollecionImg.dataSource = self
         let url = URLs.Filter
+        tableView.backgroundView = UIImageView(image: UIImage(named: "tableVBGß"))
+
         startLoading()
         Alamofire.request(url, method: .get, headers: nil)
             .responseJSON {
@@ -134,6 +138,8 @@ class addItemVC: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,
                     self.reloadPickerView()
                 }
         }
+        
+        
         
     }
     
@@ -240,7 +246,12 @@ extension addItemVC : UICollectionViewDelegate , UICollectionViewDataSource{
             cell.image.image = UIImage(named: "")
             cell.addImage.isHidden = false
             cell.removeImage.isHidden = true
-            cell.addImage.image = #imageLiteral(resourceName: "addImage")
+            if let image = UIImage(named: "addImage") {
+                let tintImage = image.withRenderingMode(.alwaysTemplate)
+                cell.addImage.image = tintImage
+                cell.addImage.tintColor = UIColor(red: 249/255, green: 204/255, blue: 85/255, alpha: 1)
+            }
+
         }else{
             cell.image.image = images[indexPath.row - 1]
             cell.addImage.isHidden = true

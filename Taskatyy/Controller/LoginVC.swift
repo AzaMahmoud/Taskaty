@@ -15,6 +15,7 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearNav()
     }
 
     
@@ -34,8 +35,9 @@ class LoginVC: UIViewController {
                 print("ZZZZZZZZZZ")
                 self.stopLoading()
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);
-                let vc = storyboard.instantiateViewController(withIdentifier: "mainVc") ;
-                self.present(vc, animated: true, completion: nil);
+                let vc = storyboard.instantiateViewController(withIdentifier: "FilterVC")
+                let nav = TaskayNavViewController(rootViewController: vc)
+                self.present(nav, animated: true, completion: nil);
             }
             else{
                 return

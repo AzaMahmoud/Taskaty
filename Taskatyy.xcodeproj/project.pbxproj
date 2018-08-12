@@ -37,6 +37,8 @@
 		CE364A87210DCEEB003C60BB /* history.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A86210DCEEB003C60BB /* history.swift */; };
 		CE364A89210DCEF8003C60BB /* IHistoryResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A88210DCEF8003C60BB /* IHistoryResult.swift */; };
 		CE364A8B210DD44F003C60BB /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8A210DD44F003C60BB /* HistoryCell.swift */; };
+		CE4320C9212063E8005FFDA1 /* AttachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4320C8212063E8005FFDA1 /* AttachCell.swift */; };
+		CE4320CD2120678D005FFDA1 /* TaskayTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4320CC2120678D005FFDA1 /* TaskayTabViewController.swift */; };
 		CE58DE2F209CDC280087BA6F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE2E209CDC280087BA6F /* Search.swift */; };
 		CE58DE31209CDC430087BA6F /* SearchWorkItemsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */; };
 		CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */; };
@@ -112,6 +114,8 @@
 		CE364A86210DCEEB003C60BB /* history.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = history.swift; sourceTree = "<group>"; };
 		CE364A88210DCEF8003C60BB /* IHistoryResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IHistoryResult.swift; sourceTree = "<group>"; };
 		CE364A8A210DD44F003C60BB /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
+		CE4320C8212063E8005FFDA1 /* AttachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachCell.swift; sourceTree = "<group>"; };
+		CE4320CC2120678D005FFDA1 /* TaskayTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskayTabViewController.swift; sourceTree = "<group>"; };
 		CE58DE2E209CDC280087BA6F /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWorkItemsResult.swift; sourceTree = "<group>"; };
 		CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
@@ -347,6 +351,8 @@
 				CE30EFA2211718C400775231 /* SenderCell.swift */,
 				CE30EFA4211718D800775231 /* ResverCell.swift */,
 				CE30EFAD211882E300775231 /* ImageCell.swift */,
+				CE4320C8212063E8005FFDA1 /* AttachCell.swift */,
+				CE4320CC2120678D005FFDA1 /* TaskayTabViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -492,13 +498,19 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Taskatyy/Pods-Taskatyy-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -547,6 +559,8 @@
 				CE30EFA02117141900775231 /* GChatResult.swift in Sources */,
 				CE30EFAC211843F300775231 /* UIViewController.swift in Sources */,
 				CE1995B420B8412700A90B09 /* ItemPriorities.swift in Sources */,
+				CE4320C9212063E8005FFDA1 /* AttachCell.swift in Sources */,
+				CE4320CD2120678D005FFDA1 /* TaskayTabViewController.swift in Sources */,
 				CE1995BA20B8412700A90B09 /* Status.swift in Sources */,
 				CE7D2EBD20B178AD00528F1A /* RoundButton.swift in Sources */,
 				CE7D2ECC20B2C6E400528F1A /* ItemProgram.swift in Sources */,
