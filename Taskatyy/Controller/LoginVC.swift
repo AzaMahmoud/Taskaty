@@ -34,6 +34,7 @@ class LoginVC: UIViewController {
             if success {
                 print("ZZZZZZZZZZ")
                 self.stopLoading()
+                UserDefaults.standard.set(self.userNameTF.text ?? "" , forKey: "userName")
                 let storyboard = UIStoryboard(name: "Main", bundle: nil);
                 let vc = storyboard.instantiateViewController(withIdentifier: "FilterVC")
                 let nav = TaskayNavViewController(rootViewController: vc)

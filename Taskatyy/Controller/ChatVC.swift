@@ -20,6 +20,7 @@ class ChatVC: UIViewController , UITextViewDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "المحادثات"
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 200
@@ -34,7 +35,7 @@ class ChatVC: UIViewController , UITextViewDelegate{
         message.clipsToBounds = true
 
         startLoading()
-        API.loadChat(itemId: "10723", completion: { (error:Error?,success:Bool,data:AnyObject?) in
+        API.loadChat(itemId: "\(ShowResultVC.text_Band_No)", completion: { (error:Error?,success:Bool,data:AnyObject?) in
             DispatchQueue.main.async
                 {
                     if success {
@@ -61,9 +62,10 @@ class ChatVC: UIViewController , UITextViewDelegate{
     
     
     @IBAction func sendAction(_ sender: Any) {
+        print(UserDefaults.standard.object(forKey: "userName") as! String)
         if message.text != "" {
             startLoading()
-            API.chaPost(itemId: "\(ShowResultVC.text_Band_No)" , userId: UserStore.loadUser()?.id ?? 0, message: message.text ?? "", username: "yah", completion: { (error:Error?,success:Bool,data:AnyObject?) in
+            API.chaPost(itemId: "\(ShowResultVC.text_Band_No)" , userId: UserStore.loadUser()?.id ?? 0, message: message.text ?? "", username: UserDefaults.standard.object(forKey: "userName") as! String, completion: { (error:Error?,success:Bool,data:AnyObject?) in
                 DispatchQueue.main.async
                     {
                         self.stopLoading()
@@ -114,14 +116,15 @@ class ChatVC: UIViewController , UITextViewDelegate{
     
     func textViewDidEndEditing(_ textView: UITextView) {
         text = textView.text ?? ""
-        if text != "" {
+        print(UserDefaults.standard.object(forKey: "userName") as! String)
+        if message.text != "" {
             startLoading()
-            API.chaPost(itemId: "10723", userId: 0, message: textView.text ?? "", username: "yah", completion: { (error:Error?,success:Bool,data:AnyObject?) in
+            API.chaPost(itemId: "\(ShowResultVC.text_Band_No)" , userId: UserStore.loadUser()?.id ?? 0, message: message.text ?? "", username: UserDefaults.standard.object(forKey: "userName") as! String, completion: { (error:Error?,success:Bool,data:AnyObject?) in
                 DispatchQueue.main.async
                     {
                         self.stopLoading()
                         if success {
-                            self.chatResultemp.append(textView.text ?? "")
+                            self.chatResultemp.append(self.message.text ?? "")
                             let index = IndexPath(row: self.chatResultemp.count - 1, section: 0)
                             self.tableView.insertRows(at: [index], with: .automatic)
                             
@@ -132,7 +135,7 @@ class ChatVC: UIViewController , UITextViewDelegate{
                                 self.message.text = "اكتب الرساله"
                                 self.message.textColor = UIColor.lightGray
                             }
-
+                            
                             
                             print("chat")
                         }
@@ -143,9 +146,8 @@ class ChatVC: UIViewController , UITextViewDelegate{
                         }
                 }
             })
-            
-
         }
+        
     }
     
         

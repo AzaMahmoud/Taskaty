@@ -68,7 +68,11 @@ struct URLs {
     
     static let chatPost = "http://167.114.174.82:16016/taskatyservice.svc/IChat"
     
-    
+    //  (ATTACH)
+    //POST
+    // var: "workitemid":""
+
+    static let attach = "http://167.114.174.82:16016/taskatyservice.svc/image"
     
     
     

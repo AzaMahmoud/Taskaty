@@ -40,7 +40,8 @@ class HistoryVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("wwwwwwwwww")
-        
+        title = "التغيرات"
+
         tableView.dataSource = self
         tableView.delegate = self
 

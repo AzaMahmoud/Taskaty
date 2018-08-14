@@ -28,7 +28,7 @@ extension UIViewController: NVActivityIndicatorViewable{
     
     func startLoading(){
         let size = CGSize(width: 50, height: 50)
-        NVActivityIndicatorView.DEFAULT_COLOR = UIColor.blue
+        NVActivityIndicatorView.DEFAULT_COLOR = UIColor(red: 57.0/255.0, green: 121.0/255.0, blue: 168.0/255.0, alpha: 1.0)
         NVActivityIndicatorView.DEFAULT_BLOCKER_BACKGROUND_COLOR = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
         self.startAnimating(size, message: "", type: NVActivityIndicatorType.orbit)
     }
@@ -39,7 +39,7 @@ extension UIViewController: NVActivityIndicatorViewable{
     
     func showAlert(_ message: String , _ title: String){
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "تاكيد", style: .default, handler: nil))
         self.present(alertController , animated: true)
     }
 

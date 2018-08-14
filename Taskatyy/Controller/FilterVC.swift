@@ -32,7 +32,13 @@ class FilterVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSou
     @IBAction func showBtnPressed(_ sender: Any) {
         
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        // needed to clear the text in the back navigation:
+        self.navigationItem.title = ""
+    }
+
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

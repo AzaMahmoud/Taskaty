@@ -39,6 +39,8 @@
 		CE364A8B210DD44F003C60BB /* HistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE364A8A210DD44F003C60BB /* HistoryCell.swift */; };
 		CE4320C9212063E8005FFDA1 /* AttachCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4320C8212063E8005FFDA1 /* AttachCell.swift */; };
 		CE4320CD2120678D005FFDA1 /* TaskayTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4320CC2120678D005FFDA1 /* TaskayTabViewController.swift */; };
+		CE4320D12121A8FF005FFDA1 /* ImageResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4320CF2121A8FF005FFDA1 /* ImageResult.swift */; };
+		CE4320D22121A8FF005FFDA1 /* img.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4320D02121A8FF005FFDA1 /* img.swift */; };
 		CE58DE2F209CDC280087BA6F /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE2E209CDC280087BA6F /* Search.swift */; };
 		CE58DE31209CDC430087BA6F /* SearchWorkItemsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */; };
 		CE5CD40920C2CECB00598990 /* DatePickerDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */; };
@@ -116,6 +118,8 @@
 		CE364A8A210DD44F003C60BB /* HistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCell.swift; sourceTree = "<group>"; };
 		CE4320C8212063E8005FFDA1 /* AttachCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachCell.swift; sourceTree = "<group>"; };
 		CE4320CC2120678D005FFDA1 /* TaskayTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskayTabViewController.swift; sourceTree = "<group>"; };
+		CE4320CF2121A8FF005FFDA1 /* ImageResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageResult.swift; sourceTree = "<group>"; };
+		CE4320D02121A8FF005FFDA1 /* img.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = img.swift; sourceTree = "<group>"; };
 		CE58DE2E209CDC280087BA6F /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		CE58DE30209CDC430087BA6F /* SearchWorkItemsResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchWorkItemsResult.swift; sourceTree = "<group>"; };
 		CE5CD40820C2CECB00598990 /* DatePickerDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerDialog.swift; sourceTree = "<group>"; };
@@ -294,6 +298,15 @@
 			path = history;
 			sourceTree = "<group>";
 		};
+		CE4320CE2121A8DE005FFDA1 /* attach */ = {
+			isa = PBXGroup;
+			children = (
+				CE4320CF2121A8FF005FFDA1 /* ImageResult.swift */,
+				CE4320D02121A8FF005FFDA1 /* img.swift */,
+			);
+			path = attach;
+			sourceTree = "<group>";
+		};
 		CE58DE25209BB8290087BA6F /* show */ = {
 			isa = PBXGroup;
 			children = (
@@ -360,6 +373,7 @@
 		CEED0054208561330033E663 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CE4320CE2121A8DE005FFDA1 /* attach */,
 				CE30EF9D211713F900775231 /* chatting */,
 				CE364A85210DCE6D003C60BB /* history */,
 				CE19958D20B83A4E00A90B09 /* filter */,
@@ -500,6 +514,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -509,6 +524,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -583,6 +599,8 @@
 				CE364A8421075BE8003C60BB /* ChatVC.swift in Sources */,
 				CE364A7E21074E64003C60BB /* AttachVC.swift in Sources */,
 				CE1995B920B8412700A90B09 /* Itemusers.swift in Sources */,
+				CE4320D12121A8FF005FFDA1 /* ImageResult.swift in Sources */,
+				CE4320D22121A8FF005FFDA1 /* img.swift in Sources */,
 				CE7D2EC920B2C6E400528F1A /* Filter.swift in Sources */,
 				CE30EFA12117141900775231 /* chatting.swift in Sources */,
 				CE7D2EBA20B165E000528F1A /* editVC.swift in Sources */,

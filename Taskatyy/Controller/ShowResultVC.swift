@@ -18,7 +18,7 @@ class ShowResultVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = "البنود"
         ShowResultVC.pickedDataTemp = pickedData
         tableView.estimatedRowHeight = 250
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -53,7 +53,13 @@ class ShowResultVC: UITableViewController {
         }
         
     }
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(true)
+        
+        // needed to clear the text in the back navigation:
+        self.navigationItem.title = ""
+    }
+
     let imageView : UIImageView = {
         let iv = UIImageView()
         iv.image = UIImage(named:"tableVBG")

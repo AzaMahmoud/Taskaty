@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Kingfisher
 
 class AttachVC: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource {
-    
+    var imageResult = [ImageResult]()
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     let itemsPerRow: CGFloat = 2
@@ -17,10 +19,33 @@ class AttachVC: UIViewController , UICollectionViewDelegate , UICollectionViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "مرفقات"
         collectionView.delegate = self
         collectionView.dataSource = self
+        loadData()
+    }
+    
+    func loadData(){
+        print("\(ShowResultVC.text_Band_No)")
+        startLoading()
+        API.attch(workitemid: "\(ShowResultVC.text_Band_No)") { (error, success, data) in
+            DispatchQueue.main.async
+                {
+                    if success {
+                        let r = img(fromDictionary: data as! [String : Any])
+                        self.imageResult = r.imageResult
+                        self.stopLoading()
+                        self.collectionView.reloadData()
+                        print("image")
+                    }
+                    else {
+                        print("ERROR")
+                        return
+                        
+                    }
+            }
+        }
 
-        
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -28,11 +53,15 @@ class AttachVC: UIViewController , UICollectionViewDelegate , UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return imageResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AttachCell
+        let newString = imageResult[indexPath.row].workItemsAttachmentPath?.replacingOccurrences(of: "\\" , with: "/" )
+        
+        cell.image.kf.indicatorType = .activity
+        cell.image.kf.setImage(with: URL(string: newString ?? ""))
         return cell
     }
    

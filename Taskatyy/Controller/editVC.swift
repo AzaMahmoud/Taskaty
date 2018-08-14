@@ -12,9 +12,7 @@ import SwiftyJSON
 
 class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
    
-    
-   
-    
+
     @IBOutlet weak var txtBandNo: UITextField!
     @IBOutlet weak var txtBandAdd: UITextField!
     @IBOutlet weak var txtBandDat: UITextField!
@@ -35,21 +33,6 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     @IBOutlet weak var btnUser: UIButton!
     
     
-    
-    //  @IBOutlet weak var txtAssignDat: UITextField!
-    
-  //  @IBOutlet weak var txtDlvrDat: UITextField!
-//    var text_Band_No = 0
-//    var text_Band_add = ""
-//    var text_Band_date = ""
-//    var text_Band_Delv_Dat = ""
-//    var text_Band_detail = ""
-//    var text_Status = ""
-//    var text_Sender = ""
-//    var text_SenderId = ""
-//    var pick_prog = ""
-//    var pick_typ = ""
-//    var pick_prior = ""
     var pick_user = ""
     var pick_status = ""
     var endDate = ""
@@ -125,9 +108,9 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
     var searchWorkItemsResult = [SearchWorkItemsResult]()
     
     override func  viewDidLoad() {
+        title = "تعديل"
         API.filter()
         super.viewDidLoad()
-        // fill pickerViews
         pickProg.dataSource = self
         pickProg.delegate = self
         pickType.dataSource = self
@@ -155,9 +138,6 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
                     self.reloadPickerViews()
                 }
         }
-//            self.pickProg.dataSource = self
-//            self.pickProg.delegate = self
-            
             
             self.txtBandNo.text = "\(ShowResultVC.text_Band_No)"
             self.txtBandAdd.text = ShowResultVC.text_Band_add
@@ -165,21 +145,13 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
             self.btnDelv.setTitle(ShowResultVC.text_Band_Delv_Dat , for: .normal)
             self.txtBandDat.text = ShowResultVC.text_Band_date
             self.txtVBandDetail.text = ShowResultVC.text_Band_detail
-           // self.txtBandStatus.text = ShowResultVC.text_SenderId //
             self.txtSender.text = ShowResultVC.text_Sender
             self.btnProg.setTitle(ShowResultVC.pick_prog, for: .normal)
             self.btnTyp.setTitle(ShowResultVC.pick_typ, for: .normal)
             self.btnPrior.setTitle(ShowResultVC.pick_prior, for: .normal)
             self.btnUser.setTitle(ShowResultVC.pick_user , for: .normal)
             self.btnStatus.setTitle(ShowResultVC.pick_status, for: .normal)
-            //self.txtBandStatus.text = "\(ShowResultVC.pick_progId)"
-            //  self.pickProg.selectedRow(inComponent: ShowResultVC.pick_prog)
-            
-            
-            //  self.pickProg.reloadAllComponents()
             API.filter()
-            
-            
             self.progId = self.pickedData["programId"] as? Int ?? 0
             self.typId = self.pickedData["typeId"] as? Int ?? 0
             self.priorId = self.pickedData["periorityId"] as? Int ?? 0
@@ -200,47 +172,6 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
             }
         }
     }
-//    override func viewWillAppear(_ animated: Bool) {
-//        // get data from previos screen
-//        DispatchQueue.main.async {
-//            self.pickProg.dataSource = self
-//            self.pickProg.delegate = self
-//
-//            self.txtBandAdd.text = ShowResultVC.text_Band_add
-//            self.btnSpec.setTitle(ShowResultVC.text_Band_date, for: .normal)
-//            self.txtBandDat.text = ShowResultVC.text_Band_date
-//            self.txtVBandDetail.text = ShowResultVC.text_Band_detail
-//            self.txtBandStatus.text = ShowResultVC.text_Status
-//          //  self.pickProg.selectedRow(inComponent: ShowResultVC.pick_prog)
-//
-//
-//          //  self.pickProg.reloadAllComponents()
-//            API.filter()
-//
-//
-//                let progId = self.pickedData["programId"] as? Int
-//                let typId = self.pickedData["typeId"] as? Int
-//                let priorId = self.pickedData["periorityId"] as? Int
-//                let statId = self.pickedData["statusId"] as? Int
-//                let useId = self.pickedData["userId"] as? Int
-//                API.show(creator: "0", item: "0", pgIndex: "1", pgsize: "25", asignTo: "\(useId!)", status: "\(statId!)", periority: "\(priorId!)", program: "\(progId!)", type: "\(typId!)", user: "0", lateItem: "0") { (error:Error?,success:Bool,data:AnyObject?) in
-//
-//                    if success {
-//                        let r = Search(fromDictionary: data as! [String : Any])
-//                        self.searchWorkItemsResult = r.searchWorkItemsResult
-//                      //  txtBandNo.text = searchWorkItemsResult[IndexPath.row]
-//                       // txtBandNo.text = self.searchWorkItemsResult[0].workItemId
-////                        self.txtBandAdd.text = self.searchWorkItemsResult[0].workItemTitle
-////                        self.txtBandDat.text = self.searchWorkItemsResult[1].workItemCreatedDate
-//
-//                        print("filll")
-//                    }
-//                    else {return}
-//                }
-//        }
-////        // txtBandNo.text = self.searchWorkItemsResult[""]
-////
-//    }
     
     
     func reloadPickerViews(){
@@ -269,13 +200,6 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
         let titlee = txtBandAdd.text ?? " "
         let detaill = txtVBandDetail.text ?? " "
         let creator = txtBandStatus.text ?? " "
-       // print ("\(bandId)", titlee,detaill,creator, "\(responderId)","\(statusId)","\(periorrId)", "\(endDate)","\(progId)","\(typpId)")
-//        if (btnDelv.title(for: .normal) == "Date")
-//        {
-//            endDate = nil
-//        }
- //       else { endDate = btnDelv.title(for: .normal)!}
-       // guard let endDat = btnDelv.title(for: .normal)
         let progId = progammId ?? ShowResultVC.pick_progId
         let typId = typpId ?? ShowResultVC.pick_typId
         let priorId = periorrId ?? ShowResultVC.pick_priorId
@@ -322,8 +246,6 @@ class editVC: UIViewController , UIPickerViewDelegate, UIPickerViewDataSource {
        // let selectedData = pickerView.selectedRow(inComponent: 0)
         if (pickerView.tag == 1){
             pickProg.isHidden = true
-         //   pickerviewData["prog"] = selectedData
-           // pickerviewData["progId"] =
             progammId = resultt?.filterIOSResult?.itemPrograms[row].workItemProgramId //?? ShowResultVC.pick_progId
            let programm = resultt?.filterIOSResult?.itemPrograms[row].workItemProgram
             print(programm!)

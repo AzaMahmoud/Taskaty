@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate
+class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate , UITextViewDelegate
 {
     @IBOutlet weak var bndTitlTxt: UITextField!
     @IBOutlet weak var pickProg: UIPickerView!
@@ -19,8 +19,12 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     @IBOutlet weak var pickPerior: UIPickerView!
     @IBOutlet weak var pickFor: UIPickerView!
     @IBOutlet weak var datBtn: UIButton!
-    
     @IBOutlet weak var uiCollecionImg: UICollectionView!
+    
+    var selectedProgrammePiker:Int = 0
+    var selectedTypePiker:Int = 0
+    var selectedProriyPiker:Int = 0
+    var selectedPartPiker:Int = 0
     
     var images = [UIImage]()
     
@@ -80,27 +84,24 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let selectedData = pickerView.selectedRow(inComponent: 0)
         if (pickerView.tag==1){
             pickerviewData["program"] = selectedData
+            selectedProgrammePiker = selectedData
             pickerviewData["programId"] = resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId
-            print(pickerviewData["program"]!)
-            print(resultt?.filterIOSResult?.itemPrograms?[row].workItemProgramId ?? 0)
         }
         if (pickerView.tag==2){
             pickerviewData["type"] = selectedData
+            selectedTypePiker = selectedData
             pickerviewData["typeId"] = resultt?.filterIOSResult?.itemtype?[row].workItemTypeId
-            print(pickerviewData["type"]!)
-            print(resultt?.filterIOSResult?.itemtype?[row].workItemTypeId ?? 0)
         }
         if (pickerView.tag==3){
             pickerviewData["periority"] = selectedData
+            selectedProriyPiker = selectedData
+
             pickerviewData["periorityId"] = resultt?.filterIOSResult?.itemPriorities[row].workItemPriorityId
-            print(pickerviewData["periority"]!)
-            print(resultt?.filterIOSResult?.itemPriorities?[row].workItemPriorityId ?? 0)
         }
         if (pickerView.tag==4){
             pickerviewData["user"] = selectedData
+            selectedPartPiker = selectedData
             pickerviewData["userId"] = resultt?.filterIOSResult?.itemusers[row].userId
-            print(pickerviewData["user"]!)
-            print(resultt?.filterIOSResult?.itemusers?[row].userId ?? 0)
         }
     }
     
@@ -110,6 +111,7 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
     override func viewDidLoad() {
         API.filter()
         super.viewDidLoad()
+        title = "اضافه بند"
         pickProg.delegate = self
         pickProg.dataSource = self
         pickTyp.delegate = self
@@ -122,6 +124,8 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         uiCollecionImg.dataSource = self
         let url = URLs.Filter
         tableView.backgroundView = UIImageView(image: UIImage(named: "tableVBGß"))
+        bndDetTxtV.text = "تفاصيل البند"
+        bndDetTxtV.textColor = UIColor.darkGray
 
         startLoading()
         Alamofire.request(url, method: .get, headers: nil)
@@ -142,7 +146,19 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         
         
     }
-    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == UIColor.darkGray {
+            textView.text = nil
+            textView.textColor = UIColor.black
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "تفاصيل البند"
+            textView.textColor = UIColor.darkGray
+        }
+    }
+
     func reloadPickerView() {
         self.pickProg.reloadAllComponents()
         self.pickTyp.reloadAllComponents()
@@ -158,13 +174,10 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         }}
     
     var imagess = [UIImage]()
-    var Myimage: [String: Any] = [:]
+    var Myimage: [[String: Any]] = [[:]]
 
     
     @objc public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
-        
-        
-       
         if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
             self.pickedImage = originImg
             images.append(originImg)
@@ -175,28 +188,16 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
             let imageName =
             "\(Int(Date.timeIntervalSinceReferenceDate * 1000)).JPEG"
             // MARK: To Do - Add Iamge Name and data to Dictionary//
-            
-            Myimage = [
+            let image = [
                 "photoasBase64" : imageData ?? "",
-                "photoName" :"\(imageName)"
-                ]
-            //            Myimage = [ ###########
-//                "photoasBase64" : imageData,
-//                "photoName" :imageName
-//            ]
-            
-           // print(imageData)
-          //  ProfileImage.image = UIImage(data: imageName)
-        //print (imageData)
+                "photoName" : imageName
+            ]
+            Myimage.append(image)
             
             uiCollecionImg.reloadData()
         
         }
             
-//        else if let originImg = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            self.pickedImage = originImg
-//            //  submit(image: image)
-//        }
         picker.dismiss(animated: true)
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -207,29 +208,45 @@ class addItemVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSo
         let typId = pickerviewData["typeId"] as? Int ?? 0
         let priorId = pickerviewData["periorityId"] as? Int ?? 0
         let userId = pickerviewData["userId"] as? Int ?? 0
-        guard let titl = bndTitlTxt.text, !titl.isEmpty else {return}
-        guard let detail = bndDetTxtV.text, !detail.isEmpty else {return}
+        let titl = bndTitlTxt.text ?? ""
+        let detail = bndDetTxtV.text ?? ""
         let dat = datBtn.title(for: .normal)
         
-        print(progId)
-        print(typId)
-        print(priorId)
-        print(userId)
-        print(titl)
-        print(detail)
-        print(dat!)
-        
-        startLoading()
-        DispatchQueue.main.async {
-            API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId)", periority: "\(priorId)", date: "\(dat!)", catId: "4", progrm: "\(progId)", type: "\(typId)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
-                //if sucess { print("work Added")} else {return}
-                self.stopLoading()
-                self.showAlert("تم اضافه البند بنجاح","تم بنجاح")
-                print(error as Any, "       " , "       " , success as Any , "       " , data as Any )
-            }
+        if bndTitlTxt.text == "" || bndDetTxtV.text == "" ||  selectedTypePiker == 0 || selectedProgrammePiker == 0 || selectedProriyPiker == 0 || datBtn.currentTitle == "Date"{
             
+            showAlert("برجاء اكمال البيانات", "تحذير")
+        }else{
+            startLoading()
+            DispatchQueue.main.async {
+                for i in 0..<self.Myimage.count-1 {
+                    if self.Myimage[i]["photoName"] == nil {
+                        self.Myimage.remove(at: i)
+                    }
+                }
+                
+                API.addBnd(creator: "2", status: "1", title: titl, detail: detail, assignTo: "\(userId)", periority: "\(priorId)", date: "\(dat!)", catId: "4", progrm: "\(progId)", type: "\(typId)", photos: self.Myimage) { (error:Error?, success:Bool?, data:AnyObject?) in
+                    self.stopLoading()
+                    if success! {
+                        self.showAlertSuccess("تم اضافه البند بنجاح","تم بنجاح")
+                    }else{
+                        print(error?.localizedDescription ?? "")
+                    }
+                }
+                
+            }
+
         }
+        
     }
+    
+    func showAlertSuccess(_ message: String , _ title: String){
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "تاكيد", style: .default, handler: { (acion) in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(alertController , animated: true)
+    }
+
     
     
 }

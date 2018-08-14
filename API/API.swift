@@ -94,12 +94,12 @@ class API: NSObject {
 
     
     
-    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, catId: String, progrm: String, type: String, photos: [String:Any] , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
+    class func addBnd(creator: String, status: String, title: String, detail: String, assignTo: String, periority: String, date: String, catId: String, progrm: String, type: String, photos: [[String:Any]] , completion: @escaping (_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void)
     {
         let url = URLs.AddBand
         let parameters = ["WorkItemCreatedBy":creator, "WorkItemStatusId":status, "WorkItemTitle":title, "WorkItemDetails":detail, "WorkItemAssignedTo":assignTo, "WorkItemPriorityId":periority, "AssignDate":date, "CatID":catId , "WorkItemProgramId":progrm, "WorkItemTypeId":type, "photos":photos] as [String:AnyObject]
         
-        let header = ["Content-Type" : "application/json"]
+        let header = ["Content-Type" : "application/json" , "Accept" :  "application/json"]
         Alamofire.request(url, method: .post, parameters: parameters,encoding: JSONEncoding.default, headers: header)
             .responseJSON { response in
                 switch response.result {
@@ -179,6 +179,25 @@ class API: NSObject {
                 case .success(let value):
                     completion(nil,true,value as AnyObject?)
                 case.failure(let error):
+                    completion(error as NSError?,false,nil)
+                }
+        }
+    }
+    
+    
+    class func attch(workitemid:String, completion: @escaping(_ error:Error?, _ success:Bool ,_ data:AnyObject?)->Void){
+        
+        let url = URLs.attach
+        let header = ["Content-Type" : "application/json"]
+        let parameters = ["workitemid": workitemid] as [String : AnyObject]
+
+        Alamofire.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: header)
+            .responseJSON { response in
+                switch response.result{
+                case .success(let value):
+                    print(value)
+                    completion(nil,true,value as AnyObject?)
+                case .failure(let error):
                     completion(error as NSError?,false,nil)
                 }
         }

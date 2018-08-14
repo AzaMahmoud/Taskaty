@@ -12,7 +12,7 @@ target 'Taskatyy' do
     pod 'IQKeyboardManagerSwift'
     pod 'NVActivityIndicatorView'
     pod 'SideMenu'
-
+    pod 'Kingfisher'
     target 'TaskatyyTests' do
         inherit! :search_paths
         # Pods for testing
